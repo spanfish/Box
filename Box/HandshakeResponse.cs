@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Box
 {
-    class Handshake
+    class HandshakeResponse
     {
         //{"status":0,"msg":"ok","timestamp":"1543675025"}
 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
@@ -15,13 +16,19 @@ namespace Box
 {
     public partial class LoginWindow : Form
     {
+        private RestClient client;
+
+        private readonly SynchronizationContext synchronizationContext;
+
         public LoginWindow()
         {
             InitializeComponent();
+
+            synchronizationContext = SynchronizationContext.Current;
+            string host = System.Configuration.ConfigurationManager.AppSettings["Host"];
+            client = new RestClient(host);
         }
-
-        private RestClient client = new RestClient("https://lifecycletest.ibroadlink.com");
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             if(IdTextBox.Text.Trim().Length == 0)
@@ -36,16 +43,29 @@ namespace Box
                 progressBar1.Show();
                 button1.Enabled = false;
 
-                var request = new RestRequest("dlicense/v2/account/handshake", Method.GET);
+                try
+                {
+                    var request = new RestRequest("dlicense/v2/account/handshake", Method.GET);
 
-                var asyncHandle = client.ExecuteAsync<Handshake>(request, response => {
-                    Handshake res = response.Data;
-                    Console.WriteLine(response.Data);
-                    if(res.Status == 0)
+                    var asyncHandle = client.ExecuteAsync<HandshakeResponse>(request, response =>
                     {
-                        Login(IdTextBox.Text, PwdTextBox.Text, res);
-                    }
-                });
+                        HandshakeResponse handshake = response.Data;
+                        Console.WriteLine(response.Data);
+                        if (handshake.Status == 0)
+                        {
+                            Login(IdTextBox.Text, PwdTextBox.Text, handshake);
+                        }
+                        else
+                        {
+                            //
+                        }
+                    });
+                }
+                catch
+                {
+                    progressBar1.Hide();
+                    button1.Enabled = true;
+                }
             }
 
             
@@ -60,7 +80,7 @@ namespace Box
             PwdTextBox.Text = "yunduan412";
         }
 
-        private void Login(string Id, string pwd, Handshake res)
+        private void Login(string Id, string pwd, HandshakeResponse res)
         {
             var request = new RestRequest("dlicense/v2/account/login", Method.POST);
             request.RequestFormat = DataFormat.Json;
@@ -106,8 +126,17 @@ namespace Box
             request.AddHeader("token", sb.ToString());
 
             request.AddParameter("application/json", body, ParameterType.RequestBody);
-            var response = client.Execute(request);
-            var content = response.Content; // raw content as string  
+
+            var asyncHandle = client.ExecuteAsync<LoginResponse>(request, response => {
+                LoginResponse loginRes = response.Data;
+                App.LoginResponse = loginRes;
+
+                synchronizationContext.Post(new SendOrPostCallback(o =>
+                {
+                    this.Close();
+                }), null);
+            });
+            Console.WriteLine("");
         }
     }
 }
