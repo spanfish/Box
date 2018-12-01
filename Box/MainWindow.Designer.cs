@@ -1,6 +1,6 @@
 ﻿namespace Box
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -32,6 +32,8 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.登陆ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,17 +41,18 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(653, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(686, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingToolStripMenuItem});
+            this.settingToolStripMenuItem,
+            this.系统ToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(653, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(686, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -64,19 +67,35 @@
             // hostToolStripMenuItem
             // 
             this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
-            this.hostToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hostToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.hostToolStripMenuItem.Text = "Host";
             // 
-            // Form1
+            // 系统ToolStripMenuItem
+            // 
+            this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.登陆ToolStripMenuItem});
+            this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
+            this.系统ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.系统ToolStripMenuItem.Text = "系统";
+            // 
+            // 登陆ToolStripMenuItem
+            // 
+            this.登陆ToolStripMenuItem.Name = "登陆ToolStripMenuItem";
+            this.登陆ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.登陆ToolStripMenuItem.Text = "登陆";
+            this.登陆ToolStripMenuItem.Click += new System.EventHandler(this.登陆ToolStripMenuItem_Click);
+            // 
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 369);
+            this.ClientSize = new System.Drawing.Size(686, 413);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainWindow";
+            this.Text = "包装系统";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -90,6 +109,8 @@
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 系统ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 登陆ToolStripMenuItem;
     }
 }
 
