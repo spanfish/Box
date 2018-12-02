@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Box
 {
-    class LoginResponse
+    public class LoginResponse
     {
         public int Status { get; set; }
 

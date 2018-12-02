@@ -15,14 +15,21 @@ namespace Box
 {
     public partial class LoginWindow : Form
     {
+        public AppConfig AppConfig
+        {
+            get;
+            set;
+        }
+
         private RestClient client;
 
         private readonly SynchronizationContext synchronizationContext;
 
-        public LoginWindow()
+        public LoginWindow(AppConfig theApp)
         {
             InitializeComponent();
 
+            this.AppConfig = theApp;
             synchronizationContext = SynchronizationContext.Current;
             string host = System.Configuration.ConfigurationManager.AppSettings["Host"];
             client = new RestClient(host);
@@ -46,6 +53,7 @@ namespace Box
                 {
                     var request = new RestRequest("dlicense/v2/account/handshake", Method.GET);
 
+                    request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
                     var asyncHandle = client.ExecuteAsync<HandshakeResponse>(request, response =>
                     {
                         HandshakeResponse handshake = response.Data;
@@ -126,9 +134,10 @@ namespace Box
 
             request.AddParameter("application/json", body, ParameterType.RequestBody);
 
+            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var asyncHandle = client.ExecuteAsync<LoginResponse>(request, response => {
                 LoginResponse loginRes = response.Data;
-                App.LoginResponse = loginRes;
+                AppConfig.Login = loginRes;
 
                 if(loginRes.Status == 0)
                 {
@@ -146,12 +155,13 @@ namespace Box
         {
             var request = new RestRequest("dlicense/v2/account/role/query", Method.GET);
 
-            request.AddHeader("reqUserId", App.LoginResponse.Userid);
-            request.AddHeader("reqUserSession", App.LoginResponse.Loginsession);
-            
+            request.AddHeader("reqUserId", AppConfig.Login.Userid);
+            request.AddHeader("reqUserSession", AppConfig.Login.Loginsession);
+
+            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var asyncHandle = client.ExecuteAsync<AccountResponse>(request, response => {
                 AccountResponse accountRes = response.Data;
-                App.Account = accountRes.Data[0];
+                AppConfig.Account = accountRes.Data[0];
 
                 synchronizationContext.Post(new SendOrPostCallback(o =>
                 {
