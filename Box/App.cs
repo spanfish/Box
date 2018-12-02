@@ -12,5 +12,10 @@ namespace Box
         {
             get; set;
         }
+
+        public static Account Account
+        {
+            get; set;
+        }
     }
 }

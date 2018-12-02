@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-
 using RestSharp;
 
 namespace Box
@@ -131,12 +130,34 @@ namespace Box
                 LoginResponse loginRes = response.Data;
                 App.LoginResponse = loginRes;
 
+                if(loginRes.Status == 0)
+                {
+                    QueryAccount();
+                }
+                //synchronizationContext.Post(new SendOrPostCallback(o =>
+                //{
+                //    this.Close();
+                //}), null);
+            });
+        }
+
+
+        private void QueryAccount()
+        {
+            var request = new RestRequest("dlicense/v2/account/role/query", Method.GET);
+
+            request.AddHeader("reqUserId", App.LoginResponse.Userid);
+            request.AddHeader("reqUserSession", App.LoginResponse.Loginsession);
+            
+            var asyncHandle = client.ExecuteAsync<AccountResponse>(request, response => {
+                AccountResponse accountRes = response.Data;
+                App.Account = accountRes.Data[0];
+
                 synchronizationContext.Post(new SendOrPostCallback(o =>
                 {
                     this.Close();
                 }), null);
             });
-            Console.WriteLine("");
         }
     }
 }
