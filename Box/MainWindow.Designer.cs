@@ -44,19 +44,6 @@
             this.orderRefreshButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.innerBoxLabelPrintButton = new System.Windows.Forms.Button();
-            this.outerBoxLabelPrintButton = new System.Windows.Forms.Button();
-            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.登陆ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OrderListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.打印机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printerTestMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.orderIdLabel = new System.Windows.Forms.Label();
@@ -67,7 +54,46 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.InnerBoxIdTextBox = new System.Windows.Forms.TextBox();
+            this.InnerBoxPrintButton = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.OuterBoxIdTextBox = new System.Windows.Forms.TextBox();
+            this.OuterBoxPrintButton = new System.Windows.Forms.Button();
+            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打印机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printerTestMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.登陆ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrderListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InnerBoxPrintMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OuterBoxPrintMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label27 = new System.Windows.Forms.Label();
+            this.prodNameLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,10 +104,10 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -91,9 +117,9 @@
             this.msgStatusLabel,
             this.toolStripStatusLabel3,
             this.printStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 384);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(699, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 4;
             // 
             // progressBar
@@ -134,8 +160,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(699, 360);
-            this.splitContainer1.SplitterDistance = 214;
+            this.splitContainer1.Size = new System.Drawing.Size(784, 515);
+            this.splitContainer1.SplitterDistance = 240;
             this.splitContainer1.TabIndex = 5;
             // 
             // tableLayoutPanel1
@@ -150,7 +176,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.55556F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(214, 360);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(240, 515);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridView1
@@ -168,7 +194,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(208, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(234, 475);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -196,7 +222,7 @@
             this.tableLayoutPanel2.Controls.Add(this.prevPageButton, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.nextPageButton, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.orderRefreshButton, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 329);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 484);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -211,6 +237,7 @@
             this.prevPageButton.TabIndex = 0;
             this.prevPageButton.Text = "上一页";
             this.prevPageButton.UseVisualStyleBackColor = true;
+            this.prevPageButton.Click += new System.EventHandler(this.prevPageButton_Click);
             // 
             // nextPageButton
             // 
@@ -240,7 +267,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(481, 360);
+            this.tabControl1.Size = new System.Drawing.Size(540, 515);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -249,133 +276,16 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(473, 334);
+            this.tabPage1.Size = new System.Drawing.Size(532, 489);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "订单详细";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(473, 334);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "装箱";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.innerBoxLabelPrintButton, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.outerBoxLabelPrintButton, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(59, 64);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // innerBoxLabelPrintButton
-            // 
-            this.innerBoxLabelPrintButton.Location = new System.Drawing.Point(3, 3);
-            this.innerBoxLabelPrintButton.Name = "innerBoxLabelPrintButton";
-            this.innerBoxLabelPrintButton.Size = new System.Drawing.Size(75, 23);
-            this.innerBoxLabelPrintButton.TabIndex = 0;
-            this.innerBoxLabelPrintButton.Text = "内箱标签打印";
-            this.innerBoxLabelPrintButton.UseVisualStyleBackColor = true;
-            // 
-            // outerBoxLabelPrintButton
-            // 
-            this.outerBoxLabelPrintButton.Location = new System.Drawing.Point(103, 3);
-            this.outerBoxLabelPrintButton.Name = "outerBoxLabelPrintButton";
-            this.outerBoxLabelPrintButton.Size = new System.Drawing.Size(75, 23);
-            this.outerBoxLabelPrintButton.TabIndex = 1;
-            this.outerBoxLabelPrintButton.Text = "外箱标签打印";
-            this.outerBoxLabelPrintButton.UseVisualStyleBackColor = true;
-            // 
-            // settingToolStripMenuItem
-            // 
-            this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hostToolStripMenuItem,
-            this.打印机ToolStripMenuItem,
-            this.printerTestMenu});
-            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.settingToolStripMenuItem.Text = "设置";
-            // 
-            // hostToolStripMenuItem
-            // 
-            this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
-            this.hostToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hostToolStripMenuItem.Text = "主机";
-            // 
-            // 系统ToolStripMenuItem
-            // 
-            this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.登陆ToolStripMenuItem,
-            this.测试ToolStripMenuItem});
-            this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
-            this.系统ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.系统ToolStripMenuItem.Text = "系统";
-            // 
-            // 登陆ToolStripMenuItem
-            // 
-            this.登陆ToolStripMenuItem.Name = "登陆ToolStripMenuItem";
-            this.登陆ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.登陆ToolStripMenuItem.Text = "登陆";
-            this.登陆ToolStripMenuItem.Click += new System.EventHandler(this.登陆ToolStripMenuItem_Click);
-            // 
-            // 订单ToolStripMenuItem
-            // 
-            this.订单ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OrderListToolStripMenuItem});
-            this.订单ToolStripMenuItem.Name = "订单ToolStripMenuItem";
-            this.订单ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.订单ToolStripMenuItem.Text = "订单";
-            // 
-            // OrderListToolStripMenuItem
-            // 
-            this.OrderListToolStripMenuItem.Name = "OrderListToolStripMenuItem";
-            this.OrderListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.OrderListToolStripMenuItem.Text = "刷新";
-            this.OrderListToolStripMenuItem.Click += new System.EventHandler(this.OrderListToolStripMenuItem_Click);
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.订单ToolStripMenuItem,
-            this.settingToolStripMenuItem,
-            this.系统ToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(699, 24);
-            this.menuStrip2.TabIndex = 1;
-            this.menuStrip2.Text = "menuStrip2";
-            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
-            // 
-            // 打印机ToolStripMenuItem
-            // 
-            this.打印机ToolStripMenuItem.Name = "打印机ToolStripMenuItem";
-            this.打印机ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.打印机ToolStripMenuItem.Text = "打印机";
-            // 
-            // printerTestMenu
-            // 
-            this.printerTestMenu.Name = "printerTestMenu";
-            this.printerTestMenu.Size = new System.Drawing.Size(152, 22);
-            this.printerTestMenu.Text = "打印测试";
-            this.printerTestMenu.Click += new System.EventHandler(this.printerTestMenu_Click);
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.27623F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.72377F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.27195F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.72805F));
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.orderIdLabel, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 1);
@@ -385,10 +295,27 @@
             this.tableLayoutPanel4.Controls.Add(this.label7, 0, 5);
             this.tableLayoutPanel4.Controls.Add(this.label8, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.label9, 0, 7);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 0, 8);
+            this.tableLayoutPanel4.Controls.Add(this.label10, 0, 9);
+            this.tableLayoutPanel4.Controls.Add(this.label11, 0, 10);
+            this.tableLayoutPanel4.Controls.Add(this.label12, 0, 11);
+            this.tableLayoutPanel4.Controls.Add(this.label13, 0, 12);
+            this.tableLayoutPanel4.Controls.Add(this.label14, 0, 13);
+            this.tableLayoutPanel4.Controls.Add(this.label15, 0, 14);
+            this.tableLayoutPanel4.Controls.Add(this.label16, 0, 15);
+            this.tableLayoutPanel4.Controls.Add(this.label17, 0, 16);
+            this.tableLayoutPanel4.Controls.Add(this.label18, 0, 17);
+            this.tableLayoutPanel4.Controls.Add(this.label19, 0, 18);
+            this.tableLayoutPanel4.Controls.Add(this.label20, 0, 19);
+            this.tableLayoutPanel4.Controls.Add(this.label21, 0, 20);
+            this.tableLayoutPanel4.Controls.Add(this.label22, 0, 21);
+            this.tableLayoutPanel4.Controls.Add(this.label23, 0, 22);
+            this.tableLayoutPanel4.Controls.Add(this.label27, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.prodNameLabel, 1, 6);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 10;
+            this.tableLayoutPanel4.RowCount = 24;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -399,7 +326,21 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(467, 328);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(526, 483);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
@@ -408,7 +349,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 20);
+            this.label1.Size = new System.Drawing.Size(95, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "订单ID";
             // 
@@ -416,9 +357,9 @@
             // 
             this.orderIdLabel.AutoSize = true;
             this.orderIdLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderIdLabel.Location = new System.Drawing.Point(64, 0);
+            this.orderIdLabel.Location = new System.Drawing.Point(104, 0);
             this.orderIdLabel.Name = "orderIdLabel";
-            this.orderIdLabel.Size = new System.Drawing.Size(400, 20);
+            this.orderIdLabel.Size = new System.Drawing.Size(419, 20);
             this.orderIdLabel.TabIndex = 1;
             this.orderIdLabel.Text = "label2";
             // 
@@ -428,7 +369,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 20);
+            this.label3.Size = new System.Drawing.Size(95, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "父订单ID";
             // 
@@ -486,18 +427,387 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "物料编码";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "订单申请数量";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 180);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 12);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "起始MAC";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 200);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 12);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "结束MAC";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 220);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 12);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "起始SN";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 240);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 12);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "结束SN";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 260);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(40, 12);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "工厂ID";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 280);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 12);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "合同号";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 300);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 12);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "订单确认状态";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 320);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 12);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "订单确认时间";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 340);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 12);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "生产状态";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 360);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 12);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "装箱状态";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 380);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(77, 12);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "生产开始时间";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(3, 400);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(77, 12);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "生产完成时间";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(3, 420);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(77, 12);
+            this.label22.TabIndex = 22;
+            this.label22.Text = "装箱开始时间";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(3, 440);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(77, 12);
+            this.label23.TabIndex = 23;
+            this.label23.Text = "装箱完成时间";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(473, 689);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "装箱";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
+            this.tableLayoutPanel3.Controls.Add(this.label24, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label25, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.SearchTextBox, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.InnerBoxIdTextBox, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.InnerBoxPrintButton, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label26, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.OuterBoxIdTextBox, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.OuterBoxPrintButton, 1, 5);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 6;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(467, 683);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label24, 2);
+            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(513, 60);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "输入模块查找箱号";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label25, 2);
+            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label25.Location = new System.Drawing.Point(3, 100);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(513, 40);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "内箱箱号";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // SearchTextBox
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.SearchTextBox, 2);
+            this.SearchTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchTextBox.Location = new System.Drawing.Point(3, 63);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(513, 19);
+            this.SearchTextBox.TabIndex = 2;
+            // 
+            // InnerBoxIdTextBox
+            // 
+            this.InnerBoxIdTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InnerBoxIdTextBox.Location = new System.Drawing.Point(3, 143);
+            this.InnerBoxIdTextBox.Name = "InnerBoxIdTextBox";
+            this.InnerBoxIdTextBox.Size = new System.Drawing.Size(394, 19);
+            this.InnerBoxIdTextBox.TabIndex = 3;
+            // 
+            // InnerBoxPrintButton
+            // 
+            this.InnerBoxPrintButton.AutoSize = true;
+            this.InnerBoxPrintButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.InnerBoxPrintButton.Location = new System.Drawing.Point(403, 143);
+            this.InnerBoxPrintButton.Name = "InnerBoxPrintButton";
+            this.InnerBoxPrintButton.Size = new System.Drawing.Size(113, 23);
+            this.InnerBoxPrintButton.TabIndex = 4;
+            this.InnerBoxPrintButton.Text = "打印";
+            this.InnerBoxPrintButton.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label26, 2);
+            this.label26.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label26.Location = new System.Drawing.Point(3, 177);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(513, 12);
+            this.label26.TabIndex = 5;
+            this.label26.Text = "外箱箱号";
+            // 
+            // OuterBoxIdTextBox
+            // 
+            this.OuterBoxIdTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OuterBoxIdTextBox.Location = new System.Drawing.Point(3, 192);
+            this.OuterBoxIdTextBox.Name = "OuterBoxIdTextBox";
+            this.OuterBoxIdTextBox.Size = new System.Drawing.Size(394, 19);
+            this.OuterBoxIdTextBox.TabIndex = 6;
+            // 
+            // OuterBoxPrintButton
+            // 
+            this.OuterBoxPrintButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OuterBoxPrintButton.Location = new System.Drawing.Point(403, 192);
+            this.OuterBoxPrintButton.Name = "OuterBoxPrintButton";
+            this.OuterBoxPrintButton.Size = new System.Drawing.Size(113, 23);
+            this.OuterBoxPrintButton.TabIndex = 7;
+            this.OuterBoxPrintButton.Text = "打印";
+            this.OuterBoxPrintButton.UseVisualStyleBackColor = true;
+            // 
+            // settingToolStripMenuItem
+            // 
+            this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hostToolStripMenuItem,
+            this.打印机ToolStripMenuItem,
+            this.printerTestMenu});
+            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.settingToolStripMenuItem.Text = "设置";
+            // 
+            // hostToolStripMenuItem
+            // 
+            this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
+            this.hostToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.hostToolStripMenuItem.Text = "主机";
+            // 
+            // 打印机ToolStripMenuItem
+            // 
+            this.打印机ToolStripMenuItem.Name = "打印机ToolStripMenuItem";
+            this.打印机ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.打印机ToolStripMenuItem.Text = "打印机";
+            // 
+            // printerTestMenu
+            // 
+            this.printerTestMenu.Name = "printerTestMenu";
+            this.printerTestMenu.Size = new System.Drawing.Size(122, 22);
+            this.printerTestMenu.Text = "打印测试";
+            this.printerTestMenu.Click += new System.EventHandler(this.printerTestMenu_Click);
+            // 
+            // 系统ToolStripMenuItem
+            // 
+            this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.登陆ToolStripMenuItem,
+            this.测试ToolStripMenuItem});
+            this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
+            this.系统ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.系统ToolStripMenuItem.Text = "系统";
+            // 
+            // 登陆ToolStripMenuItem
+            // 
+            this.登陆ToolStripMenuItem.Name = "登陆ToolStripMenuItem";
+            this.登陆ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.登陆ToolStripMenuItem.Text = "登陆";
+            this.登陆ToolStripMenuItem.Click += new System.EventHandler(this.登陆ToolStripMenuItem_Click);
+            // 
             // 测试ToolStripMenuItem
             // 
             this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
-            this.测试ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.测试ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.测试ToolStripMenuItem.Text = "测试";
             this.测试ToolStripMenuItem.Click += new System.EventHandler(this.测试ToolStripMenuItem_Click);
+            // 
+            // 订单ToolStripMenuItem
+            // 
+            this.订单ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OrderListToolStripMenuItem});
+            this.订单ToolStripMenuItem.Name = "订单ToolStripMenuItem";
+            this.订单ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.订单ToolStripMenuItem.Text = "订单";
+            // 
+            // OrderListToolStripMenuItem
+            // 
+            this.OrderListToolStripMenuItem.Name = "OrderListToolStripMenuItem";
+            this.OrderListToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.OrderListToolStripMenuItem.Text = "刷新";
+            this.OrderListToolStripMenuItem.Click += new System.EventHandler(this.OrderListToolStripMenuItem_Click);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.订单ToolStripMenuItem,
+            this.打印ToolStripMenuItem,
+            this.settingToolStripMenuItem,
+            this.系统ToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip2.TabIndex = 1;
+            this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
+            // 
+            // 打印ToolStripMenuItem
+            // 
+            this.打印ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InnerBoxPrintMenuItem,
+            this.OuterBoxPrintMenuItem});
+            this.打印ToolStripMenuItem.Name = "打印ToolStripMenuItem";
+            this.打印ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.打印ToolStripMenuItem.Text = "打印";
+            // 
+            // InnerBoxPrintMenuItem
+            // 
+            this.InnerBoxPrintMenuItem.Name = "InnerBoxPrintMenuItem";
+            this.InnerBoxPrintMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.InnerBoxPrintMenuItem.Text = "内箱标签";
+            this.InnerBoxPrintMenuItem.Click += new System.EventHandler(this.InnerBoxPrintMenuItem_Click);
+            // 
+            // OuterBoxPrintMenuItem
+            // 
+            this.OuterBoxPrintMenuItem.Name = "OuterBoxPrintMenuItem";
+            this.OuterBoxPrintMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.OuterBoxPrintMenuItem.Text = "外箱标签";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label27.Location = new System.Drawing.Point(104, 60);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(419, 20);
+            this.label27.TabIndex = 24;
+            this.label27.Text = "label27";
+            // 
+            // prodNameLabel
+            // 
+            this.prodNameLabel.AutoSize = true;
+            this.prodNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prodNameLabel.Location = new System.Drawing.Point(104, 120);
+            this.prodNameLabel.Name = "prodNameLabel";
+            this.prodNameLabel.Size = new System.Drawing.Size(419, 20);
+            this.prodNameLabel.TabIndex = 25;
+            this.prodNameLabel.Text = "label28";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 406);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip2);
@@ -517,12 +827,13 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -552,9 +863,6 @@
         private System.Windows.Forms.Button prevPageButton;
         private System.Windows.Forms.Button nextPageButton;
         private System.Windows.Forms.Button orderRefreshButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button innerBoxLabelPrintButton;
-        private System.Windows.Forms.Button outerBoxLabelPrintButton;
         private System.Windows.Forms.ToolStripStatusLabel printStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem 打印机ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printerTestMenu;
@@ -569,6 +877,35 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStripMenuItem 测试ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打印ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InnerBoxPrintMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OuterBoxPrintMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.TextBox InnerBoxIdTextBox;
+        private System.Windows.Forms.Button InnerBoxPrintButton;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox OuterBoxIdTextBox;
+        private System.Windows.Forms.Button OuterBoxPrintButton;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label prodNameLabel;
     }
 }
 

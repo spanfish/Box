@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="AccountResponse.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="BoxSearchResponse.cs" />
+    <Compile Include="AppStatus.cs" />
     <Compile Include="HandshakeResponse.cs" />
     <Compile Include="LoginResponse.cs" />
     <Compile Include="LoginWindow.cs">
@@ -69,6 +71,12 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderResponse.cs" />
+    <Compile Include="PrintWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintWindow.Designer.cs">
+      <DependentUpon>PrintWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LoginWindow.resx">
@@ -76,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintWindow.resx">
+      <DependentUpon>PrintWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
