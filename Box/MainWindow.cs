@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using RestSharp;
 using System.Reflection;
+using ZXing;
 
 namespace Box
 {
@@ -125,7 +126,33 @@ namespace Box
 
             InitializeDataBinding();
 
+            InitializePrintPreview();
+
             PageIndex = 0;
+        }
+
+        private int WidthInPixel
+        {
+            get;
+            set;
+        }
+
+        private int HeightInPixel
+        {
+            get;
+            set;
+        }
+
+        private Bitmap ImageToConvert
+        {
+            get;
+            set;
+        }
+        private void InitializePrintPreview()
+        {
+            WidthInPixel = 100 * 200 * 10 / 254;
+            HeightInPixel = 70 * 200 * 10 / 254;
+            ImageToConvert = new Bitmap(WidthInPixel, HeightInPixel);
         }
 
         private void InitializeRest()
@@ -406,6 +433,154 @@ namespace Box
         private void prevPageButton_Click(object sender, EventArgs e)
         {
             ListOrder(PageIndex - 1);
-        }        
+        }
+
+        private void OuterBoxPrintButton_Click(object sender, EventArgs e)
+        {
+            BoxInfo box = new BoxInfo();
+            box.BoxSN = "OB420181122000008";
+            ZebraPreview(box);
+        }
+
+        private void InnerBoxPrintButton_Click(object sender, EventArgs e)
+        {
+            BoxInfo box = new BoxInfo();
+            box.BoxSN = "OB420181122000009";
+            ZebraPreview(box);
+        }
+
+        private void ZebraPreview(BoxInfo box)
+        { 
+            int marginTop = 15;
+            int marginLeft = 15;
+            int lineMargin = 15;
+
+            pbPicture.Width = WidthInPixel;
+            pbPicture.Height = HeightInPixel;
+
+            Font titleFont = new Font("SimSun", 12, FontStyle.Bold, GraphicsUnit.Point);
+            Font headFont = new Font("SimSun", 16, FontStyle.Bold, GraphicsUnit.Point);
+            Font fieldFont = new Font("SimSun", 16, FontStyle.Regular, GraphicsUnit.Point);
+
+            StringFormat headFormat = new StringFormat();
+            headFormat.Alignment = StringAlignment.Center;
+            headFormat.LineAlignment = StringAlignment.Near;
+
+            StringFormat titleFormat = new StringFormat();
+            titleFormat.Alignment = StringAlignment.Near;
+            titleFormat.LineAlignment = StringAlignment.Near;
+
+            StringFormat fieldFormat = new StringFormat();
+            fieldFormat.Alignment = StringAlignment.Center;
+            fieldFormat.LineAlignment = StringAlignment.Near;
+
+            SolidBrush textBrush = new SolidBrush(Color.Black);
+
+            
+           
+            Graphics g = Graphics.FromImage(ImageToConvert);
+            //background
+            g.FillRectangle(new SolidBrush(Color.White), 0, 0, WidthInPixel, HeightInPixel);
+
+            int top = marginTop;
+            int left = marginLeft;
+
+            int titleWidth = TextRenderer.MeasureText(g, "古北产品编码：", titleFont).Width;
+            int fieldWidth = WidthInPixel - titleWidth - marginLeft * 2;
+            int fieldLeft = titleWidth + marginLeft;
+
+            string title = "产品装箱单";
+            g.DrawString(title, headFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), headFormat);
+            Size strSize = TextRenderer.MeasureText(g, title, headFont);
+            top += strSize.Height;
+            top += lineMargin;
+
+
+            title = "订单号码：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("GB-MK-18101204", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "工单号码：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("20181113182229-242", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "古北产品编码：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("GB.M.073.051.002", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "客户产品编码：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("208000001281", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "产品型号：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("BL3328-1051002", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "产品描述：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("Opple_Controlbox_WiFi_BL_7682_17P_stamp_PCBA_antenna_v1.2模块（欧普WIFI控制和208000001281）",
+                headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height * 2;
+            top += lineMargin;
+
+            title = "装箱数量：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("36000 PCS", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "箱号：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            var barcodeWriter = new BarcodeWriter();
+            barcodeWriter.Format = BarcodeFormat.CODE_39;
+            barcodeWriter.Options.Height = 50;
+            barcodeWriter.Options.Width = fieldWidth;
+            Bitmap barcode = barcodeWriter.Write(box.BoxSN);
+
+            g.DrawImage(barcode, fieldLeft, top);
+            top += strSize.Height * 2 + lineMargin;
+            top += lineMargin;
+
+            title = "供应商：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("杭州古北电子科技有限公司", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "Q   C：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            top += strSize.Height;
+            top += lineMargin;
+
+            title = "制造日期：";
+            g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
+            strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString("2018.11.22", headFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += strSize.Height;
+            top += lineMargin;
+
+            pbPicture.Image = ImageToConvert;
+                
+        }
     }
 }
