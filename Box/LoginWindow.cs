@@ -21,6 +21,8 @@ namespace Box
             set;
         }
 
+        private List<Account> accounts;
+
         private RestClient client;
 
         private readonly SynchronizationContext synchronizationContext;
@@ -85,6 +87,9 @@ namespace Box
 
             IdTextBox.Text = "15372098619";
             PwdTextBox.Text = "yunduan412";
+
+            this.comboBox1.Visible = false;
+            this.button2.Visible = false;
         }
 
         private void Login(string Id, string pwd, HandshakeResponse res)
@@ -161,13 +166,54 @@ namespace Box
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var asyncHandle = client.ExecuteAsync<AccountResponse>(request, response => {
                 AccountResponse accountRes = response.Data;
-                AppConfig.Account = accountRes.Data[0];
-
-                synchronizationContext.Post(new SendOrPostCallback(o =>
+                if(accountRes != null)
                 {
-                    this.Close();
-                }), null);
+                    if(accountRes.Data != null)
+                    {
+                        if(accountRes.Data.Count == 1)
+                        {
+                            AppConfig.Account = accountRes.Data[0];
+
+                            synchronizationContext.Post(new SendOrPostCallback(o =>
+                            {
+                                this.Close();
+                            }), null);
+                        }
+                        else
+                        {
+                            synchronizationContext.Post(new SendOrPostCallback(o =>
+                            {
+                                this.accounts = o as List<Account>;
+                                var source = new BindingSource(accounts, null);
+                                this.comboBox1.DataSource = source;
+                                this.comboBox1.ValueMember = "OemfactoryId";
+                                this.comboBox1.DisplayMember = "OemfactoryName";
+                                this.comboBox1.Visible = true;
+                                this.button2.Visible = true;
+                            }), accountRes.Data);
+
+                        }
+                    }
+                    
+                }
+                
             });
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(this.accounts != null && this.accounts.Count > 0)
+            {
+                foreach(Account a in this.accounts)
+                {
+                    if(a.OemfactoryId == (this.comboBox1.SelectedValue as string))
+                    {
+                        AppConfig.Account = a;
+                        this.Close();
+                        break;
+                    }
+                }
+            }
         }
     }
 }

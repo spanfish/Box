@@ -34,12 +34,14 @@
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.PwdTextBox = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 70);
+            this.label1.Location = new System.Drawing.Point(50, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
@@ -48,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 103);
+            this.label2.Location = new System.Drawing.Point(50, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 1;
@@ -56,7 +58,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(106, 140);
+            this.button1.Location = new System.Drawing.Point(106, 102);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 23);
             this.button1.TabIndex = 2;
@@ -66,14 +68,14 @@
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Location = new System.Drawing.Point(106, 67);
+            this.IdTextBox.Location = new System.Drawing.Point(106, 29);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.Size = new System.Drawing.Size(141, 19);
             this.IdTextBox.TabIndex = 3;
             // 
             // PwdTextBox
             // 
-            this.PwdTextBox.Location = new System.Drawing.Point(106, 100);
+            this.PwdTextBox.Location = new System.Drawing.Point(106, 62);
             this.PwdTextBox.Name = "PwdTextBox";
             this.PwdTextBox.Size = new System.Drawing.Size(141, 19);
             this.PwdTextBox.TabIndex = 4;
@@ -89,11 +91,33 @@
             this.progressBar1.TabIndex = 5;
             this.progressBar1.Value = 50;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(106, 142);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(141, 20);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(106, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "确定";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // LoginWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 247);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.PwdTextBox);
             this.Controls.Add(this.IdTextBox);
@@ -121,5 +145,7 @@
         private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.TextBox PwdTextBox;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
     }
 }

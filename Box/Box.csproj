@@ -65,6 +65,7 @@
     <Compile Include="Conversion\ZPLII.cs" />
     <Compile Include="Convert.cs" />
     <Compile Include="HandshakeResponse.cs" />
+    <Compile Include="ListboxByWorkFormResponse.cs" />
     <Compile Include="LoginResponse.cs" />
     <Compile Include="LoginWindow.cs">
       <SubType>Form</SubType>

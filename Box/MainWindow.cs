@@ -415,6 +415,55 @@ namespace Box
         {
             Order activeOrder = dataGridView1.CurrentRow.DataBoundItem as Order;
             ActiveOrder.CopyProperties(activeOrder);
+            LookupBoxForOrder(ActiveOrder.OrderId);
+        }
+
+        private void LookupBoxForOrder(string orderId)
+        {
+            try
+            {
+                var request = new RestRequest("dlicense/v2/manu/boxing/listboxbyworkform", Method.POST);
+
+                request.RequestFormat = DataFormat.Json;
+
+                request.AddHeader("reqUserId", AppConfig.Login.Userid);
+                request.AddHeader("reqUserSession", AppConfig.Login.Loginsession);
+                request.AddHeader("grouptype", AppConfig.Account.Grouptype);
+                request.AddHeader("OemfactoryId", AppConfig.Account.OemfactoryId);
+
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append("{");
+                sb.Append("\"orderid\":");
+                sb.Append("\"").Append(orderId).Append("\"");
+                sb.Append("}");
+
+                string body = sb.ToString();
+                
+                request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+                request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+                var asyncHandle = client.ExecuteAsync<ListboxByWorkFormResponse>(request, response => {
+                    string ErrorMessage = response.ErrorMessage;
+                    if (response.IsSuccessful)
+                    {
+                        ListboxByWorkFormResponse res = response.Data;
+                        if (res != null)
+                        {
+                            
+                        }
+                        else
+                        {
+                            ErrorMessage = "无法转换为JSON";
+                        }
+                    }
+
+                });
+            }
+            catch
+            {
+
+            }
         }
 
         private void 测试ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -455,8 +504,8 @@ namespace Box
             int marginLeft = 15;
             int lineMargin = 15;
 
-            pbPicture.Width = WidthInPixel;
-            pbPicture.Height = HeightInPixel;
+            //pbPicture.Width = WidthInPixel;
+            //pbPicture.Height = HeightInPixel;
 
             Font titleFont = new Font("SimSun", 12, FontStyle.Bold, GraphicsUnit.Point);
             Font headFont = new Font("SimSun", 16, FontStyle.Bold, GraphicsUnit.Point);
@@ -579,7 +628,7 @@ namespace Box
             top += strSize.Height;
             top += lineMargin;
 
-            pbPicture.Image = ImageToConvert;
+            //pbPicture.Image = ImageToConvert;
                 
         }
     }

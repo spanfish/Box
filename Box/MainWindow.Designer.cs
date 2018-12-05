@@ -77,8 +77,11 @@
             this.label25 = new System.Windows.Forms.Label();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.InnerBoxIdTextBox = new System.Windows.Forms.TextBox();
+            this.InnerBoxPrintButton = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.OuterBoxIdTextBox = new System.Windows.Forms.TextBox();
+            this.OuterBoxPrintButton = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打印机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,9 +95,6 @@
             this.打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InnerBoxPrintMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OuterBoxPrintMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbPicture = new System.Windows.Forms.PictureBox();
-            this.OuterBoxPrintButton = new System.Windows.Forms.Button();
-            this.InnerBoxPrintButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -108,8 +108,8 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -608,7 +608,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label26, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.OuterBoxIdTextBox, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.OuterBoxPrintButton, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.pbPicture, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.dataGridView2, 0, 6);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -664,6 +664,18 @@
             this.InnerBoxIdTextBox.Size = new System.Drawing.Size(405, 19);
             this.InnerBoxIdTextBox.TabIndex = 3;
             // 
+            // InnerBoxPrintButton
+            // 
+            this.InnerBoxPrintButton.AutoSize = true;
+            this.InnerBoxPrintButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.InnerBoxPrintButton.Location = new System.Drawing.Point(414, 143);
+            this.InnerBoxPrintButton.Name = "InnerBoxPrintButton";
+            this.InnerBoxPrintButton.Size = new System.Drawing.Size(109, 23);
+            this.InnerBoxPrintButton.TabIndex = 4;
+            this.InnerBoxPrintButton.Text = "打印";
+            this.InnerBoxPrintButton.UseVisualStyleBackColor = true;
+            this.InnerBoxPrintButton.Click += new System.EventHandler(this.InnerBoxPrintButton_Click);
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -682,6 +694,28 @@
             this.OuterBoxIdTextBox.Name = "OuterBoxIdTextBox";
             this.OuterBoxIdTextBox.Size = new System.Drawing.Size(405, 19);
             this.OuterBoxIdTextBox.TabIndex = 6;
+            // 
+            // OuterBoxPrintButton
+            // 
+            this.OuterBoxPrintButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OuterBoxPrintButton.Location = new System.Drawing.Point(414, 192);
+            this.OuterBoxPrintButton.Name = "OuterBoxPrintButton";
+            this.OuterBoxPrintButton.Size = new System.Drawing.Size(109, 23);
+            this.OuterBoxPrintButton.TabIndex = 7;
+            this.OuterBoxPrintButton.Text = "打印";
+            this.OuterBoxPrintButton.UseVisualStyleBackColor = true;
+            this.OuterBoxPrintButton.Click += new System.EventHandler(this.OuterBoxPrintButton_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel3.SetColumnSpan(this.dataGridView2, 2);
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 224);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 21;
+            this.dataGridView2.Size = new System.Drawing.Size(520, 256);
+            this.dataGridView2.TabIndex = 8;
             // 
             // settingToolStripMenuItem
             // 
@@ -786,40 +820,6 @@
             this.OuterBoxPrintMenuItem.Size = new System.Drawing.Size(122, 22);
             this.OuterBoxPrintMenuItem.Text = "外箱标签";
             // 
-            // pbPicture
-            // 
-            this.tableLayoutPanel3.SetColumnSpan(this.pbPicture, 2);
-            this.pbPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbPicture.Location = new System.Drawing.Point(3, 224);
-            this.pbPicture.Name = "pbPicture";
-            this.pbPicture.Size = new System.Drawing.Size(520, 256);
-            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPicture.TabIndex = 8;
-            this.pbPicture.TabStop = false;
-            // 
-            // OuterBoxPrintButton
-            // 
-            this.OuterBoxPrintButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OuterBoxPrintButton.Location = new System.Drawing.Point(414, 192);
-            this.OuterBoxPrintButton.Name = "OuterBoxPrintButton";
-            this.OuterBoxPrintButton.Size = new System.Drawing.Size(109, 23);
-            this.OuterBoxPrintButton.TabIndex = 7;
-            this.OuterBoxPrintButton.Text = "打印";
-            this.OuterBoxPrintButton.UseVisualStyleBackColor = true;
-            this.OuterBoxPrintButton.Click += new System.EventHandler(this.OuterBoxPrintButton_Click);
-            // 
-            // InnerBoxPrintButton
-            // 
-            this.InnerBoxPrintButton.AutoSize = true;
-            this.InnerBoxPrintButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.InnerBoxPrintButton.Location = new System.Drawing.Point(414, 143);
-            this.InnerBoxPrintButton.Name = "InnerBoxPrintButton";
-            this.InnerBoxPrintButton.Size = new System.Drawing.Size(109, 23);
-            this.InnerBoxPrintButton.TabIndex = 4;
-            this.InnerBoxPrintButton.Text = "打印";
-            this.InnerBoxPrintButton.UseVisualStyleBackColor = true;
-            this.InnerBoxPrintButton.Click += new System.EventHandler(this.InnerBoxPrintButton_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -849,9 +849,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -922,9 +922,9 @@
         private System.Windows.Forms.TextBox OuterBoxIdTextBox;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label prodNameLabel;
-        private System.Windows.Forms.PictureBox pbPicture;
         private System.Windows.Forms.Button InnerBoxPrintButton;
         private System.Windows.Forms.Button OuterBoxPrintButton;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
