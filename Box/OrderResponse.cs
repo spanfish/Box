@@ -249,6 +249,67 @@ namespace Box
             set;
         }        
     }
+
+
+    public class OrderInfo
+    {
+        /**
+        * 合同ID
+        **/
+        public string AgreementId
+        {
+            get;
+            set;
+        }
+
+        public string OrderId
+        {
+            get;
+            set;
+        }
+
+        //产品型号
+        public string ProductModel
+        {
+            get;
+            set;
+        }
+
+        //产品名称
+        public string ProductName
+        {
+            get;
+            set;
+        }
+
+        //产品描述
+        public string ProductDesc
+        {
+            get;
+            set;
+        }
+
+        //订单名称
+        public string Workform
+        {
+            get;
+            set;
+        }
+        
+        //供应商
+        public string FactoryName
+        {
+            get;
+            set;
+        }
+
+        public string MaterialCode
+        {
+            get;
+            set;
+        }
+    }
+
     public class OrderResponse
     {
         public int Status
@@ -263,13 +324,7 @@ namespace Box
             set;
         }
 
-        public List<Order> Orderlist
-        {
-            get;
-            set;
-        }
-
-        public int Count
+        public OrderInfo OrderInfo
         {
             get;
             set;

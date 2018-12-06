@@ -46,7 +46,8 @@ namespace Box
             else if (PwdTextBox.Text.Trim().Length == 0)
             {
                 MessageBox.Show("输入密码", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else
+            }
+            else
             {
                 progressBar1.Show();
                 button1.Enabled = false;
@@ -58,15 +59,20 @@ namespace Box
                     request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
                     var asyncHandle = client.ExecuteAsync<HandshakeResponse>(request, response =>
                     {
+                        if(!response.IsSuccessful)
+                        {
+                            ShowError(response.ErrorMessage);
+                            return;
+                        }
                         HandshakeResponse handshake = response.Data;
-                        Console.WriteLine(response.Data);
-                        if (handshake.Status == 0)
+
+                        if (handshake != null && handshake.Status == 0)
                         {
                             Login(IdTextBox.Text, PwdTextBox.Text, handshake);
                         }
                         else
                         {
-                            //
+                            ShowError(handshake == null ? null : handshake.Msg);
                         }
                     });
                 }
@@ -77,8 +83,25 @@ namespace Box
                 }
             }
 
-            
+        }
 
+        private void ShowError(string errMsg)
+        {
+            synchronizationContext.Post(new SendOrPostCallback(o =>
+            {
+                progressBar1.Hide();
+                button1.Enabled = true;
+
+                string msg = o as string;
+                if (msg == null)
+                {
+                    msg = "未知错误，请重试";
+                }
+
+                MessageBox.Show(msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }), errMsg);
         }
 
         private void LoginWindow_Load(object sender, EventArgs e)
@@ -141,17 +164,27 @@ namespace Box
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var asyncHandle = client.ExecuteAsync<LoginResponse>(request, response => {
-                LoginResponse loginRes = response.Data;
-                AppConfig.Login = loginRes;
-
-                if(loginRes.Status == 0)
+                if (!response.IsSuccessful)
                 {
-                    QueryAccount();
+                    ShowError(response.ErrorMessage);
+                    return;
                 }
-                //synchronizationContext.Post(new SendOrPostCallback(o =>
-                //{
-                //    this.Close();
-                //}), null);
+
+                LoginResponse loginRes = response.Data;
+
+                if (loginRes != null && loginRes.Status == 0)
+                {                    
+                    AppConfig.Login = loginRes;
+
+                    if (loginRes.Status == 0)
+                    {
+                        QueryAccount();
+                    }
+                }
+                else
+                {
+                    ShowError(loginRes == null ? null : loginRes.Msg);
+                }
             });
         }
 
@@ -165,38 +198,43 @@ namespace Box
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
             var asyncHandle = client.ExecuteAsync<AccountResponse>(request, response => {
-                AccountResponse accountRes = response.Data;
-                if(accountRes != null)
+                if (!response.IsSuccessful)
                 {
-                    if(accountRes.Data != null)
-                    {
-                        if(accountRes.Data.Count == 1)
-                        {
-                            AppConfig.Account = accountRes.Data[0];
-
-                            synchronizationContext.Post(new SendOrPostCallback(o =>
-                            {
-                                this.Close();
-                            }), null);
-                        }
-                        else
-                        {
-                            synchronizationContext.Post(new SendOrPostCallback(o =>
-                            {
-                                this.accounts = o as List<Account>;
-                                var source = new BindingSource(accounts, null);
-                                this.comboBox1.DataSource = source;
-                                this.comboBox1.ValueMember = "OemfactoryId";
-                                this.comboBox1.DisplayMember = "OemfactoryName";
-                                this.comboBox1.Visible = true;
-                                this.button2.Visible = true;
-                            }), accountRes.Data);
-
-                        }
-                    }
-                    
+                    ShowError(response.ErrorMessage);
+                    return;
                 }
-                
+
+                AccountResponse accountRes = response.Data;
+                if (accountRes != null && accountRes.Data != null)
+                {
+                    if (accountRes.Data.Count == 1)
+                    {
+                        AppConfig.Account = accountRes.Data[0];
+
+                        synchronizationContext.Post(new SendOrPostCallback(o =>
+                        {
+                            this.Close();
+                        }), null);
+                    }
+                    else
+                    {
+                        synchronizationContext.Post(new SendOrPostCallback(o =>
+                        {
+                            this.accounts = o as List<Account>;
+                            var source = new BindingSource(accounts, null);
+                            this.comboBox1.DataSource = source;
+                            this.comboBox1.ValueMember = "OemfactoryId";
+                            this.comboBox1.DisplayMember = "OemfactoryName";
+                            this.comboBox1.Visible = true;
+                            this.button2.Visible = true;
+                        }), accountRes.Data);
+
+                    }
+                }
+                else
+                {
+                    ShowError(accountRes == null ? null : accountRes.Msg);
+                }
             });
         }
 

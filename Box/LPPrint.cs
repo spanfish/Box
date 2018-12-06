@@ -70,6 +70,12 @@ namespace Box
             await openTask;
             openDelegate(openTask.Result, "LPT1");
         }
+
+        public bool Open()
+        {
+            iHandle = CreateFile("lpt1", 0x40000000/*GENERIC_WRITE*/, 0/*no share*/, 0, 3, 0, 0);
+            return iHandle != -1;
+        }
         #endregion
 
         #region 打印内容

@@ -17,7 +17,7 @@ namespace Box
 
     public class RetData
     {
-        public List<BoxInfo> BoxInfo { get; set; }
+        public BoxInfo BoxInfo { get; set; }
     }
 
     public class BoxInfo
@@ -25,11 +25,15 @@ namespace Box
         public string BoxSN { get; set; }
         public string OemFactoryId { get; set; }
         public string RequserId { get; set; }
+        public string LicenseReqId { get; set; }
         public string OrderId { get; set; }
         public int Capacity { get; set; }
         public int Occupied { get; set; }
         public int RealCount { get; set; }
         public string BoxType { get; set; }
         public string CreateTime { get; set; }
+        public string BeginBoxTime { get; set; }
+        public string FinishBoxTime { get; set; }
+        public string Status { get; set; }
     }
 }

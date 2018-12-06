@@ -293,7 +293,7 @@ namespace Box
                                 this.dataGridView1.DataSource = source;
                                 dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
 
-                            }), orderRes.Orderlist);
+                            }), null);
                         }
                         else
                         {
@@ -486,16 +486,16 @@ namespace Box
 
         private void OuterBoxPrintButton_Click(object sender, EventArgs e)
         {
-            BoxInfo box = new BoxInfo();
-            box.BoxSN = "OB420181122000008";
-            ZebraPreview(box);
+            //BoxInfo box = new BoxInfo();
+            //box.BoxSN = "OB420181122000008";
+            //ZebraPreview(box);
         }
 
         private void InnerBoxPrintButton_Click(object sender, EventArgs e)
         {
-            BoxInfo box = new BoxInfo();
-            box.BoxSN = "OB420181122000009";
-            ZebraPreview(box);
+            //BoxInfo box = new BoxInfo();
+            //box.BoxSN = "OB420181122000009";
+            //ZebraPreview(box);
         }
 
         private void ZebraPreview(BoxInfo box)
@@ -601,10 +601,10 @@ namespace Box
             var barcodeWriter = new BarcodeWriter();
             barcodeWriter.Format = BarcodeFormat.CODE_39;
             barcodeWriter.Options.Height = 50;
-            barcodeWriter.Options.Width = fieldWidth;
-            Bitmap barcode = barcodeWriter.Write(box.BoxSN);
+            //barcodeWriter.Options.Width = fieldWidth;
+            //Bitmap barcode = barcodeWriter.Write(box.BoxSN);
 
-            g.DrawImage(barcode, fieldLeft, top);
+            //g.DrawImage(barcode, fieldLeft, top);
             top += strSize.Height * 2 + lineMargin;
             top += lineMargin;
 

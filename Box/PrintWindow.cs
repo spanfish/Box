@@ -149,26 +149,26 @@ namespace Box
                                     BoxSearchResponse boxRes = response.Data;
                                     if (boxRes != null)
                                     {
-                                        if (boxRes.Status == 0 && boxRes.RetData != null && boxRes.RetData.BoxInfo != null)
-                                        {
-                                            foreach(BoxInfo box in boxRes.RetData.BoxInfo)
-                                            {
-                                                if(box.BoxType == "inner")
-                                                {
-                                                    this.InnerBoxId = box.BoxSN;
-                                                    OnPropertyChanged("InnerBoxId");
-                                                }
-                                                else if(box.BoxType == "outerforbox")
-                                                {
-                                                    this.OuterBoxId = box.BoxSN;
-                                                    OnPropertyChanged("OuterBoxId");
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            this.Msg = boxRes.Msg == null ? "错误" : boxRes.Msg;
-                                        }
+                                        //if (boxRes.Status == 0 && boxRes.RetData != null && boxRes.RetData.BoxInfo != null)
+                                        //{
+                                        //    //foreach(BoxInfo box in boxRes.RetData.BoxInfo)
+                                        //    //{
+                                        //        //if(box.BoxType == "inner")
+                                        //        //{
+                                        //        //    this.InnerBoxId = box.BoxSN;
+                                        //        //    OnPropertyChanged("InnerBoxId");
+                                        //        //}
+                                        //        //else if(box.BoxType == "outerforbox")
+                                        //        //{
+                                        //        //    this.OuterBoxId = box.BoxSN;
+                                        //        //    OnPropertyChanged("OuterBoxId");
+                                        //        //}
+                                        //    //}
+                                        //}
+                                        //else
+                                        //{
+                                        //    this.Msg = boxRes.Msg == null ? "错误" : boxRes.Msg;
+                                        //}
                                     }
                                     else
                                     {
