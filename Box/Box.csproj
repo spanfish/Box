@@ -93,6 +93,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderResponse.cs" />
+    <Compile Include="PrintItemSelectFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintItemSelectFrm.Designer.cs">
+      <DependentUpon>PrintItemSelectFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrintWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintItemSelectFrm.resx">
+      <DependentUpon>PrintItemSelectFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintWindow.resx">
       <DependentUpon>PrintWindow.cs</DependentUpon>

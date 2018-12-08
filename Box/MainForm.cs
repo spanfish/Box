@@ -99,6 +99,9 @@ namespace Box
                             {
                                 command.CommandText = "create table Setting(Id TEXT, Name Text, DefValue TEXT, PRIMARY KEY (Id, Name))";
                                 command.ExecuteNonQuery();
+
+                                command.CommandText = "create table Print(Id TEXT, Name Text, DispSeq INTEGER, DispText Text, BarCode TEXT, PRIMARY KEY (Id, Name))";
+                                command.ExecuteNonQuery();
                             }
 
                             conn.Close();
