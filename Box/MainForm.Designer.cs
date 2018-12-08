@@ -48,27 +48,47 @@
             this.button1 = new System.Windows.Forms.Button();
             this.OrderIdTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.workflowID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ProdModelTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.VendorTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.ProductDescTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.HeadFontList = new System.Windows.Forms.ComboBox();
+            this.HeadFontSizeList = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.TitleFontSizeList = new System.Windows.Forms.ComboBox();
+            this.TitleFontList = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.FieldFontSizeList = new System.Windows.Forms.ComboBox();
+            this.FieldFontList = new System.Windows.Forms.ComboBox();
+            this.HeadFontTypeList = new System.Windows.Forms.ComboBox();
+            this.TitleFontTypeList = new System.Windows.Forms.ComboBox();
+            this.FieldFontTypeList = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.LineMarging = new System.Windows.Forms.TextBox();
+            this.SelectPrintItemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewLabel)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 48);
+            this.label1.Location = new System.Drawing.Point(20, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
@@ -76,15 +96,15 @@
             // 
             // BoxSNSearchTextBox
             // 
-            this.BoxSNSearchTextBox.Location = new System.Drawing.Point(93, 45);
+            this.BoxSNSearchTextBox.Location = new System.Drawing.Point(93, 26);
             this.BoxSNSearchTextBox.Name = "BoxSNSearchTextBox";
-            this.BoxSNSearchTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxSNSearchTextBox.Size = new System.Drawing.Size(214, 19);
             this.BoxSNSearchTextBox.TabIndex = 1;
             this.BoxSNSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BoxSNSearchTextBox_KeyDown);
             // 
             // SearchBoxButton
             // 
-            this.SearchBoxButton.Location = new System.Drawing.Point(398, 43);
+            this.SearchBoxButton.Location = new System.Drawing.Point(93, 51);
             this.SearchBoxButton.Name = "SearchBoxButton";
             this.SearchBoxButton.Size = new System.Drawing.Size(75, 23);
             this.SearchBoxButton.TabIndex = 2;
@@ -151,7 +171,7 @@
             this.BoxTypeTextBox.Location = new System.Drawing.Point(93, 119);
             this.BoxTypeTextBox.Name = "BoxTypeTextBox";
             this.BoxTypeTextBox.ReadOnly = true;
-            this.BoxTypeTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxTypeTextBox.Size = new System.Drawing.Size(245, 19);
             this.BoxTypeTextBox.TabIndex = 9;
             // 
             // BoxSNTextBox
@@ -159,7 +179,7 @@
             this.BoxSNTextBox.Location = new System.Drawing.Point(93, 144);
             this.BoxSNTextBox.Name = "BoxSNTextBox";
             this.BoxSNTextBox.ReadOnly = true;
-            this.BoxSNTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxSNTextBox.Size = new System.Drawing.Size(245, 19);
             this.BoxSNTextBox.TabIndex = 10;
             // 
             // BoxCapacityTextBox
@@ -167,7 +187,7 @@
             this.BoxCapacityTextBox.Location = new System.Drawing.Point(93, 171);
             this.BoxCapacityTextBox.Name = "BoxCapacityTextBox";
             this.BoxCapacityTextBox.ReadOnly = true;
-            this.BoxCapacityTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxCapacityTextBox.Size = new System.Drawing.Size(128, 19);
             this.BoxCapacityTextBox.TabIndex = 11;
             // 
             // BoxRealCountTextBox
@@ -175,7 +195,7 @@
             this.BoxRealCountTextBox.Location = new System.Drawing.Point(93, 198);
             this.BoxRealCountTextBox.Name = "BoxRealCountTextBox";
             this.BoxRealCountTextBox.ReadOnly = true;
-            this.BoxRealCountTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxRealCountTextBox.Size = new System.Drawing.Size(128, 19);
             this.BoxRealCountTextBox.TabIndex = 12;
             // 
             // BoxCreateTimeTextBox
@@ -183,7 +203,7 @@
             this.BoxCreateTimeTextBox.Location = new System.Drawing.Point(93, 225);
             this.BoxCreateTimeTextBox.Name = "BoxCreateTimeTextBox";
             this.BoxCreateTimeTextBox.ReadOnly = true;
-            this.BoxCreateTimeTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxCreateTimeTextBox.Size = new System.Drawing.Size(128, 19);
             this.BoxCreateTimeTextBox.TabIndex = 13;
             // 
             // BoxStatusTextBox
@@ -191,12 +211,12 @@
             this.BoxStatusTextBox.Location = new System.Drawing.Point(93, 252);
             this.BoxStatusTextBox.Name = "BoxStatusTextBox";
             this.BoxStatusTextBox.ReadOnly = true;
-            this.BoxStatusTextBox.Size = new System.Drawing.Size(289, 19);
+            this.BoxStatusTextBox.Size = new System.Drawing.Size(128, 19);
             this.BoxStatusTextBox.TabIndex = 14;
             // 
             // PrintLabelButton
             // 
-            this.PrintLabelButton.Location = new System.Drawing.Point(476, 418);
+            this.PrintLabelButton.Location = new System.Drawing.Point(657, 147);
             this.PrintLabelButton.Name = "PrintLabelButton";
             this.PrintLabelButton.Size = new System.Drawing.Size(75, 23);
             this.PrintLabelButton.TabIndex = 15;
@@ -206,16 +226,16 @@
             // 
             // PreviewLabel
             // 
-            this.PreviewLabel.Location = new System.Drawing.Point(411, 119);
+            this.PreviewLabel.Location = new System.Drawing.Point(474, 171);
             this.PreviewLabel.Name = "PreviewLabel";
-            this.PreviewLabel.Size = new System.Drawing.Size(400, 280);
-            this.PreviewLabel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PreviewLabel.Size = new System.Drawing.Size(503, 352);
+            this.PreviewLabel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PreviewLabel.TabIndex = 16;
             this.PreviewLabel.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(629, 418);
+            this.button1.Location = new System.Drawing.Point(738, 147);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 17;
@@ -228,8 +248,7 @@
             // 
             this.OrderIdTextBox.Location = new System.Drawing.Point(93, 278);
             this.OrderIdTextBox.Name = "OrderIdTextBox";
-            this.OrderIdTextBox.ReadOnly = true;
-            this.OrderIdTextBox.Size = new System.Drawing.Size(289, 19);
+            this.OrderIdTextBox.Size = new System.Drawing.Size(375, 19);
             this.OrderIdTextBox.TabIndex = 19;
             // 
             // label8
@@ -241,13 +260,12 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "订单号码";
             // 
-            // textBox2
+            // workflowID
             // 
-            this.textBox2.Location = new System.Drawing.Point(93, 304);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(289, 19);
-            this.textBox2.TabIndex = 21;
+            this.workflowID.Location = new System.Drawing.Point(93, 304);
+            this.workflowID.Name = "workflowID";
+            this.workflowID.Size = new System.Drawing.Size(375, 19);
+            this.workflowID.TabIndex = 21;
             // 
             // label9
             // 
@@ -258,13 +276,12 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "工单号码";
             // 
-            // textBox3
+            // ProdModelTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(93, 382);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(289, 19);
-            this.textBox3.TabIndex = 27;
+            this.ProdModelTextBox.Location = new System.Drawing.Point(93, 382);
+            this.ProdModelTextBox.Name = "ProdModelTextBox";
+            this.ProdModelTextBox.Size = new System.Drawing.Size(375, 19);
+            this.ProdModelTextBox.TabIndex = 27;
             // 
             // label10
             // 
@@ -279,8 +296,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(93, 356);
             this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(289, 19);
+            this.textBox4.Size = new System.Drawing.Size(375, 19);
             this.textBox4.TabIndex = 25;
             // 
             // label11
@@ -296,8 +312,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(93, 330);
             this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(289, 19);
+            this.textBox5.Size = new System.Drawing.Size(375, 19);
             this.textBox5.TabIndex = 23;
             // 
             // label12
@@ -309,47 +324,28 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "古北产品编码";
             // 
-            // textBox6
+            // VendorTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(93, 460);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(289, 19);
-            this.textBox6.TabIndex = 33;
+            this.VendorTextBox.Location = new System.Drawing.Point(93, 438);
+            this.VendorTextBox.Name = "VendorTextBox";
+            this.VendorTextBox.Size = new System.Drawing.Size(375, 19);
+            this.VendorTextBox.TabIndex = 33;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 463);
+            this.label13.Location = new System.Drawing.Point(12, 441);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 12);
             this.label13.TabIndex = 32;
             this.label13.Text = "供应商";
             // 
-            // textBox7
+            // ProductDescTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(93, 434);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(289, 19);
-            this.textBox7.TabIndex = 31;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 437);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 12);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "装箱数量";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(93, 408);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(289, 19);
-            this.textBox8.TabIndex = 29;
+            this.ProductDescTextBox.Location = new System.Drawing.Point(93, 408);
+            this.ProductDescTextBox.Name = "ProductDescTextBox";
+            this.ProductDescTextBox.Size = new System.Drawing.Size(375, 19);
+            this.ProductDescTextBox.TabIndex = 29;
             // 
             // label15
             // 
@@ -360,24 +356,307 @@
             this.label15.TabIndex = 28;
             this.label15.Text = "产品描述";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(576, 147);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "刷新预览";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // HeadFontList
+            // 
+            this.HeadFontList.FormattingEnabled = true;
+            this.HeadFontList.Location = new System.Drawing.Point(474, 24);
+            this.HeadFontList.Name = "HeadFontList";
+            this.HeadFontList.Size = new System.Drawing.Size(121, 20);
+            this.HeadFontList.TabIndex = 35;
+            // 
+            // HeadFontSizeList
+            // 
+            this.HeadFontSizeList.FormattingEnabled = true;
+            this.HeadFontSizeList.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25"});
+            this.HeadFontSizeList.Location = new System.Drawing.Point(474, 53);
+            this.HeadFontSizeList.Name = "HeadFontSizeList";
+            this.HeadFontSizeList.Size = new System.Drawing.Size(121, 20);
+            this.HeadFontSizeList.TabIndex = 36;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(415, 28);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "台头字体";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(415, 55);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "台头大小";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(607, 55);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(53, 12);
+            this.label17.TabIndex = 42;
+            this.label17.Text = "标题大小";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(607, 28);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 12);
+            this.label18.TabIndex = 41;
+            this.label18.Text = "标题字体";
+            // 
+            // TitleFontSizeList
+            // 
+            this.TitleFontSizeList.FormattingEnabled = true;
+            this.TitleFontSizeList.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25"});
+            this.TitleFontSizeList.Location = new System.Drawing.Point(667, 53);
+            this.TitleFontSizeList.Name = "TitleFontSizeList";
+            this.TitleFontSizeList.Size = new System.Drawing.Size(121, 20);
+            this.TitleFontSizeList.TabIndex = 40;
+            // 
+            // TitleFontList
+            // 
+            this.TitleFontList.FormattingEnabled = true;
+            this.TitleFontList.Location = new System.Drawing.Point(667, 24);
+            this.TitleFontList.Name = "TitleFontList";
+            this.TitleFontList.Size = new System.Drawing.Size(121, 20);
+            this.TitleFontList.TabIndex = 39;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(797, 54);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 12);
+            this.label19.TabIndex = 46;
+            this.label19.Text = "项目大小";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(797, 27);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 12);
+            this.label20.TabIndex = 45;
+            this.label20.Text = "项目字体";
+            // 
+            // FieldFontSizeList
+            // 
+            this.FieldFontSizeList.FormattingEnabled = true;
+            this.FieldFontSizeList.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25"});
+            this.FieldFontSizeList.Location = new System.Drawing.Point(856, 53);
+            this.FieldFontSizeList.Name = "FieldFontSizeList";
+            this.FieldFontSizeList.Size = new System.Drawing.Size(121, 20);
+            this.FieldFontSizeList.TabIndex = 44;
+            // 
+            // FieldFontList
+            // 
+            this.FieldFontList.FormattingEnabled = true;
+            this.FieldFontList.Location = new System.Drawing.Point(856, 24);
+            this.FieldFontList.Name = "FieldFontList";
+            this.FieldFontList.Size = new System.Drawing.Size(121, 20);
+            this.FieldFontList.TabIndex = 43;
+            // 
+            // HeadFontTypeList
+            // 
+            this.HeadFontTypeList.FormattingEnabled = true;
+            this.HeadFontTypeList.Items.AddRange(new object[] {
+            "普通",
+            "粗体",
+            "斜体"});
+            this.HeadFontTypeList.Location = new System.Drawing.Point(474, 82);
+            this.HeadFontTypeList.Name = "HeadFontTypeList";
+            this.HeadFontTypeList.Size = new System.Drawing.Size(121, 20);
+            this.HeadFontTypeList.TabIndex = 47;
+            // 
+            // TitleFontTypeList
+            // 
+            this.TitleFontTypeList.FormattingEnabled = true;
+            this.TitleFontTypeList.Items.AddRange(new object[] {
+            "普通",
+            "粗体",
+            "斜体"});
+            this.TitleFontTypeList.Location = new System.Drawing.Point(667, 82);
+            this.TitleFontTypeList.Name = "TitleFontTypeList";
+            this.TitleFontTypeList.Size = new System.Drawing.Size(121, 20);
+            this.TitleFontTypeList.TabIndex = 48;
+            // 
+            // FieldFontTypeList
+            // 
+            this.FieldFontTypeList.FormattingEnabled = true;
+            this.FieldFontTypeList.Items.AddRange(new object[] {
+            "普通",
+            "粗体",
+            "斜体"});
+            this.FieldFontTypeList.Location = new System.Drawing.Point(856, 82);
+            this.FieldFontTypeList.Name = "FieldFontTypeList";
+            this.FieldFontTypeList.Size = new System.Drawing.Size(121, 20);
+            this.FieldFontTypeList.TabIndex = 49;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(415, 89);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(53, 12);
+            this.label21.TabIndex = 50;
+            this.label21.Text = "字体类型";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(608, 89);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "字体类型";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(797, 85);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(53, 12);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "字体类型";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(415, 122);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(41, 12);
+            this.label24.TabIndex = 53;
+            this.label24.Text = "行间距";
+            // 
+            // LineMarging
+            // 
+            this.LineMarging.Location = new System.Drawing.Point(474, 118);
+            this.LineMarging.Name = "LineMarging";
+            this.LineMarging.Size = new System.Drawing.Size(67, 19);
+            this.LineMarging.TabIndex = 54;
+            // 
+            // SelectPrintItemButton
+            // 
+            this.SelectPrintItemButton.Location = new System.Drawing.Point(474, 147);
+            this.SelectPrintItemButton.Name = "SelectPrintItemButton";
+            this.SelectPrintItemButton.Size = new System.Drawing.Size(96, 23);
+            this.SelectPrintItemButton.TabIndex = 55;
+            this.SelectPrintItemButton.Text = "打印项目选择";
+            this.SelectPrintItemButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 561);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox7);
+            this.ClientSize = new System.Drawing.Size(986, 561);
+            this.Controls.Add(this.SelectPrintItemButton);
+            this.Controls.Add(this.LineMarging);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.FieldFontTypeList);
+            this.Controls.Add(this.TitleFontTypeList);
+            this.Controls.Add(this.HeadFontTypeList);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.FieldFontSizeList);
+            this.Controls.Add(this.FieldFontList);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.TitleFontSizeList);
+            this.Controls.Add(this.TitleFontList);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.HeadFontSizeList);
+            this.Controls.Add(this.HeadFontList);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.VendorTextBox);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.ProductDescTextBox);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.ProdModelTextBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.workflowID);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.OrderIdTextBox);
             this.Controls.Add(this.label8);
@@ -431,19 +710,39 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox OrderIdTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox workflowID;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox ProdModelTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox VendorTextBox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox ProductDescTextBox;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox HeadFontList;
+        private System.Windows.Forms.ComboBox HeadFontSizeList;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox TitleFontSizeList;
+        private System.Windows.Forms.ComboBox TitleFontList;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox FieldFontSizeList;
+        private System.Windows.Forms.ComboBox FieldFontList;
+        private System.Windows.Forms.ComboBox HeadFontTypeList;
+        private System.Windows.Forms.ComboBox TitleFontTypeList;
+        private System.Windows.Forms.ComboBox FieldFontTypeList;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox LineMarging;
+        private System.Windows.Forms.Button SelectPrintItemButton;
     }
 }

@@ -10,14 +10,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZXing;
+using System.Data.SQLite;
+using System.IO;
 
 namespace Box
 {
-    public partial class MainForm : Form, INotifyPropertyChanged
+    public partial class MainForm : Form
     {
-        private readonly SynchronizationContext synchronizationContext;
+        private static readonly string FilePath = @".\Default.db";
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly SynchronizationContext synchronizationContext;
 
         private RestClient client;
 
@@ -32,6 +34,13 @@ namespace Box
             get;
             set;
         }
+
+        private OrderInfo OrderInfo
+        {
+            get;
+            set;
+        }
+        
 
         private int WidthInPixel
         {
@@ -52,10 +61,11 @@ namespace Box
         }
         private void InitializePrintPreview()
         {
-            WidthInPixel = 100 * 200 * 10 / 254;
-            HeightInPixel = 70 * 200 * 10 / 254;
+            WidthInPixel = 799;// 100 * 200 * 10 / 254;
+            HeightInPixel = 559;// 70 * 200 * 10 / 254;
             ImageToConvert = new Bitmap(WidthInPixel, HeightInPixel);
             PreviewLabel.Image = ImageToConvert;
+
         }
 
         public MainForm()
@@ -70,6 +80,70 @@ namespace Box
 
             PrintLabelButton.Enabled = false;
             InitializePrintPreview();
+
+            if (!File.Exists(FilePath))
+            {
+                using (FileStream stream = File.Create(FilePath))
+                {
+                    if (null != stream)
+                    {
+                        stream.Close();
+                    }
+
+                    using (var conn = new SQLiteConnection("Data Source=" + FilePath))
+                    {
+                        try
+                        {
+                            conn.Open();
+                            using (SQLiteCommand command = conn.CreateCommand())
+                            {
+                                command.CommandText = "create table Setting(Id TEXT, Name Text, DefValue TEXT, PRIMARY KEY (Id, Name))";
+                                command.ExecuteNonQuery();
+                            }
+
+                            conn.Close();
+                        }
+                        finally
+                        {
+                            if (conn != null)
+                            {
+                                try
+                                {
+                                    conn.Close();
+                                }
+                                finally
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            System.Drawing.Text.InstalledFontCollection fonts = new System.Drawing.Text.InstalledFontCollection();
+            foreach(FontFamily ff in fonts.Families)
+            {
+                HeadFontList.Items.Add(ff.Name);
+                TitleFontList.Items.Add(ff.Name);
+                FieldFontList.Items.Add(ff.Name);
+
+                if(ff.Name == "楷体")
+                {
+                    HeadFontList.SelectedItem = "楷体";
+                    TitleFontList.SelectedItem = "楷体";
+                    FieldFontList.SelectedItem = "楷体";
+                }
+            }
+
+            HeadFontSizeList.SelectedItem = "24";
+            TitleFontSizeList.SelectedItem = "20";
+            FieldFontSizeList.SelectedItem = "20";
+
+            HeadFontTypeList.SelectedItem = "粗体";
+            TitleFontTypeList.SelectedItem = "粗体";
+            FieldFontTypeList.SelectedItem = "粗体";
+            LineMarging.Text = "0";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -168,7 +242,8 @@ namespace Box
         {
             try
             {
-                var request = new RestRequest("dlicense/v2/manu/order/info", Method.POST);
+                //var request = new RestRequest("dlicense/v2/manu/order/info", Method.POST);
+                var request = new RestRequest("dlicense/v2/manu/order/query", Method.POST);
                 request.RequestFormat = DataFormat.Json;
                 request.AddHeader("reqUserId", AppConfig.Login.Userid);
                 request.AddHeader("reqUserSession", AppConfig.Login.Loginsession);
@@ -198,6 +273,38 @@ namespace Box
                     OrderResponse res = response.Data;
                     if (res != null && res.Status == 0)
                     {
+                        //res.OrderInfo.VendorName = "杭州古北电子科技有限公司";
+                        if(String.IsNullOrEmpty(res.OrderInfo.MaterialCode))
+                        {
+                            res.OrderInfo.MaterialCode = GetDef(res.OrderInfo.Workform, "GuBeiNo");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.KehuCode))
+                        {
+                            res.OrderInfo.KehuCode = GetDef(res.OrderInfo.Workform, "KehuNo");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.ProductModel))
+                        {
+                            res.OrderInfo.ProductModel = GetDef(res.OrderInfo.Workform, "ProdModel");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.ProductDesc))
+                        {
+                            res.OrderInfo.ProductDesc = GetDef(res.OrderInfo.Workform, "ProdDesc");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.VendorName))
+                        {
+                            res.OrderInfo.VendorName = GetDef(res.OrderInfo.Workform, "Vendor");
+                        }
+                        if (String.IsNullOrEmpty(res.OrderInfo.VendorName))
+                        {
+                            res.OrderInfo.VendorName = "杭州古北电子科技有限公司";
+
+                        }
+                        OrderInfo = res.OrderInfo;
+                        ShowOrderInfo(res.OrderInfo);
                         ZebraPreview(BoxInfo, res.OrderInfo);
                     }
                     else
@@ -210,6 +317,29 @@ namespace Box
             {
                 ShowError(ex.Message);
             }
+        }
+
+        private void ShowOrderInfo(OrderInfo orderInfo)
+        {
+            synchronizationContext.Post(new SendOrPostCallback(o =>
+            {
+                OrderInfo oi = o as OrderInfo;
+
+                OrderIdTextBox.Text = oi.AgreementId;
+                workflowID.Text = oi.Workform;
+                //古北产品编码
+                textBox5.Text = oi.MaterialCode;
+                //客户产品编码
+                textBox4.Text = oi.KehuCode;
+                //产品型号
+                ProdModelTextBox.Text = oi.ProductModel;
+                //产品描述
+                ProductDescTextBox.Text = oi.ProductDesc;
+                //装箱数量
+                //供应商
+                VendorTextBox.Text = orderInfo.VendorName;
+                
+            }), orderInfo);
         }
 
         private void ShowBox(BoxInfo box)
@@ -270,13 +400,103 @@ namespace Box
 
         private void ZebraPreview(BoxInfo box, OrderInfo oi)
         {
-            int marginTop = 15;
+            synchronizationContext.Post(new SendOrPostCallback(o =>
+            {
+                int marginTop = 15;
             int marginLeft = 10;
             int lineMargin = 16;
+            if(!String.IsNullOrEmpty(LineMarging.Text))
+            {
+                lineMargin = Int32.Parse(LineMarging.Text);
+            }
 
-            Font titleFont = new Font("楷体", 16, FontStyle.Bold, GraphicsUnit.Point);
-            Font headFont = new Font("楷体", 20, FontStyle.Bold, GraphicsUnit.Point);
-            Font fieldFont = new Font("楷体", 16, FontStyle.Regular, GraphicsUnit.Point);
+            string headFontName = HeadFontList.SelectedItem as string;
+            if(headFontName == null)
+            {
+                headFontName = "楷体";
+            }
+
+            string titleFontName = TitleFontList.SelectedItem as string;
+            if (titleFontName == null)
+            {
+                titleFontName = "楷体";
+            }
+
+            string fieldFontName = FieldFontList.SelectedItem as string;
+            if (fieldFontName == null)
+            {
+                fieldFontName = "楷体";
+            }
+
+            int headFontSize = 20;
+            string s = HeadFontSizeList.SelectedItem as string;
+            if (s != null)
+            {
+                headFontSize = Int32.Parse(s);
+            }
+
+            int titleFontSize = 16;
+            s = TitleFontSizeList.SelectedItem as string;
+            if (s != null)
+            {
+                titleFontSize = Int32.Parse(s);
+            }
+
+            int fieldFontSize = 16;
+            s = FieldFontSizeList.SelectedItem as string;
+            if (s != null)
+            {
+                fieldFontSize = Int32.Parse(s);
+            }
+
+            FontStyle headFs = FontStyle.Bold;
+            string fontStyle = HeadFontTypeList.SelectedItem as string;
+            if (fontStyle == "粗体")
+            {
+                headFs = FontStyle.Bold;
+            }
+            else if (fontStyle == "斜体")
+            {
+                headFs = FontStyle.Italic;
+            }
+            else if (fontStyle == "普通")
+            {
+                headFs = FontStyle.Regular;
+            }
+
+            FontStyle titleFs = FontStyle.Bold;
+            fontStyle = TitleFontTypeList.SelectedItem as string;
+            if (fontStyle == "粗体")
+            {
+                titleFs = FontStyle.Bold;
+            }
+            else if (fontStyle == "斜体")
+            {
+                titleFs = FontStyle.Italic;
+            }
+            else if (fontStyle == "普通")
+            {
+                headFs = FontStyle.Regular;
+            }
+
+            FontStyle fieldFs = FontStyle.Bold;
+            fontStyle = FieldFontTypeList.SelectedItem as string;
+            if (fontStyle == "粗体")
+            {
+                fieldFs = FontStyle.Bold;
+            }
+            else if (fontStyle == "斜体")
+            {
+                fieldFs = FontStyle.Italic;
+            }
+            else if (fontStyle == "普通")
+            {
+                headFs = FontStyle.Regular;
+            }
+
+            Font headFont = new Font(headFontName, headFontSize, headFs, GraphicsUnit.Point);
+            Font titleFont = new Font(titleFontName, titleFontSize, titleFs, GraphicsUnit.Point);
+            Font fieldFont = new Font(fieldFontName, fieldFontSize, fieldFs, GraphicsUnit.Point);
 
             StringFormat headFormat = new StringFormat();
             headFormat.Alignment = StringAlignment.Center;
@@ -310,10 +530,12 @@ namespace Box
             top += lineMargin;
 
 
+                
             title = "订单号码：";
             g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
             strSize = TextRenderer.MeasureText(g, title, titleFont);
-            g.DrawString(oi.AgreementId == null ? "" : box.OrderId, fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+                int rowHeight = strSize.Height;
+            g.DrawString(box.OrderId == null ? "" : box.OrderId, fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
             top += strSize.Height;
             top += lineMargin;
             int oneRow = strSize.Height;
@@ -321,7 +543,7 @@ namespace Box
             title = "工单号码：";
             g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
             strSize = TextRenderer.MeasureText(g, title, titleFont);
-            g.DrawString("20181113182229-242", fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            g.DrawString(oi.Workform == null ? "" : oi.Workform, fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
             top += strSize.Height;
             top += lineMargin;
 
@@ -335,7 +557,7 @@ namespace Box
             title = "客户产品编码：";
             g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
             strSize = TextRenderer.MeasureText(g, title, titleFont);
-            g.DrawString("208000001281", fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            g.DrawString(oi.KehuCode == null ? "" : oi.KehuCode, fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
             top += strSize.Height;
             top += lineMargin;
 
@@ -353,24 +575,27 @@ namespace Box
             strSize = TextRenderer.MeasureText(g, title, titleFont);
 
 
-            //while (strSize.Height > oneRow * 2)
-            //{
-            //    float fontSize = fieldFont.Size - 1;
-            //    if(fontSize < 8)
-            //    {
-            //        break;
-            //    }
-            //}
+                int descFontSize = fieldFontSize;
+                Font descFont = new Font(fieldFontName, descFontSize, fieldFs, GraphicsUnit.Point);
+                string prodDesc = oi.ProductDesc == null ? "" : oi.ProductDesc;
+                Size prodDescSize = TextRenderer.MeasureText(g, title, descFont);
+                while(prodDescSize.Height > rowHeight * 2)
+                {
+                    descFontSize--;
+                    descFont = new Font(fieldFontName, descFontSize, fieldFs, GraphicsUnit.Point);
+                    prodDescSize = TextRenderer.MeasureText(g, title, descFont);
+                }
 
-            g.DrawString(oi.ProductDesc == null ? "" : oi.ProductDesc,
-                fieldFont, textBrush, new RectangleF(marginLeft + strSize.Width, top, fieldWidth, HeightInPixel), fieldFormat);
-            top += strSize.Height * 2;
+                //strSize = TextRenderer.MeasureText(g, title, titleFont);
+            g.DrawString(prodDesc,
+                descFont, textBrush, new RectangleF(marginLeft + strSize.Width, top, fieldWidth, HeightInPixel), fieldFormat);
+            top += rowHeight * 2;
             top += lineMargin;
 
             title = "装箱数量：";
             g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
             strSize = TextRenderer.MeasureText(g, title, titleFont);
-            g.DrawString(string.Format("{0} PCS", box.RealCount), fieldFont, textBrush, new RectangleF(fieldLeft, top + 10, fieldWidth, HeightInPixel), fieldFormat);
+            g.DrawString(string.Format("{0} PCS", box.RealCount), fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
             top += strSize.Height;
             top += lineMargin;
 
@@ -381,17 +606,17 @@ namespace Box
             var barcodeWriter = new BarcodeWriter();
             barcodeWriter.Format = BarcodeFormat.CODE_128;
             barcodeWriter.Options.Height = 80;
-            barcodeWriter.Options.Width = fieldWidth;
-            Bitmap barcode = barcodeWriter.Write(box.BoxSN == null ? "" : box.BoxSN);
+            barcodeWriter.Options.Width = WidthInPixel - titleWidth * 2 - marginLeft * 2;//fieldWidth;
+                Bitmap barcode = barcodeWriter.Write(box.BoxSN == null ? "" : box.BoxSN);
 
             g.DrawImage(barcode, fieldLeft, top);
-            top += strSize.Height * 2 + lineMargin + lineMargin;
+            top += barcodeWriter.Options.Height;
             top += lineMargin;
 
             title = "供应商：";
             g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
             strSize = TextRenderer.MeasureText(g, title, titleFont);
-            g.DrawString("杭州古北电子科技有限公司", fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
+            g.DrawString(oi.VendorName == null ? "" : oi.VendorName, fieldFont, textBrush, new RectangleF(fieldLeft, top, fieldWidth, HeightInPixel), fieldFormat);
             top += strSize.Height;
             top += lineMargin;
 
@@ -410,8 +635,7 @@ namespace Box
             top += lineMargin;
 
 
-            synchronizationContext.Post(new SendOrPostCallback(o =>
-            {
+            
                 SearchBoxButton.Enabled = true;
                 BoxSNSearchTextBox.Enabled = true;
                 PrintLabelButton.Enabled = true;
@@ -471,5 +695,197 @@ namespace Box
             }
             
         }
+
+        private string GetDef(string Id, string Name)
+        {
+            string def = "";
+            if (File.Exists(FilePath))
+            {
+                using (var conn = new SQLiteConnection("Data Source=" + FilePath))
+                {
+                    try
+                    {
+                        conn.Open();
+                        using (SQLiteCommand command = conn.CreateCommand())
+                        {
+                            command.CommandText = "SELECT DefValue FROM Setting WHERE Id = @Id AND Name=@Name";
+
+                            command.Parameters.Add("@Id", DbType.String);
+                            command.Parameters.Add("@Name", DbType.String);
+
+                            command.Parameters["@Id"].Value = Id;
+                            command.Parameters["@Name"].Value = Name;
+
+                            string v = command.ExecuteScalar() as string;
+                            if(v != null)
+                            {
+                                def = v;
+                            }
+                        }
+
+                        conn.Close();
+                    }
+                    finally
+                    {
+                        if (conn != null)
+                        {
+                            try
+                            {
+                                conn.Close();
+                            }
+                            finally
+                            {
+
+                            }
+                        }
+                    }
+
+                }
+            }
+            return def;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OrderInfo.MaterialCode = textBox5.Text;
+            OrderInfo.KehuCode = textBox4.Text;
+            OrderInfo.ProductModel = ProdModelTextBox.Text;
+            OrderInfo.ProductDesc = ProductDescTextBox.Text;
+            OrderInfo.VendorName = VendorTextBox.Text;
+            if (File.Exists(FilePath))
+            {
+                using (var conn = new SQLiteConnection("Data Source=" + FilePath))
+                {
+                    try
+                    {
+                        conn.Open();
+                        using (SQLiteCommand command = conn.CreateCommand())
+                        {
+                            command.CommandText = "UPDATE Setting SET DefValue = @DefValue WHERE Id = @Id AND Name=@Name";
+
+                            command.Parameters.Add("@DefValue", DbType.String);
+                            command.Parameters.Add("@ID", DbType.String);
+                            command.Parameters.Add("@Name", DbType.String);
+
+                            command.Parameters["@ID"].Value = workflowID.Text;
+                            command.Parameters["@Name"].Value = "GuBeiNo";
+                            command.Parameters["@DefValue"].Value = textBox5.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@Name"].Value = "GuBeiNo";
+                                    insCmd.Parameters["@DefValue"].Value = textBox5.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "KehuNo";
+                            command.Parameters["@DefValue"].Value = textBox4.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@Name"].Value = "KehuNo";
+                                    insCmd.Parameters["@DefValue"].Value = textBox4.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            //
+                            command.Parameters["@Name"].Value = "ProdModel";
+                            command.Parameters["@DefValue"].Value = ProdModelTextBox.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@Name"].Value = "ProdModel";
+                                    insCmd.Parameters["@DefValue"].Value = ProdModelTextBox.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "ProdDesc";
+                            command.Parameters["@DefValue"].Value = ProductDescTextBox.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@Name"].Value = "ProdDesc";
+                                    insCmd.Parameters["@DefValue"].Value = ProductDescTextBox.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Vendor";
+                            command.Parameters["@DefValue"].Value = VendorTextBox.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@Name"].Value = "Vendor";
+                                    insCmd.Parameters["@DefValue"].Value = VendorTextBox.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+
+                        conn.Close();
+                    }
+                    finally
+                    {
+                        if (conn != null)
+                        {
+                            try
+                            {
+                                conn.Close();
+                            }
+                            finally
+                            {
+
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            ZebraPreview(BoxInfo, OrderInfo);
+        }        
     }
 }
