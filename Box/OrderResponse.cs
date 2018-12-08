@@ -92,6 +92,13 @@ namespace Box
             get;
             set;
         }
+
+        //固件
+        public string Firmware
+        {
+            get;
+            set;
+        }
     }
 
     public class OrderResponse

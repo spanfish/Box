@@ -88,6 +88,10 @@
             this.WorkFlowTB = new System.Windows.Forms.TextBox();
             this.WorkFlow2TB = new System.Windows.Forms.TextBox();
             this.WorkFlowSeqTB = new System.Windows.Forms.TextBox();
+            this.FirmwareCK = new System.Windows.Forms.CheckBox();
+            this.FirmwareTB = new System.Windows.Forms.TextBox();
+            this.textbox1 = new System.Windows.Forms.TextBox();
+            this.FirmwareSeqTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // OrderIdTB
@@ -127,6 +131,7 @@
             // ManufactureDateSeqTB
             // 
             this.ManufactureDateSeqTB.Location = new System.Drawing.Point(40, 371);
+            this.ManufactureDateSeqTB.MaxLength = 2;
             this.ManufactureDateSeqTB.Name = "ManufactureDateSeqTB";
             this.ManufactureDateSeqTB.Size = new System.Drawing.Size(32, 19);
             this.ManufactureDateSeqTB.TabIndex = 81;
@@ -151,6 +156,7 @@
             // QCSeqTB
             // 
             this.QCSeqTB.Location = new System.Drawing.Point(40, 346);
+            this.QCSeqTB.MaxLength = 2;
             this.QCSeqTB.Name = "QCSeqTB";
             this.QCSeqTB.Size = new System.Drawing.Size(32, 19);
             this.QCSeqTB.TabIndex = 78;
@@ -158,7 +164,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 404);
+            this.label4.Location = new System.Drawing.Point(38, 426);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 12);
             this.label4.TabIndex = 77;
@@ -166,7 +172,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(102, 428);
+            this.button1.Location = new System.Drawing.Point(103, 450);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 23);
             this.button1.TabIndex = 76;
@@ -194,6 +200,7 @@
             // SupplierSeqTB
             // 
             this.SupplierSeqTB.Location = new System.Drawing.Point(40, 321);
+            this.SupplierSeqTB.MaxLength = 2;
             this.SupplierSeqTB.Name = "SupplierSeqTB";
             this.SupplierSeqTB.Size = new System.Drawing.Size(32, 19);
             this.SupplierSeqTB.TabIndex = 73;
@@ -218,6 +225,7 @@
             // BoxNoSeqTB
             // 
             this.BoxNoSeqTB.Location = new System.Drawing.Point(40, 296);
+            this.BoxNoSeqTB.MaxLength = 2;
             this.BoxNoSeqTB.Name = "BoxNoSeqTB";
             this.BoxNoSeqTB.Size = new System.Drawing.Size(32, 19);
             this.BoxNoSeqTB.TabIndex = 70;
@@ -242,6 +250,7 @@
             // RealCountSeqTB
             // 
             this.RealCountSeqTB.Location = new System.Drawing.Point(40, 271);
+            this.RealCountSeqTB.MaxLength = 2;
             this.RealCountSeqTB.Name = "RealCountSeqTB";
             this.RealCountSeqTB.Size = new System.Drawing.Size(32, 19);
             this.RealCountSeqTB.TabIndex = 67;
@@ -266,6 +275,7 @@
             // VerSeqTB
             // 
             this.VerSeqTB.Location = new System.Drawing.Point(40, 246);
+            this.VerSeqTB.MaxLength = 2;
             this.VerSeqTB.Name = "VerSeqTB";
             this.VerSeqTB.Size = new System.Drawing.Size(32, 19);
             this.VerSeqTB.TabIndex = 64;
@@ -290,6 +300,7 @@
             // ProdDescSeqTB
             // 
             this.ProdDescSeqTB.Location = new System.Drawing.Point(40, 221);
+            this.ProdDescSeqTB.MaxLength = 2;
             this.ProdDescSeqTB.Name = "ProdDescSeqTB";
             this.ProdDescSeqTB.Size = new System.Drawing.Size(32, 19);
             this.ProdDescSeqTB.TabIndex = 61;
@@ -314,6 +325,7 @@
             // ProdModelSeqTB
             // 
             this.ProdModelSeqTB.Location = new System.Drawing.Point(40, 196);
+            this.ProdModelSeqTB.MaxLength = 2;
             this.ProdModelSeqTB.Name = "ProdModelSeqTB";
             this.ProdModelSeqTB.Size = new System.Drawing.Size(32, 19);
             this.ProdModelSeqTB.TabIndex = 58;
@@ -338,6 +350,7 @@
             // CustomerNoSeqTB
             // 
             this.CustomerNoSeqTB.Location = new System.Drawing.Point(40, 171);
+            this.CustomerNoSeqTB.MaxLength = 2;
             this.CustomerNoSeqTB.Name = "CustomerNoSeqTB";
             this.CustomerNoSeqTB.Size = new System.Drawing.Size(32, 19);
             this.CustomerNoSeqTB.TabIndex = 55;
@@ -362,6 +375,7 @@
             // GubeiNoSeqTB
             // 
             this.GubeiNoSeqTB.Location = new System.Drawing.Point(40, 146);
+            this.GubeiNoSeqTB.MaxLength = 2;
             this.GubeiNoSeqTB.Name = "GubeiNoSeqTB";
             this.GubeiNoSeqTB.Size = new System.Drawing.Size(32, 19);
             this.GubeiNoSeqTB.TabIndex = 52;
@@ -386,6 +400,7 @@
             // BatchSeqTB
             // 
             this.BatchSeqTB.Location = new System.Drawing.Point(40, 121);
+            this.BatchSeqTB.MaxLength = 2;
             this.BatchSeqTB.Name = "BatchSeqTB";
             this.BatchSeqTB.Size = new System.Drawing.Size(32, 19);
             this.BatchSeqTB.TabIndex = 49;
@@ -437,6 +452,7 @@
             // OrderCodeSeqTB
             // 
             this.OrderCodeSeqTB.Location = new System.Drawing.Point(40, 72);
+            this.OrderCodeSeqTB.MaxLength = 2;
             this.OrderCodeSeqTB.Name = "OrderCodeSeqTB";
             this.OrderCodeSeqTB.Size = new System.Drawing.Size(32, 19);
             this.OrderCodeSeqTB.TabIndex = 43;
@@ -587,15 +603,54 @@
             // WorkFlowSeqTB
             // 
             this.WorkFlowSeqTB.Location = new System.Drawing.Point(40, 97);
+            this.WorkFlowSeqTB.MaxLength = 2;
             this.WorkFlowSeqTB.Name = "WorkFlowSeqTB";
             this.WorkFlowSeqTB.Size = new System.Drawing.Size(32, 19);
             this.WorkFlowSeqTB.TabIndex = 99;
+            // 
+            // FirmwareCK
+            // 
+            this.FirmwareCK.AutoSize = true;
+            this.FirmwareCK.Location = new System.Drawing.Point(414, 398);
+            this.FirmwareCK.Name = "FirmwareCK";
+            this.FirmwareCK.Size = new System.Drawing.Size(15, 14);
+            this.FirmwareCK.TabIndex = 106;
+            this.FirmwareCK.UseVisualStyleBackColor = true;
+            // 
+            // FirmwareTB
+            // 
+            this.FirmwareTB.Location = new System.Drawing.Point(261, 396);
+            this.FirmwareTB.Name = "FirmwareTB";
+            this.FirmwareTB.Size = new System.Drawing.Size(136, 19);
+            this.FirmwareTB.TabIndex = 105;
+            this.FirmwareTB.Text = "固件版本:";
+            // 
+            // textbox1
+            // 
+            this.textbox1.Location = new System.Drawing.Point(102, 396);
+            this.textbox1.Name = "textbox1";
+            this.textbox1.ReadOnly = true;
+            this.textbox1.Size = new System.Drawing.Size(143, 19);
+            this.textbox1.TabIndex = 104;
+            this.textbox1.Text = "固件版本";
+            // 
+            // FirmwareSeqTB
+            // 
+            this.FirmwareSeqTB.Location = new System.Drawing.Point(40, 396);
+            this.FirmwareSeqTB.MaxLength = 2;
+            this.FirmwareSeqTB.Name = "FirmwareSeqTB";
+            this.FirmwareSeqTB.Size = new System.Drawing.Size(32, 19);
+            this.FirmwareSeqTB.TabIndex = 103;
             // 
             // PrintItemSelectFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 458);
+            this.ClientSize = new System.Drawing.Size(476, 474);
+            this.Controls.Add(this.FirmwareCK);
+            this.Controls.Add(this.FirmwareTB);
+            this.Controls.Add(this.textbox1);
+            this.Controls.Add(this.FirmwareSeqTB);
             this.Controls.Add(this.WorkFlowCK);
             this.Controls.Add(this.WorkFlowTB);
             this.Controls.Add(this.WorkFlow2TB);
@@ -728,5 +783,9 @@
         private System.Windows.Forms.TextBox WorkFlowTB;
         private System.Windows.Forms.TextBox WorkFlow2TB;
         private System.Windows.Forms.TextBox WorkFlowSeqTB;
+        private System.Windows.Forms.CheckBox FirmwareCK;
+        private System.Windows.Forms.TextBox FirmwareTB;
+        private System.Windows.Forms.TextBox textbox1;
+        private System.Windows.Forms.TextBox FirmwareSeqTB;
     }
 }

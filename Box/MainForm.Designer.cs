@@ -45,22 +45,22 @@
             this.BoxStatusTextBox = new System.Windows.Forms.TextBox();
             this.PrintLabelButton = new System.Windows.Forms.Button();
             this.PreviewLabel = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.OrderIdTextBox = new System.Windows.Forms.TextBox();
+            this.TestBtn = new System.Windows.Forms.Button();
+            this.OrderIdTB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.workflowID = new System.Windows.Forms.TextBox();
+            this.WorkformTB = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.ProdModelTextBox = new System.Windows.Forms.TextBox();
+            this.ProdModelTB = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.KehuNoTB = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.GubeiNoTB = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.VendorTextBox = new System.Windows.Forms.TextBox();
+            this.SupplierTB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.ProductDescTextBox = new System.Windows.Forms.TextBox();
+            this.ProductDescTB = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.PreviewBtn = new System.Windows.Forms.Button();
             this.HeadFontList = new System.Windows.Forms.ComboBox();
             this.HeadFontSizeList = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -76,9 +76,9 @@
             this.label24 = new System.Windows.Forms.Label();
             this.LineSpaceTB = new System.Windows.Forms.TextBox();
             this.SelectPrintItemButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BatchTB = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.VersionTB = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.LeftMarginTB = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -87,6 +87,8 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.TopMarginTB = new System.Windows.Forms.TextBox();
+            this.FirmwareTB = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewLabel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -238,22 +240,24 @@
             this.PreviewLabel.TabIndex = 16;
             this.PreviewLabel.TabStop = false;
             // 
-            // button1
+            // TestBtn
             // 
-            this.button1.Location = new System.Drawing.Point(738, 147);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "测试";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.TestBtn.Location = new System.Drawing.Point(738, 147);
+            this.TestBtn.Name = "TestBtn";
+            this.TestBtn.Size = new System.Drawing.Size(75, 23);
+            this.TestBtn.TabIndex = 17;
+            this.TestBtn.Text = "测试";
+            this.TestBtn.UseVisualStyleBackColor = true;
+            this.TestBtn.Visible = false;
+            this.TestBtn.Click += new System.EventHandler(this.TestBtn_Click);
             // 
-            // OrderIdTextBox
+            // OrderIdTB
             // 
-            this.OrderIdTextBox.Location = new System.Drawing.Point(93, 278);
-            this.OrderIdTextBox.Name = "OrderIdTextBox";
-            this.OrderIdTextBox.Size = new System.Drawing.Size(375, 19);
-            this.OrderIdTextBox.TabIndex = 19;
+            this.OrderIdTB.Location = new System.Drawing.Point(93, 278);
+            this.OrderIdTB.Name = "OrderIdTB";
+            this.OrderIdTB.ReadOnly = true;
+            this.OrderIdTB.Size = new System.Drawing.Size(375, 19);
+            this.OrderIdTB.TabIndex = 19;
             // 
             // label8
             // 
@@ -264,12 +268,12 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "订单号码";
             // 
-            // workflowID
+            // WorkformTB
             // 
-            this.workflowID.Location = new System.Drawing.Point(93, 304);
-            this.workflowID.Name = "workflowID";
-            this.workflowID.Size = new System.Drawing.Size(375, 19);
-            this.workflowID.TabIndex = 21;
+            this.WorkformTB.Location = new System.Drawing.Point(93, 304);
+            this.WorkformTB.Name = "WorkformTB";
+            this.WorkformTB.Size = new System.Drawing.Size(375, 19);
+            this.WorkformTB.TabIndex = 21;
             // 
             // label9
             // 
@@ -280,12 +284,12 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "工单号码";
             // 
-            // ProdModelTextBox
+            // ProdModelTB
             // 
-            this.ProdModelTextBox.Location = new System.Drawing.Point(93, 382);
-            this.ProdModelTextBox.Name = "ProdModelTextBox";
-            this.ProdModelTextBox.Size = new System.Drawing.Size(375, 19);
-            this.ProdModelTextBox.TabIndex = 27;
+            this.ProdModelTB.Location = new System.Drawing.Point(93, 382);
+            this.ProdModelTB.Name = "ProdModelTB";
+            this.ProdModelTB.Size = new System.Drawing.Size(375, 19);
+            this.ProdModelTB.TabIndex = 27;
             // 
             // label10
             // 
@@ -296,12 +300,12 @@
             this.label10.TabIndex = 26;
             this.label10.Text = "产品型号";
             // 
-            // textBox4
+            // KehuNoTB
             // 
-            this.textBox4.Location = new System.Drawing.Point(93, 356);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(375, 19);
-            this.textBox4.TabIndex = 25;
+            this.KehuNoTB.Location = new System.Drawing.Point(93, 356);
+            this.KehuNoTB.Name = "KehuNoTB";
+            this.KehuNoTB.Size = new System.Drawing.Size(375, 19);
+            this.KehuNoTB.TabIndex = 25;
             // 
             // label11
             // 
@@ -312,12 +316,12 @@
             this.label11.TabIndex = 24;
             this.label11.Text = "客户产品编码";
             // 
-            // textBox5
+            // GubeiNoTB
             // 
-            this.textBox5.Location = new System.Drawing.Point(93, 330);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(375, 19);
-            this.textBox5.TabIndex = 23;
+            this.GubeiNoTB.Location = new System.Drawing.Point(93, 330);
+            this.GubeiNoTB.Name = "GubeiNoTB";
+            this.GubeiNoTB.Size = new System.Drawing.Size(375, 19);
+            this.GubeiNoTB.TabIndex = 23;
             // 
             // label12
             // 
@@ -328,12 +332,12 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "古北产品编码";
             // 
-            // VendorTextBox
+            // SupplierTB
             // 
-            this.VendorTextBox.Location = new System.Drawing.Point(93, 436);
-            this.VendorTextBox.Name = "VendorTextBox";
-            this.VendorTextBox.Size = new System.Drawing.Size(375, 19);
-            this.VendorTextBox.TabIndex = 33;
+            this.SupplierTB.Location = new System.Drawing.Point(93, 436);
+            this.SupplierTB.Name = "SupplierTB";
+            this.SupplierTB.Size = new System.Drawing.Size(375, 19);
+            this.SupplierTB.TabIndex = 33;
             // 
             // label13
             // 
@@ -344,12 +348,12 @@
             this.label13.TabIndex = 32;
             this.label13.Text = "供应商";
             // 
-            // ProductDescTextBox
+            // ProductDescTB
             // 
-            this.ProductDescTextBox.Location = new System.Drawing.Point(93, 408);
-            this.ProductDescTextBox.Name = "ProductDescTextBox";
-            this.ProductDescTextBox.Size = new System.Drawing.Size(375, 19);
-            this.ProductDescTextBox.TabIndex = 29;
+            this.ProductDescTB.Location = new System.Drawing.Point(93, 408);
+            this.ProductDescTB.Name = "ProductDescTB";
+            this.ProductDescTB.Size = new System.Drawing.Size(375, 19);
+            this.ProductDescTB.TabIndex = 29;
             // 
             // label15
             // 
@@ -360,15 +364,15 @@
             this.label15.TabIndex = 28;
             this.label15.Text = "产品描述";
             // 
-            // button2
+            // PreviewBtn
             // 
-            this.button2.Location = new System.Drawing.Point(576, 147);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "刷新预览";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.PreviewBtn.Location = new System.Drawing.Point(576, 147);
+            this.PreviewBtn.Name = "PreviewBtn";
+            this.PreviewBtn.Size = new System.Drawing.Size(75, 23);
+            this.PreviewBtn.TabIndex = 34;
+            this.PreviewBtn.Text = "刷新预览";
+            this.PreviewBtn.UseVisualStyleBackColor = true;
+            this.PreviewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
             // 
             // HeadFontList
             // 
@@ -377,6 +381,7 @@
             this.HeadFontList.Name = "HeadFontList";
             this.HeadFontList.Size = new System.Drawing.Size(121, 20);
             this.HeadFontList.TabIndex = 35;
+            this.HeadFontList.SelectedIndexChanged += new System.EventHandler(this.HeadFontList_SelectedIndexChanged);
             // 
             // HeadFontSizeList
             // 
@@ -401,11 +406,27 @@
             "22",
             "23",
             "24",
-            "25"});
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"});
             this.HeadFontSizeList.Location = new System.Drawing.Point(474, 53);
             this.HeadFontSizeList.Name = "HeadFontSizeList";
             this.HeadFontSizeList.Size = new System.Drawing.Size(121, 20);
             this.HeadFontSizeList.TabIndex = 36;
+            this.HeadFontSizeList.SelectedIndexChanged += new System.EventHandler(this.HeadFontSizeList_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -450,11 +471,27 @@
             "22",
             "23",
             "24",
-            "25"});
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"});
             this.TitleFontSizeList.Location = new System.Drawing.Point(611, 53);
             this.TitleFontSizeList.Name = "TitleFontSizeList";
             this.TitleFontSizeList.Size = new System.Drawing.Size(121, 20);
             this.TitleFontSizeList.TabIndex = 40;
+            this.TitleFontSizeList.SelectedIndexChanged += new System.EventHandler(this.TitleFontSizeList_SelectedIndexChanged);
             // 
             // TitleFontList
             // 
@@ -463,6 +500,7 @@
             this.TitleFontList.Name = "TitleFontList";
             this.TitleFontList.Size = new System.Drawing.Size(121, 20);
             this.TitleFontList.TabIndex = 39;
+            this.TitleFontList.SelectedIndexChanged += new System.EventHandler(this.TitleFontList_SelectedIndexChanged);
             // 
             // FieldFontSizeList
             // 
@@ -487,11 +525,27 @@
             "22",
             "23",
             "24",
-            "25"});
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"});
             this.FieldFontSizeList.Location = new System.Drawing.Point(747, 53);
             this.FieldFontSizeList.Name = "FieldFontSizeList";
             this.FieldFontSizeList.Size = new System.Drawing.Size(121, 20);
             this.FieldFontSizeList.TabIndex = 44;
+            this.FieldFontSizeList.SelectedIndexChanged += new System.EventHandler(this.FieldFontSizeList_SelectedIndexChanged);
             // 
             // FieldFontList
             // 
@@ -500,6 +554,7 @@
             this.FieldFontList.Name = "FieldFontList";
             this.FieldFontList.Size = new System.Drawing.Size(121, 20);
             this.FieldFontList.TabIndex = 43;
+            this.FieldFontList.SelectedIndexChanged += new System.EventHandler(this.FieldFontList_SelectedIndexChanged);
             // 
             // HeadFontTypeList
             // 
@@ -512,6 +567,7 @@
             this.HeadFontTypeList.Name = "HeadFontTypeList";
             this.HeadFontTypeList.Size = new System.Drawing.Size(121, 20);
             this.HeadFontTypeList.TabIndex = 47;
+            this.HeadFontTypeList.SelectedIndexChanged += new System.EventHandler(this.HeadFontTypeList_SelectedIndexChanged);
             // 
             // TitleFontTypeList
             // 
@@ -524,6 +580,7 @@
             this.TitleFontTypeList.Name = "TitleFontTypeList";
             this.TitleFontTypeList.Size = new System.Drawing.Size(121, 20);
             this.TitleFontTypeList.TabIndex = 48;
+            this.TitleFontTypeList.SelectedIndexChanged += new System.EventHandler(this.TitleFontTypeList_SelectedIndexChanged);
             // 
             // FieldFontTypeList
             // 
@@ -536,6 +593,7 @@
             this.FieldFontTypeList.Name = "FieldFontTypeList";
             this.FieldFontTypeList.Size = new System.Drawing.Size(121, 20);
             this.FieldFontTypeList.TabIndex = 49;
+            this.FieldFontTypeList.SelectedIndexChanged += new System.EventHandler(this.FieldFontTypeList_SelectedIndexChanged);
             // 
             // label21
             // 
@@ -563,6 +621,7 @@
             this.LineSpaceTB.Name = "LineSpaceTB";
             this.LineSpaceTB.Size = new System.Drawing.Size(67, 19);
             this.LineSpaceTB.TabIndex = 54;
+            this.LineSpaceTB.TextChanged += new System.EventHandler(this.LineSpaceTB_TextChanged);
             // 
             // SelectPrintItemButton
             // 
@@ -574,12 +633,12 @@
             this.SelectPrintItemButton.UseVisualStyleBackColor = true;
             this.SelectPrintItemButton.Click += new System.EventHandler(this.SelectPrintItemButton_Click);
             // 
-            // textBox1
+            // BatchTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 463);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(375, 19);
-            this.textBox1.TabIndex = 57;
+            this.BatchTB.Location = new System.Drawing.Point(93, 463);
+            this.BatchTB.Name = "BatchTB";
+            this.BatchTB.Size = new System.Drawing.Size(375, 19);
+            this.BatchTB.TabIndex = 57;
             // 
             // label25
             // 
@@ -590,12 +649,12 @@
             this.label25.TabIndex = 56;
             this.label25.Text = "批次号";
             // 
-            // textBox2
+            // VersionTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(93, 488);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(375, 19);
-            this.textBox2.TabIndex = 59;
+            this.VersionTB.Location = new System.Drawing.Point(93, 488);
+            this.VersionTB.Name = "VersionTB";
+            this.VersionTB.Size = new System.Drawing.Size(375, 19);
+            this.VersionTB.TabIndex = 59;
             // 
             // label26
             // 
@@ -612,6 +671,7 @@
             this.LeftMarginTB.Name = "LeftMarginTB";
             this.LeftMarginTB.Size = new System.Drawing.Size(39, 19);
             this.LeftMarginTB.TabIndex = 60;
+            this.LeftMarginTB.TextChanged += new System.EventHandler(this.LeftMarginTB_TextChanged);
             // 
             // label27
             // 
@@ -667,12 +727,31 @@
             this.TopMarginTB.Name = "TopMarginTB";
             this.TopMarginTB.Size = new System.Drawing.Size(49, 19);
             this.TopMarginTB.TabIndex = 66;
+            this.TopMarginTB.TextChanged += new System.EventHandler(this.TopMarginTB_TextChanged);
+            // 
+            // FirmwareTB
+            // 
+            this.FirmwareTB.Location = new System.Drawing.Point(94, 513);
+            this.FirmwareTB.Name = "FirmwareTB";
+            this.FirmwareTB.Size = new System.Drawing.Size(375, 19);
+            this.FirmwareTB.TabIndex = 68;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(13, 516);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(29, 12);
+            this.label18.TabIndex = 67;
+            this.label18.Text = "固件";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 561);
+            this.Controls.Add(this.FirmwareTB);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.TopMarginTB);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label30);
@@ -680,9 +759,9 @@
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.LeftMarginTB);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.VersionTB);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.BatchTB);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.SelectPrintItemButton);
             this.Controls.Add(this.LineSpaceTB);
@@ -699,22 +778,22 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.HeadFontSizeList);
             this.Controls.Add(this.HeadFontList);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.VendorTextBox);
+            this.Controls.Add(this.PreviewBtn);
+            this.Controls.Add(this.SupplierTB);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.ProductDescTextBox);
+            this.Controls.Add(this.ProductDescTB);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.ProdModelTextBox);
+            this.Controls.Add(this.ProdModelTB);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.KehuNoTB);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.GubeiNoTB);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.workflowID);
+            this.Controls.Add(this.WorkformTB);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.OrderIdTextBox);
+            this.Controls.Add(this.OrderIdTB);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TestBtn);
             this.Controls.Add(this.PreviewLabel);
             this.Controls.Add(this.PrintLabelButton);
             this.Controls.Add(this.BoxStatusTextBox);
@@ -761,22 +840,22 @@
         private System.Windows.Forms.TextBox BoxStatusTextBox;
         private System.Windows.Forms.Button PrintLabelButton;
         private System.Windows.Forms.PictureBox PreviewLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox OrderIdTextBox;
+        private System.Windows.Forms.Button TestBtn;
+        private System.Windows.Forms.TextBox OrderIdTB;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox workflowID;
+        private System.Windows.Forms.TextBox WorkformTB;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox ProdModelTextBox;
+        private System.Windows.Forms.TextBox ProdModelTB;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox KehuNoTB;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox GubeiNoTB;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox VendorTextBox;
+        private System.Windows.Forms.TextBox SupplierTB;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox ProductDescTextBox;
+        private System.Windows.Forms.TextBox ProductDescTB;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button PreviewBtn;
         private System.Windows.Forms.ComboBox HeadFontList;
         private System.Windows.Forms.ComboBox HeadFontSizeList;
         private System.Windows.Forms.Label label14;
@@ -792,9 +871,9 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox LineSpaceTB;
         private System.Windows.Forms.Button SelectPrintItemButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox BatchTB;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox VersionTB;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox LeftMarginTB;
         private System.Windows.Forms.Label label27;
@@ -803,5 +882,7 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox TopMarginTB;
+        private System.Windows.Forms.TextBox FirmwareTB;
+        private System.Windows.Forms.Label label18;
     }
 }

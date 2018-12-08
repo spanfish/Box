@@ -45,6 +45,7 @@ namespace Box
             get;
             set;
         }
+
         public string WorkFlow
         {
             get;
@@ -246,6 +247,24 @@ namespace Box
             get;
             set;
         }
+
+
+        public string FirmwareSeq
+        {
+            get;
+            set;
+        }
+
+        public string Firmware
+        {
+            get;
+            set;
+        }
+        public string FirmwareBar
+        {
+            get;
+            set;
+        }
         private static readonly string FilePath = @".\Default.db";
 
         public PrintItemSelectFrm()
@@ -262,6 +281,10 @@ namespace Box
             BatchSeq = BatchSeqTB.Text;
             Batch = BatchTB.Text;
             BatchBar = BatchCK.Checked ? "1" : "0";
+
+            WorkFlowSeq = WorkFlowSeqTB.Text;
+            WorkFlow = WorkFlowTB.Text;
+            WorkFlowBar = WorkFlowCK.Checked ? "1" : "0";
 
             GubeiNoSeq = GubeiNoSeqTB.Text;
             GubeiNo = GubeiNoTB.Text;
@@ -303,6 +326,10 @@ namespace Box
             ManufactureDate = ManufactureDateTB.Text;
             ManufactureDateBar = ManufactureDateCK.Checked ? "1" : "0";
 
+            FirmwareSeq = FirmwareSeqTB.Text;
+            Firmware = FirmwareTB.Text;
+            FirmwareBar = FirmwareCK.Checked ? "1" : "0";
+
             SavePrintItem();
         }
 
@@ -337,6 +364,12 @@ namespace Box
                             command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(OrderCodeSeq) ? 0 : Int32.Parse(OrderCodeSeq);
                             command.Parameters["@DispText"].Value = OrderCode;
                             command.Parameters["@BarCode"].Value = OrderCodeBar;
+                            command.ExecuteNonQuery();
+                            
+                            command.Parameters["@Name"].Value = "WorkFlow";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(WorkFlowSeq) ? 0 : Int32.Parse(WorkFlowSeq);
+                            command.Parameters["@DispText"].Value = WorkFlow;
+                            command.Parameters["@BarCode"].Value = WorkFlowBar;
                             command.ExecuteNonQuery();
 
                             command.Parameters["@Name"].Value = "Batch";
@@ -405,6 +438,12 @@ namespace Box
                             command.Parameters["@DispText"].Value = ManufactureDate;
                             command.Parameters["@BarCode"].Value = ManufactureDateBar;
                             command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Firmware";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(FirmwareSeq) ? 0 : Int32.Parse(FirmwareSeq);
+                            command.Parameters["@DispText"].Value = Firmware;
+                            command.Parameters["@BarCode"].Value = FirmwareBar;
+                            command.ExecuteNonQuery();
                         }
                         trans.Commit();
                         conn.Close();
@@ -442,7 +481,7 @@ namespace Box
         private void PrintItemSelectFrm_Load(object sender, EventArgs e)
         {
 #if DEBUG
-            OrderID = "123456";
+            //OrderID = "00000000";
 #endif
             if (!File.Exists(FilePath))
             {
@@ -491,54 +530,112 @@ namespace Box
             GetPrintItem();
 
             OrderCodeSeqTB.Text = OrderCodeSeq;
-            OrderCodeTB.Text = OrderCode;
+            if(!String.IsNullOrEmpty(OrderCode))
+            { 
+                OrderCodeTB.Text = OrderCode;
+            }
             OrderCodeCK.Checked = OrderCodeBar == "1";
-            
+
+            WorkFlowSeqTB.Text = WorkFlowSeq;
+            if (!String.IsNullOrEmpty(WorkFlow))
+            { 
+                WorkFlowTB.Text = WorkFlow;
+            }
+            WorkFlowCK.Checked = WorkFlowBar == "1";
+
             BatchSeqTB.Text = BatchSeq;
-            BatchTB.Text = Batch;
+            if (!String.IsNullOrEmpty(Batch))
+            {
+                BatchTB.Text = Batch;
+            }
             BatchCK.Checked = BatchBar == "1";
 
 
             GubeiNoSeqTB.Text = GubeiNoSeq;
-            GubeiNoTB.Text = GubeiNo;
+            if (!String.IsNullOrEmpty(GubeiNo))
+            {
+                GubeiNoTB.Text = GubeiNo;
+            }
+            
             GubeiNoCK.Checked = GubeiNoBar == "1";
 
             CustomerNoSeqTB.Text = CustomerNoSeq;
-            CustomerNoTB.Text = CustomerNo;
+            
+            if (!String.IsNullOrEmpty(CustomerNo))
+            {
+                CustomerNoTB.Text = CustomerNo;
+            }
             CustomerNoCK.Checked = CustomerNoBar == "1";
 
             ProdModelSeqTB.Text = ProdModelSeq;
-            ProdModelTB.Text = ProdModel;
+            
+            if (!String.IsNullOrEmpty(ProdModel))
+            {
+                ProdModelTB.Text = ProdModel;
+            }
             ProdModelCK.Checked = ProdModelBar == "1";
 
             ProdDescSeqTB.Text = ProdDescSeq;
-            ProdDescTB.Text = ProdDesc;
+           
+            if (!String.IsNullOrEmpty(ProdDesc))
+            {
+                ProdDescTB.Text = ProdDesc;
+            }
             ProdDescCK.Checked = ProdDescBar == "1";
 
             VerSeqTB.Text = VerSeq;
-            VerTB.Text = Ver;
+           
+            if (!String.IsNullOrEmpty(Ver))
+            {
+                VerTB.Text = Ver;
+            }
             VerCK.Checked = VerBar == "1";
 
             RealCountSeqTB.Text = RealCountSeq;
-            RealCountTB.Text = RealCount;
+            if (!String.IsNullOrEmpty(RealCount))
+            {
+                RealCountTB.Text = RealCount;
+            }
             RealCountCK.Checked = RealCountBar == "1";
 
             BoxNoSeqTB.Text = BoxNoSeq;
-            BoxNoTB.Text = BoxNo;
+            if (!String.IsNullOrEmpty(BoxNo))
+            {
+                BoxNoTB.Text = BoxNo;
+            }
             BoxNoCK.Checked = BoxNoBar == "1";
 
             SupplierSeqTB.Text = SupplierSeq;
-            SupplierTB.Text = Supplier;
+            if (!String.IsNullOrEmpty(Supplier))
+            {
+                SupplierTB.Text = Supplier;
+            }
+            
             SupplierCK.Checked = SupplierBar == "1";
 
             QCSeqTB.Text = QCSeq;
-            QCTB.Text = QC;
+            
+            if (!String.IsNullOrEmpty(QC))
+            {
+                QCTB.Text = QC;
+            }
             QCCK.Checked = QCBar == "1";
 
             ManufactureDateSeqTB.Text = ManufactureDateSeq;
-            ManufactureDateTB.Text = ManufactureDate;
+            
+            if (!String.IsNullOrEmpty(ManufactureDate))
+            {
+                ManufactureDateTB.Text = ManufactureDate;
+            }
             ManufactureDateCK.Checked = ManufactureDateBar == "1";
 
+            FirmwareSeqTB.Text = FirmwareSeq;
+            
+            if (!String.IsNullOrEmpty(ManufactureDate))
+            {
+                FirmwareTB.Text = Firmware;
+            }
+            FirmwareCK.Checked = FirmwareBar == "1";
         }
 
         private void GetPrintItem()
@@ -575,7 +672,7 @@ namespace Box
                                         property.SetValue(this, BarCode);
 
                                         property = this.GetType().GetProperty(Name);
-                                        property.SetValue(this, DispText);
+                                        property.SetValue(this, String.IsNullOrEmpty(DispText) ? Name : DispText);
                                     }
                                 }
                                 

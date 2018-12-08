@@ -81,16 +81,7 @@ namespace Box
             WidthInPixel = 799;// 100 * 200 * 10 / 254;
             HeightInPixel = 559;// 70 * 200 * 10 / 254;
             ImageToConvert = new Bitmap(WidthInPixel, HeightInPixel);
-            //this.ImageToConvert.SetResolution(203, 203);
-            PreviewLabel.Image = ImageToConvert;
-
-            TopMargin = 15;
-            LeftMargin = 10;
-            LineSpace = 0;
-
-            LeftMarginTB.Text = string.Format("{0}", LeftMargin);
-            TopMarginTB.Text = string.Format("{0}", TopMargin);
-            LineSpaceTB.Text = string.Format("{0}", LineSpace);
+            PreviewLabel.Image = ImageToConvert;            
         }
 
         public MainForm()
@@ -149,29 +140,94 @@ namespace Box
                 }
             }
 
+
+           
+
             System.Drawing.Text.InstalledFontCollection fonts = new System.Drawing.Text.InstalledFontCollection();
-            foreach(FontFamily ff in fonts.Families)
+            string def = Properties.Settings.Default["HeadFontName"] as string;
+            if(String.IsNullOrEmpty(def))
+            {
+                def = "楷体";
+            }
+            foreach (FontFamily ff in fonts.Families)
             {
                 HeadFontList.Items.Add(ff.Name);
                 TitleFontList.Items.Add(ff.Name);
                 FieldFontList.Items.Add(ff.Name);
 
-                if(ff.Name == "楷体")
+                if(ff.Name == def)
                 {
-                    HeadFontList.SelectedItem = "楷体";
-                    TitleFontList.SelectedItem = "楷体";
-                    FieldFontList.SelectedItem = "楷体";
+                    HeadFontList.SelectedItem = def;
+                    TitleFontList.SelectedItem = def;
+                    FieldFontList.SelectedItem = def;
                 }
             }
+            def = Properties.Settings.Default["HeadFontSize"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "24";
+            }
+            HeadFontSizeList.SelectedItem = def;
 
-            HeadFontSizeList.SelectedItem = "24";
-            TitleFontSizeList.SelectedItem = "20";
-            FieldFontSizeList.SelectedItem = "20";
+            def = Properties.Settings.Default["TitleFontSize"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "20";
+            }
+            TitleFontSizeList.SelectedItem = def;
 
-            HeadFontTypeList.SelectedItem = "粗体";
-            TitleFontTypeList.SelectedItem = "粗体";
-            FieldFontTypeList.SelectedItem = "粗体";
-            LineSpaceTB.Text = "0";
+            def = Properties.Settings.Default["FieldFontSize"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "20";
+            }
+            FieldFontSizeList.SelectedItem = def;
+
+            def = Properties.Settings.Default["HeadFontStyle"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "粗体";
+            }
+            HeadFontTypeList.SelectedItem = def;
+
+            def = Properties.Settings.Default["TitleFontStyle"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "粗体";
+            }
+            TitleFontTypeList.SelectedItem = def;
+
+            def = Properties.Settings.Default["FieldFontStyle"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "粗体";
+            }
+            FieldFontTypeList.SelectedItem = def;
+
+            def = Properties.Settings.Default["LineSpace"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "0";
+            }
+            LineSpaceTB.Text = def;
+            
+            def = Properties.Settings.Default["LeftMargin"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "10";
+            }
+            LeftMarginTB.Text = def;
+
+            def = Properties.Settings.Default["TopMargin"] as string;
+            if (String.IsNullOrEmpty(def))
+            {
+                def = "15";
+            }
+            TopMarginTB.Text = def;
+
+            TopMargin = Int32.Parse(TopMarginTB.Text);
+            LeftMargin = Int32.Parse(LeftMarginTB.Text);
+            LineSpace = Int32.Parse(LineSpaceTB.Text);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -197,7 +253,9 @@ namespace Box
 
         private void SearchBox()
         {
-            if(BoxSNSearchTextBox.Text == null || BoxSNSearchTextBox.Text.Trim().Length == 0)
+            ImageToConvert = new Bitmap(WidthInPixel, HeightInPixel);
+            PreviewLabel.Image = ImageToConvert;
+            if (BoxSNSearchTextBox.Text == null || BoxSNSearchTextBox.Text.Trim().Length == 0)
             {
                 ShowError("请输入箱号");
                 return;
@@ -301,37 +359,57 @@ namespace Box
                     OrderResponse res = response.Data;
                     if (res != null && res.Status == 0)
                     {
-                        //res.OrderInfo.VendorName = "杭州古北电子科技有限公司";
-                        if(String.IsNullOrEmpty(res.OrderInfo.MaterialCode))
+                        if (String.IsNullOrEmpty(res.OrderInfo.Workform))
                         {
-                            res.OrderInfo.MaterialCode = GetDef(res.OrderInfo.Workform, "GuBeiNo");
+                            res.OrderInfo.Workform = GetDef(res.OrderInfo.OrderId, "Workform");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.MaterialCode))
+                        {
+                            res.OrderInfo.MaterialCode = GetDef(res.OrderInfo.OrderId, "GuBeiNo");
                         }
 
                         if (String.IsNullOrEmpty(res.OrderInfo.KehuCode))
                         {
-                            res.OrderInfo.KehuCode = GetDef(res.OrderInfo.Workform, "KehuNo");
+                            res.OrderInfo.KehuCode = GetDef(res.OrderInfo.OrderId, "KehuNo");
                         }
 
                         if (String.IsNullOrEmpty(res.OrderInfo.ProductModel))
                         {
-                            res.OrderInfo.ProductModel = GetDef(res.OrderInfo.Workform, "ProdModel");
+                            res.OrderInfo.ProductModel = GetDef(res.OrderInfo.OrderId, "ProdModel");
                         }
 
                         if (String.IsNullOrEmpty(res.OrderInfo.ProductDesc))
                         {
-                            res.OrderInfo.ProductDesc = GetDef(res.OrderInfo.Workform, "ProdDesc");
+                            res.OrderInfo.ProductDesc = GetDef(res.OrderInfo.OrderId, "ProdDesc");
                         }
 
                         if (String.IsNullOrEmpty(res.OrderInfo.VendorName))
                         {
-                            res.OrderInfo.VendorName = GetDef(res.OrderInfo.Workform, "Vendor");
+                            res.OrderInfo.VendorName = GetDef(res.OrderInfo.OrderId, "Supplier");
                         }
+
                         if (String.IsNullOrEmpty(res.OrderInfo.VendorName))
                         {
                             res.OrderInfo.VendorName = "杭州古北电子科技有限公司";
+                        }
 
+                        if (String.IsNullOrEmpty(res.OrderInfo.BatchNo))
+                        {
+                            res.OrderInfo.BatchNo = GetDef(res.OrderInfo.OrderId, "BatchNo");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.ProductVerTag))
+                        {
+                            res.OrderInfo.ProductVerTag = GetDef(res.OrderInfo.OrderId, "Version");
+                        }
+
+                        if (String.IsNullOrEmpty(res.OrderInfo.Firmware))
+                        {
+                            res.OrderInfo.Firmware = GetDef(res.OrderInfo.OrderId, "Firmware");
                         }
                         OrderInfo = res.OrderInfo;
+
                         ShowOrderInfo(res.OrderInfo);
                         ZebraPreview(BoxInfo, res.OrderInfo);
                     }
@@ -353,20 +431,25 @@ namespace Box
             {
                 OrderInfo oi = o as OrderInfo;
 
-                OrderIdTextBox.Text = oi.AgreementId;
-                workflowID.Text = oi.Workform;
+                OrderIdTB.Text = oi.AgreementId;
+                WorkformTB.Text = oi.Workform;
                 //古北产品编码
-                textBox5.Text = oi.MaterialCode;
+                GubeiNoTB.Text = oi.MaterialCode;
                 //客户产品编码
-                textBox4.Text = oi.KehuCode;
+                KehuNoTB.Text = oi.KehuCode;
                 //产品型号
-                ProdModelTextBox.Text = oi.ProductModel;
+                ProdModelTB.Text = oi.ProductModel;
                 //产品描述
-                ProductDescTextBox.Text = oi.ProductDesc;
+                ProductDescTB.Text = oi.ProductDesc;
                 //装箱数量
                 //供应商
-                VendorTextBox.Text = orderInfo.VendorName;
-                
+                SupplierTB.Text = orderInfo.VendorName;
+                //批次
+                BatchTB.Text = orderInfo.BatchNo;
+                //Version
+                VersionTB.Text = orderInfo.ProductVerTag;
+                //固件
+                FirmwareTB.Text = orderInfo.Firmware;
             }), orderInfo);
         }
 
@@ -408,6 +491,7 @@ namespace Box
 
             }), errMsg);
         }
+
         private void InitializeControls()
         {
             synchronizationContext.Post(new SendOrPostCallback(o =>
@@ -499,25 +583,26 @@ namespace Box
             synchronizationContext.Post(new SendOrPostCallback(o =>
             {
 #if DEBUG
-                OrderInfo = new OrderInfo();
-                OrderInfo.OrderId = "123456";
-                OrderInfo.AgreementId = "12345678901234560";
-                OrderInfo.ProductModel = "ProductModel";
-                OrderInfo.ProductName = "ProductName";
-                OrderInfo.ProductDesc = "GL_JYKT_WIFI_7682?5V?PCBA_V1.2组合模块（格力家用空调格力云）";
-                OrderInfo.Workform = "12345678901234560";
-                OrderInfo.FactoryName = "12345678901234560";
-                OrderInfo.MaterialCode = "12345678901234560";
-                OrderInfo.KehuCode = "12345678901234560";
-                OrderInfo.VendorName = "杭州古北电子科技有限公司";
-                OrderInfo.ProductVerTag = "12345678901234560";
-                OrderInfo.BatchNo = "12345678901234560";
-                OrderInfo.FactoryName = "12345678901234560";
-                BoxInfo = new BoxInfo();
-                BoxInfo.OemFactoryId = "12345678901234560";
-                BoxInfo.RealCount = 1000;
-                BoxInfo.OrderId = "12345678901234560";
-                BoxInfo.BoxSN = "IBC20181208000013";
+                //OrderInfo = new OrderInfo();
+                //OrderInfo.OrderId = "00000000";
+                //OrderInfo.AgreementId = "B-MK-18082201-2";
+                //OrderInfo.ProductModel = "BL5015-HBSG011002";
+                //OrderInfo.ProductName = "ProductName";
+                //OrderInfo.ProductDesc = "Opple_Control_WiFi_MTK7698_3.3V_U. FL接口外置天线_stamp_PC BA_V1.1_new模块(欧普WIFI控制盒去谐波205100010281)";
+                //OrderInfo.Workform = "20181105162108-221-1";
+                //OrderInfo.FactoryName = "12345678901234560";
+                //OrderInfo.MaterialCode = "12345678901234560";
+                //OrderInfo.KehuCode = "12345678901234560";
+                //OrderInfo.VendorName = "杭州古北电子科技有限公司";
+                //OrderInfo.ProductVerTag = "12345678901234560";
+                //OrderInfo.BatchNo = "12345678901234560";
+                //OrderInfo.FactoryName = "12345678901234560";
+                
+                //BoxInfo = new BoxInfo();
+                //BoxInfo.OemFactoryId = "12345678901234560";
+                //BoxInfo.RealCount = 1000;
+                //BoxInfo.OrderId = "12345678901234560";
+                //BoxInfo.BoxSN = "IBC20181208000013";
 #endif
                 GetPrintItem();
                 if (PrintItems == null || PrintItems.Count == 0)
@@ -598,7 +683,7 @@ namespace Box
                 }
                 else if (fontStyle == "普通")
                 {
-                    headFs = FontStyle.Regular;
+                    titleFs = FontStyle.Regular;
                 }
 
                 FontStyle fieldFs = FontStyle.Bold;
@@ -613,7 +698,15 @@ namespace Box
                 }
                 else if (fontStyle == "普通")
                 {
-                    headFs = FontStyle.Regular;
+                    fieldFs = FontStyle.Regular;
+                }
+                if(!String.IsNullOrEmpty(TopMarginTB.Text))
+                {
+                    TopMargin = Int32.Parse(TopMarginTB.Text);
+                }
+                if (!String.IsNullOrEmpty(LeftMarginTB.Text))
+                {
+                    LeftMargin = Int32.Parse(LeftMarginTB.Text);
                 }
 
                 Font headFont = new Font(headFontName, headFontSize, headFs, GraphicsUnit.Point);
@@ -661,6 +754,11 @@ namespace Box
                     {
                         //订单编码
                         Text = OrderInfo.AgreementId;
+                    }
+                    else if (Name == "WorkFlow")
+                    {
+                        //工单
+                        Text = OrderInfo.Workform;
                     }
                     else if (Name == "Batch")
                     {
@@ -717,10 +815,15 @@ namespace Box
                         //制造日期
                         Text = DateTime.Now.ToString("yyyy.MM.dd");
                     }
-                   
+                    else if (Name == "Firmware")
+                    {
+                        //固件
+                        Text = OrderInfo.Firmware;
+                    }
                     g.DrawString(Disp, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
                     tmpSize = TextRenderer.MeasureText(g, Disp, titleFont);
                     int titleWidth = tmpSize.Width;
+                    int titleHeight = tmpSize.Height;
                     //可用空间
                     int w = WidthInPixel - left * 2 - titleWidth * 2 - 2;
                     if(String.IsNullOrEmpty(Text))
@@ -747,14 +850,15 @@ namespace Box
                             {
                                 //居中
                                 g.DrawString(Text, fieldFont, textBrush, new RectangleF(0, top, WidthInPixel, HeightInPixel), fieldFormat);
-                                top += tmpSize.Height;
+                                top += tmpSize.Height > titleHeight ? tmpSize.Height : titleHeight;
                             }
                             else
                             {
                                 //打不下
-                                SizeF tmpSizeF = g.MeasureString(Text, fieldFont, w);
-                                g.DrawString(Text, fieldFont, textBrush, new RectangleF(left + titleWidth, top, w, HeightInPixel), fieldFormat);
-                                top += (int)Math.Ceiling(tmpSizeF.Height);
+                                SizeF tmpSizeF = g.MeasureString(Text, fieldFont, w + titleWidth);
+                                g.DrawString(Text, fieldFont, textBrush, new RectangleF(left + titleWidth, top, w + titleWidth, HeightInPixel), fieldFormat);
+                                int tmpInt = (int)Math.Ceiling(tmpSizeF.Height);
+                                top += tmpInt > titleHeight ? tmpInt : titleHeight;
                             }
                             
                         }
@@ -762,12 +866,12 @@ namespace Box
 
                     top += LineSpace;
                 }
-                
 
+                #region
                 //int titleWidth = TextRenderer.MeasureText(g, "古北产品编码：", titleFont).Width;
                 //int fieldWidth = WidthInPixel - titleWidth - marginLeft * 2;
                 //int fieldLeft = titleWidth + marginLeft;
-       
+
                 //title = "订单号码：";
                 //g.DrawString(title, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
                 //strSize = TextRenderer.MeasureText(g, title, titleFont);
@@ -871,7 +975,7 @@ namespace Box
                 //top += strSize.Height;
                 //top += lineMargin;
 
-
+                #endregion
 
                 SearchBoxButton.Enabled = true;
                 BoxSNSearchTextBox.Enabled = true;
@@ -881,7 +985,7 @@ namespace Box
             }), null);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TestBtn_Click(object sender, EventArgs e)
         {
             BoxInfo box = new BoxInfo();
             box.BoxSN = "OB420181122000008";
@@ -891,6 +995,7 @@ namespace Box
             ZebraPreview(box, oi);
         }
 
+        //打印
         private void PrintLabelButton_Click(object sender, EventArgs e)
         {
             LPPrint printer = null;
@@ -933,6 +1038,7 @@ namespace Box
             
         }
 
+        //读取打印默认值，已订单为单位
         private string GetDef(string Id, string Name)
         {
             string def = "";
@@ -981,18 +1087,26 @@ namespace Box
             }
             return def;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        
+        //预览标签
+        private void PreviewBtn_Click(object sender, EventArgs e)
         {
             if(OrderInfo == null)
             {
                 return;
             }
-            OrderInfo.MaterialCode = textBox5.Text;
-            OrderInfo.KehuCode = textBox4.Text;
-            OrderInfo.ProductModel = ProdModelTextBox.Text;
-            OrderInfo.ProductDesc = ProductDescTextBox.Text;
-            OrderInfo.VendorName = VendorTextBox.Text;
+
+            OrderInfo.OrderId = OrderIdTB.Text;
+            OrderInfo.Workform = WorkformTB.Text;
+            OrderInfo.MaterialCode = GubeiNoTB.Text;
+            OrderInfo.KehuCode = KehuNoTB.Text;
+            OrderInfo.ProductModel = ProdModelTB.Text;
+            OrderInfo.ProductDesc = ProductDescTB.Text;
+            OrderInfo.VendorName = SupplierTB.Text;
+            OrderInfo.ProductVerTag = VersionTB.Text;
+            OrderInfo.BatchNo = BatchTB.Text;
+            OrderInfo.Firmware = FirmwareTB.Text;
+            //保存打印默认值
             if (File.Exists(FilePath))
             {
                 using (var conn = new SQLiteConnection("Data Source=" + FilePath))
@@ -1008,9 +1122,31 @@ namespace Box
                             command.Parameters.Add("@ID", DbType.String);
                             command.Parameters.Add("@Name", DbType.String);
 
-                            command.Parameters["@ID"].Value = workflowID.Text;
+                            #region 工单
+                            command.Parameters["@ID"].Value = OrderInfo.OrderId;
+                            command.Parameters["@Name"].Value = "Workform";
+                            command.Parameters["@DefValue"].Value = WorkformTB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Workform";
+                                    insCmd.Parameters["@DefValue"].Value = WorkformTB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+                            #endregion
+
+                            #region 古北产品编码
                             command.Parameters["@Name"].Value = "GuBeiNo";
-                            command.Parameters["@DefValue"].Value = textBox5.Text;
+                            command.Parameters["@DefValue"].Value = GubeiNoTB.Text;
                             if (command.ExecuteNonQuery() == 0)
                             {
                                 using (SQLiteCommand insCmd = conn.CreateCommand())
@@ -1021,15 +1157,17 @@ namespace Box
                                     insCmd.Parameters.Add("@Name", DbType.String);
                                     insCmd.Parameters.Add("@ID", DbType.String);
 
-                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
                                     insCmd.Parameters["@Name"].Value = "GuBeiNo";
-                                    insCmd.Parameters["@DefValue"].Value = textBox5.Text;
+                                    insCmd.Parameters["@DefValue"].Value = GubeiNoTB.Text;
                                     insCmd.ExecuteNonQuery();
                                 }
                             }
+                            #endregion
 
+                            #region 客户产品编码
                             command.Parameters["@Name"].Value = "KehuNo";
-                            command.Parameters["@DefValue"].Value = textBox4.Text;
+                            command.Parameters["@DefValue"].Value = KehuNoTB.Text;
                             if (command.ExecuteNonQuery() == 0)
                             {
                                 using (SQLiteCommand insCmd = conn.CreateCommand())
@@ -1040,16 +1178,17 @@ namespace Box
                                     insCmd.Parameters.Add("@Name", DbType.String);
                                     insCmd.Parameters.Add("@ID", DbType.String);
 
-                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
                                     insCmd.Parameters["@Name"].Value = "KehuNo";
-                                    insCmd.Parameters["@DefValue"].Value = textBox4.Text;
+                                    insCmd.Parameters["@DefValue"].Value = KehuNoTB.Text;
                                     insCmd.ExecuteNonQuery();
                                 }
                             }
+                            #endregion
 
-                            //
+                            #region 产品型号
                             command.Parameters["@Name"].Value = "ProdModel";
-                            command.Parameters["@DefValue"].Value = ProdModelTextBox.Text;
+                            command.Parameters["@DefValue"].Value = ProdModelTB.Text;
                             if (command.ExecuteNonQuery() == 0)
                             {
                                 using (SQLiteCommand insCmd = conn.CreateCommand())
@@ -1060,15 +1199,16 @@ namespace Box
                                     insCmd.Parameters.Add("@Name", DbType.String);
                                     insCmd.Parameters.Add("@ID", DbType.String);
 
-                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
                                     insCmd.Parameters["@Name"].Value = "ProdModel";
-                                    insCmd.Parameters["@DefValue"].Value = ProdModelTextBox.Text;
+                                    insCmd.Parameters["@DefValue"].Value = ProdModelTB.Text;
                                     insCmd.ExecuteNonQuery();
                                 }
                             }
+                            #endregion
 
                             command.Parameters["@Name"].Value = "ProdDesc";
-                            command.Parameters["@DefValue"].Value = ProductDescTextBox.Text;
+                            command.Parameters["@DefValue"].Value = ProductDescTB.Text;
                             if (command.ExecuteNonQuery() == 0)
                             {
                                 using (SQLiteCommand insCmd = conn.CreateCommand())
@@ -1079,15 +1219,15 @@ namespace Box
                                     insCmd.Parameters.Add("@Name", DbType.String);
                                     insCmd.Parameters.Add("@ID", DbType.String);
 
-                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
                                     insCmd.Parameters["@Name"].Value = "ProdDesc";
-                                    insCmd.Parameters["@DefValue"].Value = ProductDescTextBox.Text;
+                                    insCmd.Parameters["@DefValue"].Value = ProductDescTB.Text;
                                     insCmd.ExecuteNonQuery();
                                 }
                             }
 
-                            command.Parameters["@Name"].Value = "Vendor";
-                            command.Parameters["@DefValue"].Value = VendorTextBox.Text;
+                            command.Parameters["@Name"].Value = "Supplier";
+                            command.Parameters["@DefValue"].Value = SupplierTB.Text;
                             if (command.ExecuteNonQuery() == 0)
                             {
                                 using (SQLiteCommand insCmd = conn.CreateCommand())
@@ -1098,9 +1238,66 @@ namespace Box
                                     insCmd.Parameters.Add("@Name", DbType.String);
                                     insCmd.Parameters.Add("@ID", DbType.String);
 
-                                    insCmd.Parameters["@ID"].Value = workflowID.Text;
-                                    insCmd.Parameters["@Name"].Value = "Vendor";
-                                    insCmd.Parameters["@DefValue"].Value = VendorTextBox.Text;
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Supplier";
+                                    insCmd.Parameters["@DefValue"].Value = SupplierTB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "BatchNo";
+                            command.Parameters["@DefValue"].Value = BatchTB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "BatchNo";
+                                    insCmd.Parameters["@DefValue"].Value = BatchTB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Version";
+                            command.Parameters["@DefValue"].Value = VersionTB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Version";
+                                    insCmd.Parameters["@DefValue"].Value = VersionTB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Firmware";
+                            command.Parameters["@DefValue"].Value = FirmwareTB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Firmware";
+                                    insCmd.Parameters["@DefValue"].Value = FirmwareTB.Text;
                                     insCmd.ExecuteNonQuery();
                                 }
                             }
@@ -1125,7 +1322,8 @@ namespace Box
 
                 }
             }
-
+            
+            //生成预览
             ZebraPreview(BoxInfo, OrderInfo);
         }
 
@@ -1139,6 +1337,133 @@ namespace Box
             PrintItemSelectFrm frm = new PrintItemSelectFrm();
             frm.OrderID = OrderInfo.OrderId;
             frm.ShowDialog();
+        }
+
+        private void HeadFontList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string HeadFontName = (sender as ComboBox).SelectedItem as string;
+            if(!String.IsNullOrEmpty(HeadFontName))
+            {
+                Properties.Settings.Default["HeadFontName"] = HeadFontName;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void HeadFontSizeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string HeadFontSize = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(HeadFontSize))
+            {
+                Properties.Settings.Default["HeadFontSize"] = HeadFontSize;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void HeadFontTypeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string HeadFonStyle = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(HeadFonStyle))
+            {
+                Properties.Settings.Default["HeadFontStyle"] = HeadFonStyle;
+                Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private void LineSpaceTB_TextChanged(object sender, EventArgs e)
+        {
+            string v = (sender as TextBox).Text;
+            int Result;
+            if(Int32.TryParse(v, out Result))
+            {
+                Properties.Settings.Default["LineSpace"] = v;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void TitleFontList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string TitleFontName = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(TitleFontName))
+            {
+                Properties.Settings.Default["TitleFontName"] = TitleFontName;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void TitleFontSizeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string TitleFontSize = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(TitleFontSize))
+            {
+                Properties.Settings.Default["TitleFontSize"] = TitleFontSize;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void TitleFontTypeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string TitleFontStyle = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(TitleFontStyle))
+            {
+                Properties.Settings.Default["TitleFontStyle"] = TitleFontStyle;
+                Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private void FieldFontList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string FieldFontName = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(FieldFontName))
+            {
+                Properties.Settings.Default["FieldFontName"] = FieldFontName;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void FieldFontSizeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string TitleFontSize = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(TitleFontSize))
+            {
+                Properties.Settings.Default["TitleFontSize"] = TitleFontSize;
+                Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private void FieldFontTypeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string TitleFontStyle = (sender as ComboBox).SelectedItem as string;
+            if (!String.IsNullOrEmpty(TitleFontStyle))
+            {
+                Properties.Settings.Default["TitleFontStyle"] = TitleFontStyle;
+                Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private void LeftMarginTB_TextChanged(object sender, EventArgs e)
+        {
+            string v = (sender as TextBox).Text;
+            int Result;
+            if (Int32.TryParse(v, out Result))
+            {
+                Properties.Settings.Default["LeftMargin"] = v;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void TopMarginTB_TextChanged(object sender, EventArgs e)
+        {
+            string v = (sender as TextBox).Text;
+            int Result;
+            if (Int32.TryParse(v, out Result))
+            {
+                Properties.Settings.Default["TopMargin"] = v;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
