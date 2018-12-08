@@ -81,13 +81,13 @@ namespace Box
             set;
         }
         //Ver
-        public string Version
+        public string ProductVerTag
         {
             get;
             set;
         }
         //批次号
-        public string SeqNo
+        public string BatchNo
         {
             get;
             set;

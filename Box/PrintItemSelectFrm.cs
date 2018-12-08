@@ -38,6 +38,24 @@ namespace Box
             get;
             set;
         }
+
+        //工单编码顺序
+        public string WorkFlowSeq
+        {
+            get;
+            set;
+        }
+        public string WorkFlow
+        {
+            get;
+            set;
+        }
+        public string WorkFlowBar
+        {
+            get;
+            set;
+        }
+
         //批次号
         public string BatchSeq
         {
@@ -303,26 +321,103 @@ namespace Box
                         trans = conn.BeginTransaction();
                         using (SQLiteCommand command = conn.CreateCommand())
                         {
-                            //command.CommandText = "UPDATE Setting SET DefValue = @DefValue WHERE Id = @Id AND Name=@Name";
+                            command.CommandText = "DELETE from Print where Id=@Id";
+                            command.Parameters.Add("@Id", DbType.String);
+                            command.Parameters["@Id"].Value = OrderID;
+                            command.ExecuteNonQuery();
 
-                            //command.Parameters.Add("@DefValue", DbType.String);
-                            //command.Parameters.Add("@ID", DbType.String);
-                            //command.Parameters.Add("@Name", DbType.String);
+                            command.CommandText = "INSERT INTO Print(Id, Name, DispSeq, DispText, BarCode) VALUES(@Id, @Name, @DispSeq, @DispText, @BarCode)";
+                            //command.Parameters.Add("@Id", DbType.String);
+                            command.Parameters.Add("@Name", DbType.String);
+                            command.Parameters.Add("@DispSeq", DbType.Int32);
+                            command.Parameters.Add("@DispText", DbType.String);
+                            command.Parameters.Add("@BarCode", DbType.String);
 
-                            //command.Parameters["@ID"].Value = workflowID.Text;
-                            //command.Parameters["@Name"].Value = "GuBeiNo";
-                            //command.Parameters["@DefValue"].Value = textBox5.Text;
+                            command.Parameters["@Name"].Value = "OrderCode";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(OrderCodeSeq) ? 0 : Int32.Parse(OrderCodeSeq);
+                            command.Parameters["@DispText"].Value = OrderCode;
+                            command.Parameters["@BarCode"].Value = OrderCodeBar;
+                            command.ExecuteNonQuery();
 
+                            command.Parameters["@Name"].Value = "Batch";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(BatchSeq) ? 0 : Int32.Parse(BatchSeq);
+                            command.Parameters["@DispText"].Value = Batch;
+                            command.Parameters["@BarCode"].Value = BatchBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "GubeiNo";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(GubeiNoSeq) ? 0 : Int32.Parse(GubeiNoSeq);
+                            command.Parameters["@DispText"].Value = GubeiNo;
+                            command.Parameters["@BarCode"].Value = GubeiNoBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "CustomerNo";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(CustomerNoSeq) ? 0 : Int32.Parse(CustomerNoSeq);
+                            command.Parameters["@DispText"].Value = CustomerNo;
+                            command.Parameters["@BarCode"].Value = CustomerNoBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "ProdModel";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(ProdModelSeq) ? 0 : Int32.Parse(ProdModelSeq);
+                            command.Parameters["@DispText"].Value = ProdModel;
+                            command.Parameters["@BarCode"].Value = ProdModelBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "ProdDesc";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(ProdDescSeq) ? 0 : Int32.Parse(ProdDescSeq);
+                            command.Parameters["@DispText"].Value = ProdDesc;
+                            command.Parameters["@BarCode"].Value = ProdDescBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Ver";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(VerSeq) ? 0 : Int32.Parse(VerSeq);
+                            command.Parameters["@DispText"].Value = Ver;
+                            command.Parameters["@BarCode"].Value = VerBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "RealCount";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(RealCountSeq) ? 0 : Int32.Parse(RealCountSeq);
+                            command.Parameters["@DispText"].Value = RealCount;
+                            command.Parameters["@BarCode"].Value = RealCountBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "BoxNo";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(BoxNoSeq) ? 0 : Int32.Parse(BoxNoSeq);
+                            command.Parameters["@DispText"].Value = BoxNo;
+                            command.Parameters["@BarCode"].Value = BoxNoBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Id"].Value = OrderID;
+                            command.Parameters["@Name"].Value = "Supplier";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(SupplierSeq) ? 0 : Int32.Parse(SupplierSeq);
+                            command.Parameters["@DispText"].Value = Supplier;
+                            command.Parameters["@BarCode"].Value = SupplierBar;
+                            command.ExecuteNonQuery();
+                            
+                            command.Parameters["@Name"].Value = "QC";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(QCSeq) ? 0 : Int32.Parse(QCSeq);
+                            command.Parameters["@DispText"].Value = QC;
+                            command.Parameters["@BarCode"].Value = QCBar;
+                            command.ExecuteNonQuery();
+                            
+                            command.Parameters["@Name"].Value = "ManufactureDate";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(ManufactureDateSeq) ? 0 : Int32.Parse(ManufactureDateSeq);
+                            command.Parameters["@DispText"].Value = ManufactureDate;
+                            command.Parameters["@BarCode"].Value = ManufactureDateBar;
+                            command.ExecuteNonQuery();
                         }
                         trans.Commit();
                         conn.Close();
+
+                        MessageBox.Show("成功保存", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         if(trans != null)
                         {
                             trans.Rollback();
                         }
+                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
@@ -346,6 +441,9 @@ namespace Box
 
         private void PrintItemSelectFrm_Load(object sender, EventArgs e)
         {
+#if DEBUG
+            OrderID = "123456";
+#endif
             if (!File.Exists(FilePath))
             {
                 using (FileStream stream = File.Create(FilePath))
@@ -362,6 +460,9 @@ namespace Box
                             conn.Open();
                             using (SQLiteCommand command = conn.CreateCommand())
                             {
+                                command.CommandText = "create table Setting(Id TEXT, Name Text, DefValue TEXT, PRIMARY KEY (Id, Name))";
+                                command.ExecuteNonQuery();
+
                                 command.CommandText = "create table Print(Id TEXT, Name Text, DispSeq INTEGER, DispText Text, BarCode TEXT, PRIMARY KEY (Id, Name))";
                                 command.ExecuteNonQuery();
                             }
@@ -385,7 +486,59 @@ namespace Box
                     }
                 }
             }
+
+            OrderIdTB.Text = OrderID;
             GetPrintItem();
+
+            OrderCodeSeqTB.Text = OrderCodeSeq;
+            OrderCodeTB.Text = OrderCode;
+            OrderCodeCK.Checked = OrderCodeBar == "1";
+            
+            BatchSeqTB.Text = BatchSeq;
+            BatchTB.Text = Batch;
+            BatchCK.Checked = BatchBar == "1";
+
+
+            GubeiNoSeqTB.Text = GubeiNoSeq;
+            GubeiNoTB.Text = GubeiNo;
+            GubeiNoCK.Checked = GubeiNoBar == "1";
+
+            CustomerNoSeqTB.Text = CustomerNoSeq;
+            CustomerNoTB.Text = CustomerNo;
+            CustomerNoCK.Checked = CustomerNoBar == "1";
+
+            ProdModelSeqTB.Text = ProdModelSeq;
+            ProdModelTB.Text = ProdModel;
+            ProdModelCK.Checked = ProdModelBar == "1";
+
+            ProdDescSeqTB.Text = ProdDescSeq;
+            ProdDescTB.Text = ProdDesc;
+            ProdDescCK.Checked = ProdDescBar == "1";
+
+            VerSeqTB.Text = VerSeq;
+            VerTB.Text = Ver;
+            VerCK.Checked = VerBar == "1";
+
+            RealCountSeqTB.Text = RealCountSeq;
+            RealCountTB.Text = RealCount;
+            RealCountCK.Checked = RealCountBar == "1";
+
+            BoxNoSeqTB.Text = BoxNoSeq;
+            BoxNoTB.Text = BoxNo;
+            BoxNoCK.Checked = BoxNoBar == "1";
+
+            SupplierSeqTB.Text = SupplierSeq;
+            SupplierTB.Text = Supplier;
+            SupplierCK.Checked = SupplierBar == "1";
+
+            QCSeqTB.Text = QCSeq;
+            QCTB.Text = QC;
+            QCCK.Checked = QCBar == "1";
+
+            ManufactureDateSeqTB.Text = ManufactureDateSeq;
+            ManufactureDateTB.Text = ManufactureDate;
+            ManufactureDateCK.Checked = ManufactureDateBar == "1";
+
         }
 
         private void GetPrintItem()
@@ -402,8 +555,8 @@ namespace Box
                         {
                             command.CommandText = "SELECT  Name, DispSeq, DispText, BarCode from Print where Id=@Id";
 
-                            command.Parameters.Add("@ID", DbType.String);
-                            command.Parameters["@ID"].Value = OrderID;
+                            command.Parameters.Add("@Id", DbType.String);
+                            command.Parameters["@Id"].Value = OrderID;
 
                             using (SQLiteDataReader dr = command.ExecuteReader())
                             {
@@ -411,12 +564,18 @@ namespace Box
                                 {
                                     string Name = dr.GetString(0);
                                     int DispSeq = dr.GetInt32(1);
-                                    string DispText = dr.GetString(1);
-                                    string BarCode = dr.GetString(2);
+                                    string DispText = dr.GetString(2);
+                                    string BarCode = dr.GetString(3);
                                     if (!String.IsNullOrEmpty(Name))
                                     {
-                                        var property = this.GetType().GetProperty(Name);
-                                        property.SetValue(this, "newName");
+                                        var property = this.GetType().GetProperty(Name + "Seq");
+                                        property.SetValue(this, DispSeq > 0 ? string.Format("{0}", DispSeq) : "");
+
+                                        property = this.GetType().GetProperty(Name + "Bar");
+                                        property.SetValue(this, BarCode);
+
+                                        property = this.GetType().GetProperty(Name);
+                                        property.SetValue(this, DispText);
                                     }
                                 }
                                 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.OrderIdTB = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ManufactureDateTB = new System.Windows.Forms.TextBox();
             this.textBox35 = new System.Windows.Forms.TextBox();
@@ -84,15 +84,19 @@
             this.ManufactureDateCK = new System.Windows.Forms.CheckBox();
             this.QCCK = new System.Windows.Forms.CheckBox();
             this.SupplierCK = new System.Windows.Forms.CheckBox();
+            this.WorkFlowCK = new System.Windows.Forms.CheckBox();
+            this.WorkFlowTB = new System.Windows.Forms.TextBox();
+            this.WorkFlow2TB = new System.Windows.Forms.TextBox();
+            this.WorkFlowSeqTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox37
+            // OrderIdTB
             // 
-            this.textBox37.Location = new System.Drawing.Point(102, 12);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.ReadOnly = true;
-            this.textBox37.Size = new System.Drawing.Size(295, 19);
-            this.textBox37.TabIndex = 85;
+            this.OrderIdTB.Location = new System.Drawing.Point(102, 12);
+            this.OrderIdTB.Name = "OrderIdTB";
+            this.OrderIdTB.ReadOnly = true;
+            this.OrderIdTB.Size = new System.Drawing.Size(295, 19);
+            this.OrderIdTB.TabIndex = 85;
             // 
             // label5
             // 
@@ -105,7 +109,7 @@
             // 
             // ManufactureDateTB
             // 
-            this.ManufactureDateTB.Location = new System.Drawing.Point(261, 347);
+            this.ManufactureDateTB.Location = new System.Drawing.Point(261, 371);
             this.ManufactureDateTB.Name = "ManufactureDateTB";
             this.ManufactureDateTB.Size = new System.Drawing.Size(136, 19);
             this.ManufactureDateTB.TabIndex = 83;
@@ -113,7 +117,7 @@
             // 
             // textBox35
             // 
-            this.textBox35.Location = new System.Drawing.Point(102, 347);
+            this.textBox35.Location = new System.Drawing.Point(102, 371);
             this.textBox35.Name = "textBox35";
             this.textBox35.ReadOnly = true;
             this.textBox35.Size = new System.Drawing.Size(143, 19);
@@ -122,14 +126,14 @@
             // 
             // ManufactureDateSeqTB
             // 
-            this.ManufactureDateSeqTB.Location = new System.Drawing.Point(40, 347);
+            this.ManufactureDateSeqTB.Location = new System.Drawing.Point(40, 371);
             this.ManufactureDateSeqTB.Name = "ManufactureDateSeqTB";
             this.ManufactureDateSeqTB.Size = new System.Drawing.Size(32, 19);
             this.ManufactureDateSeqTB.TabIndex = 81;
             // 
             // QCTB
             // 
-            this.QCTB.Location = new System.Drawing.Point(261, 322);
+            this.QCTB.Location = new System.Drawing.Point(261, 346);
             this.QCTB.Name = "QCTB";
             this.QCTB.Size = new System.Drawing.Size(136, 19);
             this.QCTB.TabIndex = 80;
@@ -137,7 +141,7 @@
             // 
             // textBox32
             // 
-            this.textBox32.Location = new System.Drawing.Point(102, 322);
+            this.textBox32.Location = new System.Drawing.Point(102, 346);
             this.textBox32.Name = "textBox32";
             this.textBox32.ReadOnly = true;
             this.textBox32.Size = new System.Drawing.Size(143, 19);
@@ -146,7 +150,7 @@
             // 
             // QCSeqTB
             // 
-            this.QCSeqTB.Location = new System.Drawing.Point(40, 322);
+            this.QCSeqTB.Location = new System.Drawing.Point(40, 346);
             this.QCSeqTB.Name = "QCSeqTB";
             this.QCSeqTB.Size = new System.Drawing.Size(32, 19);
             this.QCSeqTB.TabIndex = 78;
@@ -154,7 +158,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 380);
+            this.label4.Location = new System.Drawing.Point(37, 404);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 12);
             this.label4.TabIndex = 77;
@@ -162,7 +166,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(102, 404);
+            this.button1.Location = new System.Drawing.Point(102, 428);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 23);
             this.button1.TabIndex = 76;
@@ -172,7 +176,7 @@
             // 
             // SupplierTB
             // 
-            this.SupplierTB.Location = new System.Drawing.Point(261, 297);
+            this.SupplierTB.Location = new System.Drawing.Point(261, 321);
             this.SupplierTB.Name = "SupplierTB";
             this.SupplierTB.Size = new System.Drawing.Size(136, 19);
             this.SupplierTB.TabIndex = 75;
@@ -180,7 +184,7 @@
             // 
             // textBox29
             // 
-            this.textBox29.Location = new System.Drawing.Point(102, 297);
+            this.textBox29.Location = new System.Drawing.Point(102, 321);
             this.textBox29.Name = "textBox29";
             this.textBox29.ReadOnly = true;
             this.textBox29.Size = new System.Drawing.Size(143, 19);
@@ -189,14 +193,14 @@
             // 
             // SupplierSeqTB
             // 
-            this.SupplierSeqTB.Location = new System.Drawing.Point(40, 297);
+            this.SupplierSeqTB.Location = new System.Drawing.Point(40, 321);
             this.SupplierSeqTB.Name = "SupplierSeqTB";
             this.SupplierSeqTB.Size = new System.Drawing.Size(32, 19);
             this.SupplierSeqTB.TabIndex = 73;
             // 
             // BoxNoTB
             // 
-            this.BoxNoTB.Location = new System.Drawing.Point(261, 272);
+            this.BoxNoTB.Location = new System.Drawing.Point(261, 296);
             this.BoxNoTB.Name = "BoxNoTB";
             this.BoxNoTB.Size = new System.Drawing.Size(136, 19);
             this.BoxNoTB.TabIndex = 72;
@@ -204,7 +208,7 @@
             // 
             // textBox26
             // 
-            this.textBox26.Location = new System.Drawing.Point(102, 272);
+            this.textBox26.Location = new System.Drawing.Point(102, 296);
             this.textBox26.Name = "textBox26";
             this.textBox26.ReadOnly = true;
             this.textBox26.Size = new System.Drawing.Size(143, 19);
@@ -213,14 +217,14 @@
             // 
             // BoxNoSeqTB
             // 
-            this.BoxNoSeqTB.Location = new System.Drawing.Point(40, 272);
+            this.BoxNoSeqTB.Location = new System.Drawing.Point(40, 296);
             this.BoxNoSeqTB.Name = "BoxNoSeqTB";
             this.BoxNoSeqTB.Size = new System.Drawing.Size(32, 19);
             this.BoxNoSeqTB.TabIndex = 70;
             // 
             // RealCountTB
             // 
-            this.RealCountTB.Location = new System.Drawing.Point(261, 247);
+            this.RealCountTB.Location = new System.Drawing.Point(261, 271);
             this.RealCountTB.Name = "RealCountTB";
             this.RealCountTB.Size = new System.Drawing.Size(136, 19);
             this.RealCountTB.TabIndex = 69;
@@ -228,7 +232,7 @@
             // 
             // textBox23
             // 
-            this.textBox23.Location = new System.Drawing.Point(102, 247);
+            this.textBox23.Location = new System.Drawing.Point(102, 271);
             this.textBox23.Name = "textBox23";
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(143, 19);
@@ -237,14 +241,14 @@
             // 
             // RealCountSeqTB
             // 
-            this.RealCountSeqTB.Location = new System.Drawing.Point(40, 247);
+            this.RealCountSeqTB.Location = new System.Drawing.Point(40, 271);
             this.RealCountSeqTB.Name = "RealCountSeqTB";
             this.RealCountSeqTB.Size = new System.Drawing.Size(32, 19);
             this.RealCountSeqTB.TabIndex = 67;
             // 
             // VerTB
             // 
-            this.VerTB.Location = new System.Drawing.Point(261, 222);
+            this.VerTB.Location = new System.Drawing.Point(261, 246);
             this.VerTB.Name = "VerTB";
             this.VerTB.Size = new System.Drawing.Size(136, 19);
             this.VerTB.TabIndex = 66;
@@ -252,7 +256,7 @@
             // 
             // textBox20
             // 
-            this.textBox20.Location = new System.Drawing.Point(102, 222);
+            this.textBox20.Location = new System.Drawing.Point(102, 246);
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(143, 19);
@@ -261,14 +265,14 @@
             // 
             // VerSeqTB
             // 
-            this.VerSeqTB.Location = new System.Drawing.Point(40, 222);
+            this.VerSeqTB.Location = new System.Drawing.Point(40, 246);
             this.VerSeqTB.Name = "VerSeqTB";
             this.VerSeqTB.Size = new System.Drawing.Size(32, 19);
             this.VerSeqTB.TabIndex = 64;
             // 
             // ProdDescTB
             // 
-            this.ProdDescTB.Location = new System.Drawing.Point(261, 197);
+            this.ProdDescTB.Location = new System.Drawing.Point(261, 221);
             this.ProdDescTB.Name = "ProdDescTB";
             this.ProdDescTB.Size = new System.Drawing.Size(136, 19);
             this.ProdDescTB.TabIndex = 63;
@@ -276,7 +280,7 @@
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(102, 197);
+            this.textBox17.Location = new System.Drawing.Point(102, 221);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
             this.textBox17.Size = new System.Drawing.Size(143, 19);
@@ -285,14 +289,14 @@
             // 
             // ProdDescSeqTB
             // 
-            this.ProdDescSeqTB.Location = new System.Drawing.Point(40, 197);
+            this.ProdDescSeqTB.Location = new System.Drawing.Point(40, 221);
             this.ProdDescSeqTB.Name = "ProdDescSeqTB";
             this.ProdDescSeqTB.Size = new System.Drawing.Size(32, 19);
             this.ProdDescSeqTB.TabIndex = 61;
             // 
             // ProdModelTB
             // 
-            this.ProdModelTB.Location = new System.Drawing.Point(261, 172);
+            this.ProdModelTB.Location = new System.Drawing.Point(261, 196);
             this.ProdModelTB.Name = "ProdModelTB";
             this.ProdModelTB.Size = new System.Drawing.Size(136, 19);
             this.ProdModelTB.TabIndex = 60;
@@ -300,7 +304,7 @@
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(102, 172);
+            this.textBox14.Location = new System.Drawing.Point(102, 196);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(143, 19);
@@ -309,14 +313,14 @@
             // 
             // ProdModelSeqTB
             // 
-            this.ProdModelSeqTB.Location = new System.Drawing.Point(40, 172);
+            this.ProdModelSeqTB.Location = new System.Drawing.Point(40, 196);
             this.ProdModelSeqTB.Name = "ProdModelSeqTB";
             this.ProdModelSeqTB.Size = new System.Drawing.Size(32, 19);
             this.ProdModelSeqTB.TabIndex = 58;
             // 
             // CustomerNoTB
             // 
-            this.CustomerNoTB.Location = new System.Drawing.Point(261, 147);
+            this.CustomerNoTB.Location = new System.Drawing.Point(261, 171);
             this.CustomerNoTB.Name = "CustomerNoTB";
             this.CustomerNoTB.Size = new System.Drawing.Size(136, 19);
             this.CustomerNoTB.TabIndex = 57;
@@ -324,7 +328,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(102, 147);
+            this.textBox11.Location = new System.Drawing.Point(102, 171);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(143, 19);
@@ -333,14 +337,14 @@
             // 
             // CustomerNoSeqTB
             // 
-            this.CustomerNoSeqTB.Location = new System.Drawing.Point(40, 147);
+            this.CustomerNoSeqTB.Location = new System.Drawing.Point(40, 171);
             this.CustomerNoSeqTB.Name = "CustomerNoSeqTB";
             this.CustomerNoSeqTB.Size = new System.Drawing.Size(32, 19);
             this.CustomerNoSeqTB.TabIndex = 55;
             // 
             // GubeiNoTB
             // 
-            this.GubeiNoTB.Location = new System.Drawing.Point(261, 122);
+            this.GubeiNoTB.Location = new System.Drawing.Point(261, 146);
             this.GubeiNoTB.Name = "GubeiNoTB";
             this.GubeiNoTB.Size = new System.Drawing.Size(136, 19);
             this.GubeiNoTB.TabIndex = 54;
@@ -348,7 +352,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(102, 122);
+            this.textBox8.Location = new System.Drawing.Point(102, 146);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(143, 19);
@@ -357,14 +361,14 @@
             // 
             // GubeiNoSeqTB
             // 
-            this.GubeiNoSeqTB.Location = new System.Drawing.Point(40, 122);
+            this.GubeiNoSeqTB.Location = new System.Drawing.Point(40, 146);
             this.GubeiNoSeqTB.Name = "GubeiNoSeqTB";
             this.GubeiNoSeqTB.Size = new System.Drawing.Size(32, 19);
             this.GubeiNoSeqTB.TabIndex = 52;
             // 
             // BatchTB
             // 
-            this.BatchTB.Location = new System.Drawing.Point(261, 97);
+            this.BatchTB.Location = new System.Drawing.Point(261, 121);
             this.BatchTB.Name = "BatchTB";
             this.BatchTB.Size = new System.Drawing.Size(136, 19);
             this.BatchTB.TabIndex = 51;
@@ -372,7 +376,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(102, 97);
+            this.textBox5.Location = new System.Drawing.Point(102, 121);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(143, 19);
@@ -381,7 +385,7 @@
             // 
             // BatchSeqTB
             // 
-            this.BatchSeqTB.Location = new System.Drawing.Point(40, 97);
+            this.BatchSeqTB.Location = new System.Drawing.Point(40, 121);
             this.BatchSeqTB.Name = "BatchSeqTB";
             this.BatchSeqTB.Size = new System.Drawing.Size(32, 19);
             this.BatchSeqTB.TabIndex = 49;
@@ -458,7 +462,7 @@
             // BatchCK
             // 
             this.BatchCK.AutoSize = true;
-            this.BatchCK.Location = new System.Drawing.Point(414, 100);
+            this.BatchCK.Location = new System.Drawing.Point(414, 124);
             this.BatchCK.Name = "BatchCK";
             this.BatchCK.Size = new System.Drawing.Size(15, 14);
             this.BatchCK.TabIndex = 88;
@@ -467,7 +471,7 @@
             // GubeiNoCK
             // 
             this.GubeiNoCK.AutoSize = true;
-            this.GubeiNoCK.Location = new System.Drawing.Point(414, 127);
+            this.GubeiNoCK.Location = new System.Drawing.Point(414, 151);
             this.GubeiNoCK.Name = "GubeiNoCK";
             this.GubeiNoCK.Size = new System.Drawing.Size(15, 14);
             this.GubeiNoCK.TabIndex = 89;
@@ -476,7 +480,7 @@
             // ProdDescCK
             // 
             this.ProdDescCK.AutoSize = true;
-            this.ProdDescCK.Location = new System.Drawing.Point(414, 202);
+            this.ProdDescCK.Location = new System.Drawing.Point(414, 226);
             this.ProdDescCK.Name = "ProdDescCK";
             this.ProdDescCK.Size = new System.Drawing.Size(15, 14);
             this.ProdDescCK.TabIndex = 92;
@@ -485,7 +489,7 @@
             // ProdModelCK
             // 
             this.ProdModelCK.AutoSize = true;
-            this.ProdModelCK.Location = new System.Drawing.Point(414, 175);
+            this.ProdModelCK.Location = new System.Drawing.Point(414, 199);
             this.ProdModelCK.Name = "ProdModelCK";
             this.ProdModelCK.Size = new System.Drawing.Size(15, 14);
             this.ProdModelCK.TabIndex = 91;
@@ -494,7 +498,7 @@
             // CustomerNoCK
             // 
             this.CustomerNoCK.AutoSize = true;
-            this.CustomerNoCK.Location = new System.Drawing.Point(414, 150);
+            this.CustomerNoCK.Location = new System.Drawing.Point(414, 174);
             this.CustomerNoCK.Name = "CustomerNoCK";
             this.CustomerNoCK.Size = new System.Drawing.Size(15, 14);
             this.CustomerNoCK.TabIndex = 90;
@@ -503,7 +507,7 @@
             // BoxNoCK
             // 
             this.BoxNoCK.AutoSize = true;
-            this.BoxNoCK.Location = new System.Drawing.Point(414, 277);
+            this.BoxNoCK.Location = new System.Drawing.Point(414, 301);
             this.BoxNoCK.Name = "BoxNoCK";
             this.BoxNoCK.Size = new System.Drawing.Size(15, 14);
             this.BoxNoCK.TabIndex = 95;
@@ -512,7 +516,7 @@
             // RealCountCK
             // 
             this.RealCountCK.AutoSize = true;
-            this.RealCountCK.Location = new System.Drawing.Point(414, 250);
+            this.RealCountCK.Location = new System.Drawing.Point(414, 274);
             this.RealCountCK.Name = "RealCountCK";
             this.RealCountCK.Size = new System.Drawing.Size(15, 14);
             this.RealCountCK.TabIndex = 94;
@@ -521,7 +525,7 @@
             // VerCK
             // 
             this.VerCK.AutoSize = true;
-            this.VerCK.Location = new System.Drawing.Point(414, 225);
+            this.VerCK.Location = new System.Drawing.Point(414, 249);
             this.VerCK.Name = "VerCK";
             this.VerCK.Size = new System.Drawing.Size(15, 14);
             this.VerCK.TabIndex = 93;
@@ -530,7 +534,7 @@
             // ManufactureDateCK
             // 
             this.ManufactureDateCK.AutoSize = true;
-            this.ManufactureDateCK.Location = new System.Drawing.Point(414, 349);
+            this.ManufactureDateCK.Location = new System.Drawing.Point(414, 373);
             this.ManufactureDateCK.Name = "ManufactureDateCK";
             this.ManufactureDateCK.Size = new System.Drawing.Size(15, 14);
             this.ManufactureDateCK.TabIndex = 98;
@@ -539,7 +543,7 @@
             // QCCK
             // 
             this.QCCK.AutoSize = true;
-            this.QCCK.Location = new System.Drawing.Point(414, 325);
+            this.QCCK.Location = new System.Drawing.Point(414, 349);
             this.QCCK.Name = "QCCK";
             this.QCCK.Size = new System.Drawing.Size(15, 14);
             this.QCCK.TabIndex = 97;
@@ -548,17 +552,54 @@
             // SupplierCK
             // 
             this.SupplierCK.AutoSize = true;
-            this.SupplierCK.Location = new System.Drawing.Point(414, 300);
+            this.SupplierCK.Location = new System.Drawing.Point(414, 324);
             this.SupplierCK.Name = "SupplierCK";
             this.SupplierCK.Size = new System.Drawing.Size(15, 14);
             this.SupplierCK.TabIndex = 96;
             this.SupplierCK.UseVisualStyleBackColor = true;
             // 
+            // WorkFlowCK
+            // 
+            this.WorkFlowCK.AutoSize = true;
+            this.WorkFlowCK.Location = new System.Drawing.Point(414, 100);
+            this.WorkFlowCK.Name = "WorkFlowCK";
+            this.WorkFlowCK.Size = new System.Drawing.Size(15, 14);
+            this.WorkFlowCK.TabIndex = 102;
+            this.WorkFlowCK.UseVisualStyleBackColor = true;
+            // 
+            // WorkFlowTB
+            // 
+            this.WorkFlowTB.Location = new System.Drawing.Point(261, 97);
+            this.WorkFlowTB.Name = "WorkFlowTB";
+            this.WorkFlowTB.Size = new System.Drawing.Size(136, 19);
+            this.WorkFlowTB.TabIndex = 101;
+            this.WorkFlowTB.Text = "工单编码:";
+            // 
+            // WorkFlow2TB
+            // 
+            this.WorkFlow2TB.Location = new System.Drawing.Point(102, 97);
+            this.WorkFlow2TB.Name = "WorkFlow2TB";
+            this.WorkFlow2TB.ReadOnly = true;
+            this.WorkFlow2TB.Size = new System.Drawing.Size(143, 19);
+            this.WorkFlow2TB.TabIndex = 100;
+            this.WorkFlow2TB.Text = "工单编码";
+            // 
+            // WorkFlowSeqTB
+            // 
+            this.WorkFlowSeqTB.Location = new System.Drawing.Point(40, 97);
+            this.WorkFlowSeqTB.Name = "WorkFlowSeqTB";
+            this.WorkFlowSeqTB.Size = new System.Drawing.Size(32, 19);
+            this.WorkFlowSeqTB.TabIndex = 99;
+            // 
             // PrintItemSelectFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 442);
+            this.ClientSize = new System.Drawing.Size(476, 458);
+            this.Controls.Add(this.WorkFlowCK);
+            this.Controls.Add(this.WorkFlowTB);
+            this.Controls.Add(this.WorkFlow2TB);
+            this.Controls.Add(this.WorkFlowSeqTB);
             this.Controls.Add(this.ManufactureDateCK);
             this.Controls.Add(this.QCCK);
             this.Controls.Add(this.SupplierCK);
@@ -572,7 +613,7 @@
             this.Controls.Add(this.BatchCK);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.OrderCodeCK);
-            this.Controls.Add(this.textBox37);
+            this.Controls.Add(this.OrderIdTB);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ManufactureDateTB);
             this.Controls.Add(this.textBox35);
@@ -615,8 +656,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.OrderCodeSeqTB);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PrintItemSelectFrm";
-            this.Text = "PrintItemSelectFrm";
+            this.Text = "标签项目设定";
             this.Load += new System.EventHandler(this.PrintItemSelectFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -625,7 +668,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.TextBox OrderIdTB;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox ManufactureDateTB;
         private System.Windows.Forms.TextBox textBox35;
@@ -681,5 +724,9 @@
         private System.Windows.Forms.CheckBox ManufactureDateCK;
         private System.Windows.Forms.CheckBox QCCK;
         private System.Windows.Forms.CheckBox SupplierCK;
+        private System.Windows.Forms.CheckBox WorkFlowCK;
+        private System.Windows.Forms.TextBox WorkFlowTB;
+        private System.Windows.Forms.TextBox WorkFlow2TB;
+        private System.Windows.Forms.TextBox WorkFlowSeqTB;
     }
 }

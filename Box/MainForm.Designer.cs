@@ -65,23 +65,28 @@
             this.HeadFontSizeList = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.TitleFontSizeList = new System.Windows.Forms.ComboBox();
             this.TitleFontList = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.FieldFontSizeList = new System.Windows.Forms.ComboBox();
             this.FieldFontList = new System.Windows.Forms.ComboBox();
             this.HeadFontTypeList = new System.Windows.Forms.ComboBox();
             this.TitleFontTypeList = new System.Windows.Forms.ComboBox();
             this.FieldFontTypeList = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.LineMarging = new System.Windows.Forms.TextBox();
+            this.LineSpaceTB = new System.Windows.Forms.TextBox();
             this.SelectPrintItemButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.LeftMarginTB = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TopMarginTB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewLabel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -239,9 +244,8 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 17;
-            this.button1.Text = "button1";
+            this.button1.Text = "测试";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // OrderIdTextBox
@@ -326,7 +330,7 @@
             // 
             // VendorTextBox
             // 
-            this.VendorTextBox.Location = new System.Drawing.Point(93, 438);
+            this.VendorTextBox.Location = new System.Drawing.Point(93, 436);
             this.VendorTextBox.Name = "VendorTextBox";
             this.VendorTextBox.Size = new System.Drawing.Size(375, 19);
             this.VendorTextBox.TabIndex = 33;
@@ -334,7 +338,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 441);
+            this.label13.Location = new System.Drawing.Point(12, 439);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 12);
             this.label13.TabIndex = 32;
@@ -406,38 +410,22 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(415, 28);
+            this.label14.Location = new System.Drawing.Point(440, 27);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.Size = new System.Drawing.Size(29, 12);
             this.label14.TabIndex = 37;
-            this.label14.Text = "台头字体";
+            this.label14.Text = "字体";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(415, 55);
+            this.label16.Location = new System.Drawing.Point(440, 53);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.Size = new System.Drawing.Size(29, 12);
             this.label16.TabIndex = 38;
-            this.label16.Text = "台头大小";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(607, 55);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(53, 12);
-            this.label17.TabIndex = 42;
-            this.label17.Text = "标题大小";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(607, 28);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 12);
-            this.label18.TabIndex = 41;
-            this.label18.Text = "标题字体";
+            this.label16.Text = "大小";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TitleFontSizeList
             // 
@@ -463,7 +451,7 @@
             "23",
             "24",
             "25"});
-            this.TitleFontSizeList.Location = new System.Drawing.Point(667, 53);
+            this.TitleFontSizeList.Location = new System.Drawing.Point(611, 53);
             this.TitleFontSizeList.Name = "TitleFontSizeList";
             this.TitleFontSizeList.Size = new System.Drawing.Size(121, 20);
             this.TitleFontSizeList.TabIndex = 40;
@@ -471,28 +459,10 @@
             // TitleFontList
             // 
             this.TitleFontList.FormattingEnabled = true;
-            this.TitleFontList.Location = new System.Drawing.Point(667, 24);
+            this.TitleFontList.Location = new System.Drawing.Point(611, 24);
             this.TitleFontList.Name = "TitleFontList";
             this.TitleFontList.Size = new System.Drawing.Size(121, 20);
             this.TitleFontList.TabIndex = 39;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(797, 54);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 12);
-            this.label19.TabIndex = 46;
-            this.label19.Text = "项目大小";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(797, 27);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 12);
-            this.label20.TabIndex = 45;
-            this.label20.Text = "项目字体";
             // 
             // FieldFontSizeList
             // 
@@ -518,7 +488,7 @@
             "23",
             "24",
             "25"});
-            this.FieldFontSizeList.Location = new System.Drawing.Point(856, 53);
+            this.FieldFontSizeList.Location = new System.Drawing.Point(747, 53);
             this.FieldFontSizeList.Name = "FieldFontSizeList";
             this.FieldFontSizeList.Size = new System.Drawing.Size(121, 20);
             this.FieldFontSizeList.TabIndex = 44;
@@ -526,7 +496,7 @@
             // FieldFontList
             // 
             this.FieldFontList.FormattingEnabled = true;
-            this.FieldFontList.Location = new System.Drawing.Point(856, 24);
+            this.FieldFontList.Location = new System.Drawing.Point(747, 24);
             this.FieldFontList.Name = "FieldFontList";
             this.FieldFontList.Size = new System.Drawing.Size(121, 20);
             this.FieldFontList.TabIndex = 43;
@@ -550,7 +520,7 @@
             "普通",
             "粗体",
             "斜体"});
-            this.TitleFontTypeList.Location = new System.Drawing.Point(667, 82);
+            this.TitleFontTypeList.Location = new System.Drawing.Point(611, 82);
             this.TitleFontTypeList.Name = "TitleFontTypeList";
             this.TitleFontTypeList.Size = new System.Drawing.Size(121, 20);
             this.TitleFontTypeList.TabIndex = 48;
@@ -562,7 +532,7 @@
             "普通",
             "粗体",
             "斜体"});
-            this.FieldFontTypeList.Location = new System.Drawing.Point(856, 82);
+            this.FieldFontTypeList.Location = new System.Drawing.Point(747, 82);
             this.FieldFontTypeList.Name = "FieldFontTypeList";
             this.FieldFontTypeList.Size = new System.Drawing.Size(121, 20);
             this.FieldFontTypeList.TabIndex = 49;
@@ -570,45 +540,29 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(415, 89);
+            this.label21.Location = new System.Drawing.Point(439, 85);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(53, 12);
+            this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 50;
-            this.label21.Text = "字体类型";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(608, 89);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 51;
-            this.label22.Text = "字体类型";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(797, 85);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(53, 12);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "字体类型";
+            this.label21.Text = "类型";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(415, 122);
+            this.label24.Location = new System.Drawing.Point(428, 121);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(41, 12);
             this.label24.TabIndex = 53;
             this.label24.Text = "行间距";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // LineMarging
+            // LineSpaceTB
             // 
-            this.LineMarging.Location = new System.Drawing.Point(474, 118);
-            this.LineMarging.Name = "LineMarging";
-            this.LineMarging.Size = new System.Drawing.Size(67, 19);
-            this.LineMarging.TabIndex = 54;
+            this.LineSpaceTB.Location = new System.Drawing.Point(474, 118);
+            this.LineSpaceTB.Name = "LineSpaceTB";
+            this.LineSpaceTB.Size = new System.Drawing.Size(67, 19);
+            this.LineSpaceTB.TabIndex = 54;
             // 
             // SelectPrintItemButton
             // 
@@ -616,29 +570,129 @@
             this.SelectPrintItemButton.Name = "SelectPrintItemButton";
             this.SelectPrintItemButton.Size = new System.Drawing.Size(96, 23);
             this.SelectPrintItemButton.TabIndex = 55;
-            this.SelectPrintItemButton.Text = "打印项目选择";
+            this.SelectPrintItemButton.Text = "设定打印项目";
             this.SelectPrintItemButton.UseVisualStyleBackColor = true;
+            this.SelectPrintItemButton.Click += new System.EventHandler(this.SelectPrintItemButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(93, 463);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(375, 19);
+            this.textBox1.TabIndex = 57;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(12, 466);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(41, 12);
+            this.label25.TabIndex = 56;
+            this.label25.Text = "批次号";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(93, 488);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(375, 19);
+            this.textBox2.TabIndex = 59;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(12, 491);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(44, 12);
+            this.label26.TabIndex = 58;
+            this.label26.Text = "Version";
+            // 
+            // LeftMarginTB
+            // 
+            this.LeftMarginTB.Location = new System.Drawing.Point(601, 115);
+            this.LeftMarginTB.Name = "LeftMarginTB";
+            this.LeftMarginTB.Size = new System.Drawing.Size(39, 19);
+            this.LeftMarginTB.TabIndex = 60;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(554, 121);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 12);
+            this.label27.TabIndex = 61;
+            this.label27.Text = "左边距";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label28.Location = new System.Drawing.Point(472, 9);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(31, 12);
+            this.label28.TabIndex = 62;
+            this.label28.Text = "台头";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label29.Location = new System.Drawing.Point(609, 9);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(31, 12);
+            this.label29.TabIndex = 63;
+            this.label29.Text = "标题";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label30.Location = new System.Drawing.Point(745, 9);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(31, 12);
+            this.label30.TabIndex = 64;
+            this.label30.Text = "项目";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(646, 119);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(41, 12);
+            this.label17.TabIndex = 65;
+            this.label17.Text = "上边距";
+            // 
+            // TopMarginTB
+            // 
+            this.TopMarginTB.Location = new System.Drawing.Point(693, 115);
+            this.TopMarginTB.Name = "TopMarginTB";
+            this.TopMarginTB.Size = new System.Drawing.Size(49, 19);
+            this.TopMarginTB.TabIndex = 66;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 561);
+            this.Controls.Add(this.TopMarginTB);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.LeftMarginTB);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.SelectPrintItemButton);
-            this.Controls.Add(this.LineMarging);
+            this.Controls.Add(this.LineSpaceTB);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.FieldFontTypeList);
             this.Controls.Add(this.TitleFontTypeList);
             this.Controls.Add(this.HeadFontTypeList);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label20);
             this.Controls.Add(this.FieldFontSizeList);
             this.Controls.Add(this.FieldFontList);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.TitleFontSizeList);
             this.Controls.Add(this.TitleFontList);
             this.Controls.Add(this.label16);
@@ -727,22 +781,27 @@
         private System.Windows.Forms.ComboBox HeadFontSizeList;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox TitleFontSizeList;
         private System.Windows.Forms.ComboBox TitleFontList;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox FieldFontSizeList;
         private System.Windows.Forms.ComboBox FieldFontList;
         private System.Windows.Forms.ComboBox HeadFontTypeList;
         private System.Windows.Forms.ComboBox TitleFontTypeList;
         private System.Windows.Forms.ComboBox FieldFontTypeList;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox LineMarging;
+        private System.Windows.Forms.TextBox LineSpaceTB;
         private System.Windows.Forms.Button SelectPrintItemButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox LeftMarginTB;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox TopMarginTB;
     }
 }
