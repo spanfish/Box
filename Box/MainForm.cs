@@ -328,8 +328,7 @@ namespace Box
         {
             try
             {
-                //var request = new RestRequest("dlicense/v2/manu/order/info", Method.POST);
-                var request = new RestRequest("dlicense/v2/manu/order/query", Method.POST);
+                var request = new RestRequest("dlicense/v2/manu/order/info", Method.POST);
                 request.RequestFormat = DataFormat.Json;
                 request.AddHeader("reqUserId", AppConfig.Login.Userid);
                 request.AddHeader("reqUserSession", AppConfig.Login.Loginsession);

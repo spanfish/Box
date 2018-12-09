@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RestSharp.Deserializers;
 
 namespace Box
 {
@@ -28,6 +22,7 @@ namespace Box
         }
 
         //产品型号
+        [DeserializeAs(Name = "DummyProductModel")]
         public string ProductModel
         {
             get;
