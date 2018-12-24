@@ -265,6 +265,92 @@ namespace Box
             get;
             set;
         }
+
+        public string Custom1Seq
+        {
+            get;
+            set;
+        }
+
+        public string Custom1
+        {
+            get;
+            set;
+        }
+        public string Custom1Bar
+        {
+            get;
+            set;
+        }
+
+        public string Custom2Seq
+        {
+            get;
+            set;
+        }
+
+        public string Custom2
+        {
+            get;
+            set;
+        }
+        public string Custom2Bar
+        {
+            get;
+            set;
+        }
+
+        public string Custom3Seq
+        {
+            get;
+            set;
+        }
+
+        public string Custom3
+        {
+            get;
+            set;
+        }
+        public string Custom3Bar
+        {
+            get;
+            set;
+        }
+
+        public string Custom4Seq
+        {
+            get;
+            set;
+        }
+
+        public string Custom4
+        {
+            get;
+            set;
+        }
+        public string Custom4Bar
+        {
+            get;
+            set;
+        }
+
+        public string Custom5Seq
+        {
+            get;
+            set;
+        }
+
+        public string Custom5
+        {
+            get;
+            set;
+        }
+        public string Custom5Bar
+        {
+            get;
+            set;
+        }
+
         private static readonly string FilePath = @".\Default.db";
 
         public PrintItemSelectFrm()
@@ -329,6 +415,26 @@ namespace Box
             FirmwareSeq = FirmwareSeqTB.Text;
             Firmware = FirmwareTB.Text;
             FirmwareBar = FirmwareCK.Checked ? "1" : "0";
+
+            Custom1Seq = Custom1SeqTB.Text;
+            Custom1 = Custom1TB.Text;
+            Custom1Bar = Custom1CK.Checked ? "1" : "0";
+
+            Custom2Seq = Custom2SeqTB.Text;
+            Custom2 = Custom2TB.Text;
+            Custom2Bar = Custom2CK.Checked ? "1" : "0";
+
+            Custom3Seq = Custom3SeqTB.Text;
+            Custom3 = Custom3TB.Text;
+            Custom3Bar = Custom3CK.Checked ? "1" : "0";
+
+            Custom4Seq = Custom4SeqTB.Text;
+            Custom4 = Custom4TB.Text;
+            Custom4Bar = Custom4CK.Checked ? "1" : "0";
+
+            Custom5Seq = Custom5SeqTB.Text;
+            Custom5 = Custom5TB.Text;
+            Custom5Bar = Custom5CK.Checked ? "1" : "0";
 
             SavePrintItem();
         }
@@ -443,6 +549,36 @@ namespace Box
                             command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(FirmwareSeq) ? 0 : Int32.Parse(FirmwareSeq);
                             command.Parameters["@DispText"].Value = Firmware;
                             command.Parameters["@BarCode"].Value = FirmwareBar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Custom1";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(Custom1Seq) ? 0 : Int32.Parse(Custom1Seq);
+                            command.Parameters["@DispText"].Value = Custom1;
+                            command.Parameters["@BarCode"].Value = Custom1Bar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Custom2";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(Custom2Seq) ? 0 : Int32.Parse(Custom2Seq);
+                            command.Parameters["@DispText"].Value = Custom2;
+                            command.Parameters["@BarCode"].Value = Custom2Bar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Custom3";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(Custom3Seq) ? 0 : Int32.Parse(Custom3Seq);
+                            command.Parameters["@DispText"].Value = Custom3;
+                            command.Parameters["@BarCode"].Value = Custom3Bar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Custom4";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(Custom4Seq) ? 0 : Int32.Parse(Custom4Seq);
+                            command.Parameters["@DispText"].Value = Custom4;
+                            command.Parameters["@BarCode"].Value = Custom4Bar;
+                            command.ExecuteNonQuery();
+
+                            command.Parameters["@Name"].Value = "Custom5";
+                            command.Parameters["@DispSeq"].Value = String.IsNullOrEmpty(Custom5Seq) ? 0 : Int32.Parse(Custom5Seq);
+                            command.Parameters["@DispText"].Value = Custom5;
+                            command.Parameters["@BarCode"].Value = Custom5Bar;
                             command.ExecuteNonQuery();
                         }
                         trans.Commit();
@@ -630,12 +766,46 @@ namespace Box
             ManufactureDateCK.Checked = ManufactureDateBar == "1";
 
             FirmwareSeqTB.Text = FirmwareSeq;
-            
-            if (!String.IsNullOrEmpty(ManufactureDate))
+            if (!String.IsNullOrEmpty(Firmware))
             {
                 FirmwareTB.Text = Firmware;
             }
             FirmwareCK.Checked = FirmwareBar == "1";
+
+            Custom1SeqTB.Text = Custom1Seq;
+            if (!String.IsNullOrEmpty(Custom1))
+            {
+                Custom1TB.Text = Custom1;
+            }
+            Custom1CK.Checked = Custom1Bar == "1";
+
+            Custom2SeqTB.Text = Custom2Seq;
+            if (!String.IsNullOrEmpty(Custom2))
+            {
+                Custom2TB.Text = Custom2;
+            }
+            Custom2CK.Checked = Custom2Bar == "1";
+
+            Custom3SeqTB.Text = Custom3Seq;
+            if (!String.IsNullOrEmpty(Custom3))
+            {
+                Custom3TB.Text = Custom3;
+            }
+            Custom3CK.Checked = Custom3Bar == "1";
+
+            Custom4SeqTB.Text = Custom4Seq;
+            if (!String.IsNullOrEmpty(Custom4))
+            {
+                Custom4TB.Text = Custom4;
+            }
+            Custom4CK.Checked = Custom4Bar == "1";
+
+            Custom5SeqTB.Text = Custom5Seq;
+            if (!String.IsNullOrEmpty(Custom5))
+            {
+                Custom5TB.Text = Custom5;
+            }
+            Custom5CK.Checked = Custom5Bar == "1";
         }
 
         private void GetPrintItem()

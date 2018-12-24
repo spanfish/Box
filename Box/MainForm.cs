@@ -228,6 +228,8 @@ namespace Box
             TopMargin = Int32.Parse(TopMarginTB.Text);
             LeftMargin = Int32.Parse(LeftMarginTB.Text);
             LineSpace = Int32.Parse(LineSpaceTB.Text);
+
+            GetCustomItems();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -407,6 +409,12 @@ namespace Box
                         {
                             res.OrderInfo.Firmware = GetDef(res.OrderInfo.OrderId, "Firmware");
                         }
+                        res.OrderInfo.Custom1 = GetDef(res.OrderInfo.OrderId, "Custom1");
+                        res.OrderInfo.Custom2 = GetDef(res.OrderInfo.OrderId, "Custom2");
+                        res.OrderInfo.Custom3 = GetDef(res.OrderInfo.OrderId, "Custom3");
+                        res.OrderInfo.Custom4 = GetDef(res.OrderInfo.OrderId, "Custom4");
+                        res.OrderInfo.Custom5 = GetDef(res.OrderInfo.OrderId, "Custom5");
+
                         OrderInfo = res.OrderInfo;
 
                         ShowOrderInfo(res.OrderInfo);
@@ -449,6 +457,8 @@ namespace Box
                 VersionTB.Text = orderInfo.ProductVerTag;
                 //固件
                 FirmwareTB.Text = orderInfo.Firmware;
+
+                
             }), orderInfo);
         }
 
@@ -582,26 +592,26 @@ namespace Box
             synchronizationContext.Post(new SendOrPostCallback(o =>
             {
 #if DEBUG
-                //OrderInfo = new OrderInfo();
-                //OrderInfo.OrderId = "00000000";
-                //OrderInfo.AgreementId = "B-MK-18082201-2";
-                //OrderInfo.ProductModel = "BL5015-HBSG011002";
-                //OrderInfo.ProductName = "ProductName";
-                //OrderInfo.ProductDesc = "Opple_Control_WiFi_MTK7698_3.3V_U. FL接口外置天线_stamp_PC BA_V1.1_new模块(欧普WIFI控制盒去谐波205100010281)";
-                //OrderInfo.Workform = "20181105162108-221-1";
-                //OrderInfo.FactoryName = "12345678901234560";
-                //OrderInfo.MaterialCode = "12345678901234560";
-                //OrderInfo.KehuCode = "12345678901234560";
-                //OrderInfo.VendorName = "杭州古北电子科技有限公司";
-                //OrderInfo.ProductVerTag = "12345678901234560";
-                //OrderInfo.BatchNo = "12345678901234560";
-                //OrderInfo.FactoryName = "12345678901234560";
-                
-                //BoxInfo = new BoxInfo();
-                //BoxInfo.OemFactoryId = "12345678901234560";
-                //BoxInfo.RealCount = 1000;
-                //BoxInfo.OrderId = "12345678901234560";
-                //BoxInfo.BoxSN = "IBC20181208000013";
+                if(OrderInfo == null)                 OrderInfo = new OrderInfo();
+                OrderInfo.OrderId = "123456";
+                OrderInfo.AgreementId = "B-MK-18082201-2";
+                OrderInfo.ProductModel = "BL5015-HBSG011002";
+                OrderInfo.ProductName = "ProductName";
+                OrderInfo.ProductDesc = "Opple_Control_WiFi_MTK7698_3.3V_U. FL接口外置天线_stamp_PC BA_V1.1_new模块(欧普WIFI控制盒去谐波205100010281)";
+                OrderInfo.Workform = "20181105162108-221-1";
+                OrderInfo.FactoryName = "12345678901234560";
+                OrderInfo.MaterialCode = "12345678901234560";
+                OrderInfo.KehuCode = "12345678901234560";
+                OrderInfo.VendorName = "杭州古北电子科技有限公司";
+                OrderInfo.ProductVerTag = "12345678901234560";
+                OrderInfo.BatchNo = "12345678901234560";
+                OrderInfo.FactoryName = "12345678901234560";
+
+                BoxInfo = new BoxInfo();
+                BoxInfo.OemFactoryId = "12345678901234560";
+                BoxInfo.RealCount = 1000;
+                BoxInfo.OrderId = "12345678901234560";
+                BoxInfo.BoxSN = "IBC20181208000013";
 #endif
                 GetPrintItem();
                 if (PrintItems == null || PrintItems.Count == 0)
@@ -610,7 +620,7 @@ namespace Box
                     return;
                 }
 
-                #region
+                #region 字体设置
                 if (!String.IsNullOrEmpty(LineSpaceTB.Text))
                 {
                     LineSpace = Int32.Parse(LineSpaceTB.Text);
@@ -818,6 +828,31 @@ namespace Box
                     {
                         //固件
                         Text = OrderInfo.Firmware;
+                    }
+                    else if (Name == "Custom1")
+                    {
+                        //Custom
+                        Text = OrderInfo.Custom1;
+                    }
+                    else if (Name == "Custom2")
+                    {
+                        //Custom
+                        Text = OrderInfo.Custom2;
+                    }
+                    else if (Name == "Custom3")
+                    {
+                        //Custom
+                        Text = OrderInfo.Custom3;
+                    }
+                    else if (Name == "Custom4")
+                    {
+                        //Custom
+                        Text = OrderInfo.Custom4;
+                    }
+                    else if (Name == "Custom5")
+                    {
+                        //Custom
+                        Text = OrderInfo.Custom5;
                     }
                     g.DrawString(Disp, titleFont, textBrush, new RectangleF(left, top, WidthInPixel, HeightInPixel), titleFormat);
                     tmpSize = TextRenderer.MeasureText(g, Disp, titleFont);
@@ -1105,6 +1140,12 @@ namespace Box
             OrderInfo.ProductVerTag = VersionTB.Text;
             OrderInfo.BatchNo = BatchTB.Text;
             OrderInfo.Firmware = FirmwareTB.Text;
+            OrderInfo.Custom1 = Custom1TB.Text;
+            OrderInfo.Custom2 = Custom2TB.Text;
+            OrderInfo.Custom3 = Custom3TB.Text;
+            OrderInfo.Custom4 = Custom4TB.Text;
+            OrderInfo.Custom5 = Custom5TB.Text;
+
             //保存打印默认值
             if (File.Exists(FilePath))
             {
@@ -1300,6 +1341,101 @@ namespace Box
                                     insCmd.ExecuteNonQuery();
                                 }
                             }
+
+                            command.Parameters["@Name"].Value = "Custom1";
+                            command.Parameters["@DefValue"].Value = Custom1TB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Custom1";
+                                    insCmd.Parameters["@DefValue"].Value = Custom1TB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Custom2";
+                            command.Parameters["@DefValue"].Value = Custom2TB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Custom2";
+                                    insCmd.Parameters["@DefValue"].Value = Custom2TB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Custom3";
+                            command.Parameters["@DefValue"].Value = Custom3TB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Custom3";
+                                    insCmd.Parameters["@DefValue"].Value = Custom3TB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Custom4";
+                            command.Parameters["@DefValue"].Value = Custom4TB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Custom4";
+                                    insCmd.Parameters["@DefValue"].Value = Custom4TB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            command.Parameters["@Name"].Value = "Custom5";
+                            command.Parameters["@DefValue"].Value = Custom5TB.Text;
+                            if (command.ExecuteNonQuery() == 0)
+                            {
+                                using (SQLiteCommand insCmd = conn.CreateCommand())
+                                {
+                                    insCmd.CommandText = "INSERT INTO Setting(Id, Name, DefValue) VALUES(@Id, @Name, @DefValue)";
+
+                                    insCmd.Parameters.Add("@DefValue", DbType.String);
+                                    insCmd.Parameters.Add("@Name", DbType.String);
+                                    insCmd.Parameters.Add("@ID", DbType.String);
+
+                                    insCmd.Parameters["@ID"].Value = OrderInfo.OrderId;
+                                    insCmd.Parameters["@Name"].Value = "Custom5";
+                                    insCmd.Parameters["@DefValue"].Value = Custom5TB.Text;
+                                    insCmd.ExecuteNonQuery();
+                                }
+                            }
                         }
 
                         conn.Close();
@@ -1328,6 +1464,11 @@ namespace Box
 
         private void SelectPrintItemButton_Click(object sender, EventArgs e)
         {
+            DialogResult result;
+#if DEBUG
+            OrderInfo = new OrderInfo();
+            OrderInfo.OrderId = "123456";
+#endif
             if (OrderInfo == null)
             {
                 MessageBox.Show("无订单，请先检索箱子", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1335,9 +1476,103 @@ namespace Box
             }
             PrintItemSelectFrm frm = new PrintItemSelectFrm();
             frm.OrderID = OrderInfo.OrderId;
-            frm.ShowDialog();
+            result = frm.ShowDialog();
+
+            GetCustomItems();
         }
 
+        private void GetCustomItems()
+        {
+#if DEBUG
+            OrderInfo = new OrderInfo();
+            OrderInfo.OrderId = "123456";
+#endif
+            Custom1Label.Text = "自定义1";
+            Custom2Label.Text = "自定义2";
+            Custom3Label.Text = "自定义3";
+            Custom4Label.Text = "自定义4";
+            Custom5Label.Text = "自定义";
+
+            if (File.Exists(FilePath))
+            {
+                using (var conn = new SQLiteConnection("Data Source=" + FilePath))
+                {
+                    try
+                    {
+                        conn.Open();
+                        using (SQLiteCommand command = conn.CreateCommand())
+                        {
+                            command.CommandText = "SELECT Name, DispText FROM Print WHERE Id = @Id AND Name like 'Custom%' and DispSeq > 0";
+
+                            command.Parameters.Add("@Id", DbType.String);
+                            command.Parameters.Add("@Name", DbType.String);
+
+                            command.Parameters["@Id"].Value = OrderInfo.OrderId;
+
+                            using (SQLiteDataReader dr = command.ExecuteReader())
+                            {
+                                while (dr != null && dr.Read())
+                                {
+                                    string name = dr.GetString(0);
+                                    string dispText = dr.GetString(1);
+                                    //string defValue = dr.GetString(1);
+                                    if (name == "Custom1")
+                                    {
+                                        if (!String.IsNullOrEmpty(dispText))
+                                        {
+                                            Custom1Label.Text = dispText;
+                                        }
+                                    }
+                                    else if (name == "Custom2")
+                                    {
+                                        if (!String.IsNullOrEmpty(dispText))
+                                        {
+                                            Custom2Label.Text = dispText;
+                                        }
+                                    }
+                                    else if (name == "Custom3")
+                                    {
+                                        if (!String.IsNullOrEmpty(dispText))
+                                        {
+                                            Custom3Label.Text = dispText;
+                                        }
+                                    }
+                                    else if (name == "Custom4")
+                                    {
+                                        if (!String.IsNullOrEmpty(dispText))
+                                        {
+                                            Custom4Label.Text = dispText;
+                                        }
+                                    }
+                                    else if (name == "Custom5")
+                                    {
+                                        if (!String.IsNullOrEmpty(dispText))
+                                        {
+                                            Custom5Label.Text = dispText;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        if (conn != null)
+                        {
+                            try
+                            {
+                                conn.Close();
+                            }
+                            finally
+                            {
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
         private void HeadFontList_SelectedIndexChanged(object sender, EventArgs e)
         {
             string HeadFontName = (sender as ComboBox).SelectedItem as string;
@@ -1464,5 +1699,43 @@ namespace Box
                 Properties.Settings.Default.Save();
             }
         }
+
+        #region
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int cch);
+
+        private static List<IntPtr> childList = new List<IntPtr>();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //IntPtr hWnd = FindWindowEx(IntPtr.Zero, IntPtr.Zero, "Qt5QWindowIcon", null);
+            //while (hWnd != IntPtr.Zero)
+            //{
+            //    StringBuilder title = new StringBuilder(256);
+            //    int titleLen = GetWindowText(hWnd, title, 256);
+            //    if(titleLen > 0 && title.ToString().Contains("装箱"))
+            //    {
+
+            //        EnumChildWindows(hWnd, new EnumWindowsDelegate(EnumWindowCallBack), (int)IntPtr.Zero);
+            //    }
+            //    hWnd = FindWindowEx(IntPtr.Zero, hWnd, "Qt5QWindowIcon", null);
+            //}
+            OCR.GetBoxNo();
+        }
+        private static bool EnumWindowCallBack(IntPtr hWnd, IntPtr lparam)
+        {
+            childList.Add(hWnd);
+            return true;
+        }
+        private delegate bool EnumWindowsDelegate(IntPtr hWnd, IntPtr lparam);
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        private static extern int EnumChildWindows(IntPtr hWnd, EnumWindowsDelegate lpEnumFunc, int lParam);
+        #endregion
+
+
     }
 }

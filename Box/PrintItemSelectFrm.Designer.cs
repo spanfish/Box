@@ -92,6 +92,26 @@
             this.FirmwareTB = new System.Windows.Forms.TextBox();
             this.textbox1 = new System.Windows.Forms.TextBox();
             this.FirmwareSeqTB = new System.Windows.Forms.TextBox();
+            this.Custom1CK = new System.Windows.Forms.CheckBox();
+            this.Custom1TB = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Custom1SeqTB = new System.Windows.Forms.TextBox();
+            this.Custom2CK = new System.Windows.Forms.CheckBox();
+            this.Custom2TB = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.Custom2SeqTB = new System.Windows.Forms.TextBox();
+            this.Custom3CK = new System.Windows.Forms.CheckBox();
+            this.Custom3TB = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.Custom3SeqTB = new System.Windows.Forms.TextBox();
+            this.Custom4CK = new System.Windows.Forms.CheckBox();
+            this.Custom4TB = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.Custom4SeqTB = new System.Windows.Forms.TextBox();
+            this.Custom5CK = new System.Windows.Forms.CheckBox();
+            this.Custom5TB = new System.Windows.Forms.TextBox();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.Custom5SeqTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // OrderIdTB
@@ -164,7 +184,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 426);
+            this.label4.Location = new System.Drawing.Point(25, 551);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 12);
             this.label4.TabIndex = 77;
@@ -172,7 +192,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(103, 450);
+            this.button1.Location = new System.Drawing.Point(204, 546);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 23);
             this.button1.TabIndex = 76;
@@ -642,11 +662,196 @@
             this.FirmwareSeqTB.Size = new System.Drawing.Size(32, 19);
             this.FirmwareSeqTB.TabIndex = 103;
             // 
+            // Custom1CK
+            // 
+            this.Custom1CK.AutoSize = true;
+            this.Custom1CK.Location = new System.Drawing.Point(414, 423);
+            this.Custom1CK.Name = "Custom1CK";
+            this.Custom1CK.Size = new System.Drawing.Size(15, 14);
+            this.Custom1CK.TabIndex = 110;
+            this.Custom1CK.UseVisualStyleBackColor = true;
+            // 
+            // Custom1TB
+            // 
+            this.Custom1TB.Location = new System.Drawing.Point(261, 421);
+            this.Custom1TB.Name = "Custom1TB";
+            this.Custom1TB.Size = new System.Drawing.Size(136, 19);
+            this.Custom1TB.TabIndex = 109;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(102, 421);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(143, 19);
+            this.textBox4.TabIndex = 108;
+            this.textBox4.Text = "自定义1";
+            // 
+            // Custom1SeqTB
+            // 
+            this.Custom1SeqTB.Location = new System.Drawing.Point(40, 421);
+            this.Custom1SeqTB.MaxLength = 2;
+            this.Custom1SeqTB.Name = "Custom1SeqTB";
+            this.Custom1SeqTB.Size = new System.Drawing.Size(32, 19);
+            this.Custom1SeqTB.TabIndex = 107;
+            // 
+            // Custom2CK
+            // 
+            this.Custom2CK.AutoSize = true;
+            this.Custom2CK.Location = new System.Drawing.Point(414, 448);
+            this.Custom2CK.Name = "Custom2CK";
+            this.Custom2CK.Size = new System.Drawing.Size(15, 14);
+            this.Custom2CK.TabIndex = 114;
+            this.Custom2CK.UseVisualStyleBackColor = true;
+            // 
+            // Custom2TB
+            // 
+            this.Custom2TB.Location = new System.Drawing.Point(261, 446);
+            this.Custom2TB.Name = "Custom2TB";
+            this.Custom2TB.Size = new System.Drawing.Size(136, 19);
+            this.Custom2TB.TabIndex = 113;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(102, 446);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(143, 19);
+            this.textBox9.TabIndex = 112;
+            this.textBox9.Text = "自定义2";
+            // 
+            // Custom2SeqTB
+            // 
+            this.Custom2SeqTB.Location = new System.Drawing.Point(40, 446);
+            this.Custom2SeqTB.MaxLength = 2;
+            this.Custom2SeqTB.Name = "Custom2SeqTB";
+            this.Custom2SeqTB.Size = new System.Drawing.Size(32, 19);
+            this.Custom2SeqTB.TabIndex = 111;
+            // 
+            // Custom3CK
+            // 
+            this.Custom3CK.AutoSize = true;
+            this.Custom3CK.Location = new System.Drawing.Point(414, 473);
+            this.Custom3CK.Name = "Custom3CK";
+            this.Custom3CK.Size = new System.Drawing.Size(15, 14);
+            this.Custom3CK.TabIndex = 118;
+            this.Custom3CK.UseVisualStyleBackColor = true;
+            // 
+            // Custom3TB
+            // 
+            this.Custom3TB.Location = new System.Drawing.Point(261, 471);
+            this.Custom3TB.Name = "Custom3TB";
+            this.Custom3TB.Size = new System.Drawing.Size(136, 19);
+            this.Custom3TB.TabIndex = 117;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(102, 471);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(143, 19);
+            this.textBox13.TabIndex = 116;
+            this.textBox13.Text = "自定义3";
+            // 
+            // Custom3SeqTB
+            // 
+            this.Custom3SeqTB.Location = new System.Drawing.Point(40, 471);
+            this.Custom3SeqTB.MaxLength = 2;
+            this.Custom3SeqTB.Name = "Custom3SeqTB";
+            this.Custom3SeqTB.Size = new System.Drawing.Size(32, 19);
+            this.Custom3SeqTB.TabIndex = 115;
+            // 
+            // Custom4CK
+            // 
+            this.Custom4CK.AutoSize = true;
+            this.Custom4CK.Location = new System.Drawing.Point(414, 498);
+            this.Custom4CK.Name = "Custom4CK";
+            this.Custom4CK.Size = new System.Drawing.Size(15, 14);
+            this.Custom4CK.TabIndex = 122;
+            this.Custom4CK.UseVisualStyleBackColor = true;
+            // 
+            // Custom4TB
+            // 
+            this.Custom4TB.Location = new System.Drawing.Point(261, 496);
+            this.Custom4TB.Name = "Custom4TB";
+            this.Custom4TB.Size = new System.Drawing.Size(136, 19);
+            this.Custom4TB.TabIndex = 121;
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(102, 496);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
+            this.textBox18.Size = new System.Drawing.Size(143, 19);
+            this.textBox18.TabIndex = 120;
+            this.textBox18.Text = "自定义4";
+            // 
+            // Custom4SeqTB
+            // 
+            this.Custom4SeqTB.Location = new System.Drawing.Point(40, 496);
+            this.Custom4SeqTB.MaxLength = 2;
+            this.Custom4SeqTB.Name = "Custom4SeqTB";
+            this.Custom4SeqTB.Size = new System.Drawing.Size(32, 19);
+            this.Custom4SeqTB.TabIndex = 119;
+            // 
+            // Custom5CK
+            // 
+            this.Custom5CK.AutoSize = true;
+            this.Custom5CK.Location = new System.Drawing.Point(414, 523);
+            this.Custom5CK.Name = "Custom5CK";
+            this.Custom5CK.Size = new System.Drawing.Size(15, 14);
+            this.Custom5CK.TabIndex = 126;
+            this.Custom5CK.UseVisualStyleBackColor = true;
+            // 
+            // Custom5TB
+            // 
+            this.Custom5TB.Location = new System.Drawing.Point(261, 521);
+            this.Custom5TB.Name = "Custom5TB";
+            this.Custom5TB.Size = new System.Drawing.Size(136, 19);
+            this.Custom5TB.TabIndex = 125;
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(102, 521);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
+            this.textBox22.Size = new System.Drawing.Size(143, 19);
+            this.textBox22.TabIndex = 124;
+            this.textBox22.Text = "自定义5";
+            // 
+            // Custom5SeqTB
+            // 
+            this.Custom5SeqTB.Location = new System.Drawing.Point(40, 521);
+            this.Custom5SeqTB.MaxLength = 2;
+            this.Custom5SeqTB.Name = "Custom5SeqTB";
+            this.Custom5SeqTB.Size = new System.Drawing.Size(32, 19);
+            this.Custom5SeqTB.TabIndex = 123;
+            // 
             // PrintItemSelectFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 474);
+            this.ClientSize = new System.Drawing.Size(476, 587);
+            this.Controls.Add(this.Custom5CK);
+            this.Controls.Add(this.Custom5TB);
+            this.Controls.Add(this.textBox22);
+            this.Controls.Add(this.Custom5SeqTB);
+            this.Controls.Add(this.Custom4CK);
+            this.Controls.Add(this.Custom4TB);
+            this.Controls.Add(this.textBox18);
+            this.Controls.Add(this.Custom4SeqTB);
+            this.Controls.Add(this.Custom3CK);
+            this.Controls.Add(this.Custom3TB);
+            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.Custom3SeqTB);
+            this.Controls.Add(this.Custom2CK);
+            this.Controls.Add(this.Custom2TB);
+            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.Custom2SeqTB);
+            this.Controls.Add(this.Custom1CK);
+            this.Controls.Add(this.Custom1TB);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.Custom1SeqTB);
             this.Controls.Add(this.FirmwareCK);
             this.Controls.Add(this.FirmwareTB);
             this.Controls.Add(this.textbox1);
@@ -787,5 +992,25 @@
         private System.Windows.Forms.TextBox FirmwareTB;
         private System.Windows.Forms.TextBox textbox1;
         private System.Windows.Forms.TextBox FirmwareSeqTB;
+        private System.Windows.Forms.CheckBox Custom1CK;
+        private System.Windows.Forms.TextBox Custom1TB;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox Custom1SeqTB;
+        private System.Windows.Forms.CheckBox Custom2CK;
+        private System.Windows.Forms.TextBox Custom2TB;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox Custom2SeqTB;
+        private System.Windows.Forms.CheckBox Custom3CK;
+        private System.Windows.Forms.TextBox Custom3TB;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox Custom3SeqTB;
+        private System.Windows.Forms.CheckBox Custom4CK;
+        private System.Windows.Forms.TextBox Custom4TB;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox Custom4SeqTB;
+        private System.Windows.Forms.CheckBox Custom5CK;
+        private System.Windows.Forms.TextBox Custom5TB;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox Custom5SeqTB;
     }
 }

@@ -89,6 +89,17 @@
             this.TopMarginTB = new System.Windows.Forms.TextBox();
             this.FirmwareTB = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Custom1TB = new System.Windows.Forms.TextBox();
+            this.Custom1Label = new System.Windows.Forms.Label();
+            this.Custom2TB = new System.Windows.Forms.TextBox();
+            this.Custom2Label = new System.Windows.Forms.Label();
+            this.Custom3TB = new System.Windows.Forms.TextBox();
+            this.Custom3Label = new System.Windows.Forms.Label();
+            this.Custom4TB = new System.Windows.Forms.TextBox();
+            this.Custom4Label = new System.Windows.Forms.Label();
+            this.Custom5TB = new System.Windows.Forms.TextBox();
+            this.Custom5Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewLabel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,7 +259,6 @@
             this.TestBtn.TabIndex = 17;
             this.TestBtn.Text = "测试";
             this.TestBtn.UseVisualStyleBackColor = true;
-            this.TestBtn.Visible = false;
             this.TestBtn.Click += new System.EventHandler(this.TestBtn_Click);
             // 
             // OrderIdTB
@@ -731,7 +741,7 @@
             // 
             // FirmwareTB
             // 
-            this.FirmwareTB.Location = new System.Drawing.Point(94, 513);
+            this.FirmwareTB.Location = new System.Drawing.Point(93, 513);
             this.FirmwareTB.Name = "FirmwareTB";
             this.FirmwareTB.Size = new System.Drawing.Size(375, 19);
             this.FirmwareTB.TabIndex = 68;
@@ -745,11 +755,112 @@
             this.label18.TabIndex = 67;
             this.label18.Text = "固件";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(820, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "测试2";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Custom1TB
+            // 
+            this.Custom1TB.Location = new System.Drawing.Point(93, 538);
+            this.Custom1TB.Name = "Custom1TB";
+            this.Custom1TB.Size = new System.Drawing.Size(375, 19);
+            this.Custom1TB.TabIndex = 71;
+            // 
+            // Custom1Label
+            // 
+            this.Custom1Label.AutoSize = true;
+            this.Custom1Label.Location = new System.Drawing.Point(14, 541);
+            this.Custom1Label.Name = "Custom1Label";
+            this.Custom1Label.Size = new System.Drawing.Size(47, 12);
+            this.Custom1Label.TabIndex = 70;
+            this.Custom1Label.Text = "自定义1";
+            // 
+            // Custom2TB
+            // 
+            this.Custom2TB.Location = new System.Drawing.Point(93, 563);
+            this.Custom2TB.Name = "Custom2TB";
+            this.Custom2TB.Size = new System.Drawing.Size(375, 19);
+            this.Custom2TB.TabIndex = 73;
+            // 
+            // Custom2Label
+            // 
+            this.Custom2Label.AutoSize = true;
+            this.Custom2Label.Location = new System.Drawing.Point(13, 566);
+            this.Custom2Label.Name = "Custom2Label";
+            this.Custom2Label.Size = new System.Drawing.Size(47, 12);
+            this.Custom2Label.TabIndex = 72;
+            this.Custom2Label.Text = "自定义2";
+            // 
+            // Custom3TB
+            // 
+            this.Custom3TB.Location = new System.Drawing.Point(93, 588);
+            this.Custom3TB.Name = "Custom3TB";
+            this.Custom3TB.Size = new System.Drawing.Size(375, 19);
+            this.Custom3TB.TabIndex = 75;
+            // 
+            // Custom3Label
+            // 
+            this.Custom3Label.AutoSize = true;
+            this.Custom3Label.Location = new System.Drawing.Point(13, 591);
+            this.Custom3Label.Name = "Custom3Label";
+            this.Custom3Label.Size = new System.Drawing.Size(47, 12);
+            this.Custom3Label.TabIndex = 74;
+            this.Custom3Label.Text = "自定义3";
+            // 
+            // Custom4TB
+            // 
+            this.Custom4TB.Location = new System.Drawing.Point(93, 613);
+            this.Custom4TB.Name = "Custom4TB";
+            this.Custom4TB.Size = new System.Drawing.Size(375, 19);
+            this.Custom4TB.TabIndex = 77;
+            // 
+            // Custom4Label
+            // 
+            this.Custom4Label.AutoSize = true;
+            this.Custom4Label.Location = new System.Drawing.Point(13, 616);
+            this.Custom4Label.Name = "Custom4Label";
+            this.Custom4Label.Size = new System.Drawing.Size(47, 12);
+            this.Custom4Label.TabIndex = 76;
+            this.Custom4Label.Text = "自定义4";
+            // 
+            // Custom5TB
+            // 
+            this.Custom5TB.Location = new System.Drawing.Point(93, 638);
+            this.Custom5TB.Name = "Custom5TB";
+            this.Custom5TB.Size = new System.Drawing.Size(375, 19);
+            this.Custom5TB.TabIndex = 79;
+            // 
+            // Custom5Label
+            // 
+            this.Custom5Label.AutoSize = true;
+            this.Custom5Label.Location = new System.Drawing.Point(13, 641);
+            this.Custom5Label.Name = "Custom5Label";
+            this.Custom5Label.Size = new System.Drawing.Size(47, 12);
+            this.Custom5Label.TabIndex = 78;
+            this.Custom5Label.Text = "自定义5";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 561);
+            this.ClientSize = new System.Drawing.Size(986, 693);
+            this.Controls.Add(this.Custom5TB);
+            this.Controls.Add(this.Custom5Label);
+            this.Controls.Add(this.Custom4TB);
+            this.Controls.Add(this.Custom4Label);
+            this.Controls.Add(this.Custom3TB);
+            this.Controls.Add(this.Custom3Label);
+            this.Controls.Add(this.Custom2TB);
+            this.Controls.Add(this.Custom2Label);
+            this.Controls.Add(this.Custom1TB);
+            this.Controls.Add(this.Custom1Label);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.FirmwareTB);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.TopMarginTB);
@@ -884,5 +995,16 @@
         private System.Windows.Forms.TextBox TopMarginTB;
         private System.Windows.Forms.TextBox FirmwareTB;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Custom1TB;
+        private System.Windows.Forms.Label Custom1Label;
+        private System.Windows.Forms.TextBox Custom2TB;
+        private System.Windows.Forms.Label Custom2Label;
+        private System.Windows.Forms.TextBox Custom3TB;
+        private System.Windows.Forms.Label Custom3Label;
+        private System.Windows.Forms.TextBox Custom4TB;
+        private System.Windows.Forms.Label Custom4Label;
+        private System.Windows.Forms.TextBox Custom5TB;
+        private System.Windows.Forms.Label Custom5Label;
     }
 }
